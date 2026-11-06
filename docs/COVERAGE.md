@@ -140,6 +140,8 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D13:L1a | "have a login page" | answer | REQ-28 |
 | D13:L1b | "real auth is not needed" | answer | OOS-6 |
 | D13:L2 | "show the hotline" | answer | REQ-43 |
+| D14:L1 | "a dropdown to switch language somewhere on the page" | answer | REQ-53 |
+| D14:L2 | "apply the findings you have" | answer | REQ-7 |
 
 Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant offer); D2:L2, L11, L20 — headings, rehearsal and meta.
 
@@ -181,4 +183,4 @@ Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant off
 | Q-20 | defaults: devices, accessibility | no device or network limits |
 | Q-11 | defaults: access and roles | roles named, permissions silent |
 
-**Closure:** every row one disposition · every spec ID referenced · all 52 REQ, 4 C, 6 OOS named; Q-1…Q-41 named by a row or the scan table
+**Closure:** every row one disposition · every spec ID referenced · all 53 REQ, 4 C, 6 OOS named; Q-1…Q-42 named by a row or the scan table

@@ -1,9 +1,9 @@
 # Spec — Alba, a postpartum companion
 
 **Status:** Draft — TBD remain (19 open questions, including Q-31 to confirm; all 4 contradictions resolved) · **Shape:** full — more than 15 requirements, WhatsApp integration, health data
-**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D13 owner answers (2,911 words) · **Spec:** 5624 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
-**Length:** 5624 vs 2,911 — dense input: nearly every line carries a need (52 REQ, 41 questions, 4 contradictions); none dropped to meet the count
-**Counts:** 52 REQ · 91 AC · 4 contradictions (4 resolved) · 41 questions (22 resolved) · 0 assumptions · 5 proposed (2 approved) · 6 out of scope
+**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D14 owner answers (2,941 words) · **Spec:** 5803 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
+**Length:** 5803 vs 2,941 — dense input: nearly every line carries a need (53 REQ, 42 questions, 4 contradictions); none dropped to meet the count
+**Counts:** 53 REQ · 94 AC · 4 contradictions (4 resolved) · 42 questions (23 resolved) · 0 assumptions · 5 proposed (2 approved) · 6 out of scope
 
 ## Problem
 
@@ -39,7 +39,7 @@ Alba shall show nothing on a home screen that says postpartum or medical.
 Alba shall present its content in Spanish.
 - Source: D1:L4 — "in Spanish, on the phone she already has"; D2:L4 — "Spanish-first"
 - AC-4 Given a mom opens Alba, When content loads, Then it is in Spanish.
-- AC-5 Given English users, When they open Alba, Then TBD → Q-21.
+- AC-5 Given English is chosen with the dropdown (REQ-53), When content loads, Then it is in English; the start language stays Spanish.
 
 ### REQ-4 — Daily check-ins
 Alba shall let a mom check in daily on bleeding, pain, mood and healing.
@@ -62,7 +62,7 @@ Alba's AI shall condense her check-ins and notes into a one-page summary she han
 ### REQ-7 — Week 1 milestone cards
 Alba shall show Week 1 milestone cards: what to expect, what to avoid, what to watch, home remedies, what to ask family, gentle movement.
 - Source: D1:L9 — "Week 1: what to avoid, what to watch for, home remedies, what to ask family for"; D2:L4 — "Week 1 milestones — paste into Milestones (Spanish-first)"
-- AC-11 Given she opens Week 1, When it loads, Then six cards appear with the content of D2:L5–L10.
+- AC-11 Given she opens Week 1, When it loads, Then six cards appear with the content of D2:L5–L10, as corrected in content/README.md (D8:L6, D14:L2).
 - AC-12 Given Card 1, When shown, Then red bleeding is described as lasting 3–4 days (D7:L1).
 - AC-80 Given Cards 1 and 3, When shown, Then they say to call if soaking a pad every hour (D8:L6).
 - AC-88 Given Cards 1 and 3, When shown, Then they say to call for golf-ball clots (D8:L6).
@@ -325,6 +325,13 @@ Alba shall be built with Next.js (App Router), TypeScript and Tailwind, call the
 - AC-92 Given the Claude API is called, When the call is made, Then it is made from a server-side route handler with the key read from .env.
 - AC-93 Given check-ins and notes are saved, When the server restarts, Then they are still stored in SQLite.
 
+### REQ-53 — Language selector
+Alba shall start in Spanish and let a mom switch the app to English with a dropdown.
+- Source: D14:L1 — "a dropdown to switch language somewhere on the page; the page starts in Spanish"
+- AC-94 Given a mom opens Alba for the first time, When the first page loads, Then it is in Spanish.
+- AC-95 Given the language dropdown, When she picks English, Then the page text is in English.
+- AC-96 Given she picked English, When she opens another page or returns later, Then whether the choice is kept is TBD → Q-42.
+
 ## Users and roles
 - Mom — D1:L4 — REQ-4…REQ-44 — observed
 - Promotora — D1:L10 — REQ-10, REQ-14 — observed
@@ -419,16 +426,16 @@ _Ranked by impact × uncertainty, highest first._
 | Q-18 | I2×U3=6 | What are the summary's trigger, sharing method, language and period? | doctor can't use it | "one-page summary" D1:L8 | list | REQ-6 |
 | Q-19 | I2×U3=6 | Who writes weeks 2–6+, until which week, and what is "what people appreciated"? | content gaps | "and beyond" D1:L9 | week number | REQ-7, 8 |
 | Q-20 | I2×U3=6 | Which phones, networks, data budget, offline use, accessibility level? | unusable | "low-spec" D1:L15 | list | REQ-32 |
-| Q-21 | I2×U3=6 | Is English content needed in the app? | untranslated screens | "Spanish and English" D1:L2 | yes / no | REQ-3 |
 | Q-25 | I2×U3=6 | What does the Spanish consent text say, including that her question and, for the summary, her check-ins and notes go to the Claude API? | consent not informed | "consent in Spanish" D1:L13 | text | REQ-30, 48 |
 | Q-31 | I2×U2=4 | Confirm: a call over 5 seconds falls back to the seed answer? | demo stalls or flips early | "you decide timeout" D8:L3 | confirm / number | REQ-46 |
 | Q-39 | I2×U2=4 | What does she see if a Claude call fails on any Ask Alba question other than the two live ones? | blank answer | "error message for now" D9:L1 | seed / error | REQ-46, 34 |
+| Q-42 | I1×U3=3 | Is the chosen language kept across pages and visits? | she must re-pick each time | "dropdown to switch language" D14:L1 | session / device / none | REQ-53 |
 | Q-22 | I1×U3=3 | What makes it "very easy to use" and "meditative"; what palette? | rework | "almost meditative" D1:L15 | reference | REQ-31 |
 | Q-23 | I1×U3=3 | What does cuarentena mean here: length, rules? | wrong framing | "la cuarentena" D1:L17 | days | REQ-33 |
 | Q-35 | I1×U3=3 | What does the error message say, in Spanish? | confusing screen | "show an error message" D9:L1 | text | REQ-46 |
 | Q-40 | I1×U3=3 | Is the WhatsApp welcome sent at sign-up or on day 3? | welcome mistimed | "Day 3, welcome in WhatsApp" D1:L21 | at sign-up / day 3 | REQ-24 |
 
-_Resolved:_ Q-1 → web app with WhatsApp integration (D4:L3). Q-12 → demo scope in OOS-2 (D5:L1). Q-2 → check-ins and notes on the server, no real names, no retention policy (D6:L1; OOS-3). Q-3 → phone or email login, random alias, moderators see author (D6:L2). Q-7 → US first (D6:L5; OOS-4). Q-24 → starts in the app, reminders on WhatsApp (D6:L6). C-1 → 3–4 days (D7:L1). Q-26 → seed answer fallback (D7:L2). Q-27 → WhatsApp number and consent at sign-up (D7:L4). Q-25 narrowed to the consent text; Ask Alba sends only the question and page (D7:L3). Q-28 → Claude also for summary and weekly research (D8:L2; supersedes D7:L5 "the rest doesnt need claude"). Q-29 → workouts depend on the week (D8:L1). Q-5 → promotora review and moderation simulated (D8:L4). Q-6 → delivery date entered at sign-up (D8:L5). Q-30 → cautious values in AC-80 (D8:L6). Q-31 → 5 seconds chosen by the drafter at the owner's request, to confirm. Q-33 → error message for now (D9:L1). Q-34 → she enters the appointment date (D9:L2). Q-32 → check-ins and notes to the API for the summary only (D9:L3). Q-4 narrowed: Claude may cite others (D9:L4). P-4 → REQ-50 (D9:L5). Q-9 → 1–5 scales, pad yes/no, note (D10:L1). Q-14 → full-screen message with tap-to-call (D10:L2). Q-15 narrowed: mood-dip trigger set (D10:L3). Q-13 narrowed: day 20, visit at 6 weeks, 12-week outer limit (D10:L4). P-5 → REQ-51 (D10:L5). Q-37 → seed answers cite named sources, Claude-named sources flagged "sin verificar", full check later (D11:L1; OOS-5). Q-36 → she enters the clinic number, falls back to 911 (D11:L2). Q-18 narrowed: one-page printable screen (D11:L3). Q-41 → stack and local run (D12:L1; REQ-52). Q-38 → mocked login, one demo user (D13:L1; OOS-6). Q-15: the TLC-MAMA hotline is shown on a mood dip (D13:L2); 988 trigger still open. C-2 → A (D4:L1). C-3 → B (D4:L2).
+_Resolved:_ Q-1 → web app with WhatsApp integration (D4:L3). Q-12 → demo scope in OOS-2 (D5:L1). Q-2 → check-ins and notes on the server, no real names, no retention policy (D6:L1; OOS-3). Q-3 → phone or email login, random alias, moderators see author (D6:L2). Q-7 → US first (D6:L5; OOS-4). Q-24 → starts in the app, reminders on WhatsApp (D6:L6). C-1 → 3–4 days (D7:L1). Q-26 → seed answer fallback (D7:L2). Q-27 → WhatsApp number and consent at sign-up (D7:L4). Q-25 narrowed to the consent text; Ask Alba sends only the question and page (D7:L3). Q-28 → Claude also for summary and weekly research (D8:L2; supersedes D7:L5 "the rest doesnt need claude"). Q-29 → workouts depend on the week (D8:L1). Q-5 → promotora review and moderation simulated (D8:L4). Q-6 → delivery date entered at sign-up (D8:L5). Q-30 → cautious values in AC-80 (D8:L6). Q-31 → 5 seconds chosen by the drafter at the owner's request, to confirm. Q-33 → error message for now (D9:L1). Q-34 → she enters the appointment date (D9:L2). Q-32 → check-ins and notes to the API for the summary only (D9:L3). Q-4 narrowed: Claude may cite others (D9:L4). P-4 → REQ-50 (D9:L5). Q-9 → 1–5 scales, pad yes/no, note (D10:L1). Q-14 → full-screen message with tap-to-call (D10:L2). Q-15 narrowed: mood-dip trigger set (D10:L3). Q-13 narrowed: day 20, visit at 6 weeks, 12-week outer limit (D10:L4). P-5 → REQ-51 (D10:L5). Q-37 → seed answers cite named sources, Claude-named sources flagged "sin verificar", full check later (D11:L1; OOS-5). Q-36 → she enters the clinic number, falls back to 911 (D11:L2). Q-18 narrowed: one-page printable screen (D11:L3). Q-41 → stack and local run (D12:L1; REQ-52). Q-21 → English too, via a dropdown, starting in Spanish (D14:L1; REQ-53). Q-38 → mocked login, one demo user (D13:L1; OOS-6). Q-15: the TLC-MAMA hotline is shown on a mood dip (D13:L2); 988 trigger still open. C-2 → A (D4:L1). C-3 → B (D4:L2).
 
 ## Assumptions
 
@@ -473,3 +480,5 @@ _Model-originated. Not requirements. Each needs a person's approval (amend) befo
 | 2026-11-06 | Q-37, Q-36, Q-18, REQ-6, 25, 26, 49, 51, OOS-5; new Q-41, AC-90 | D11:L1–L3 | citation flag for now; clinic number entered with fallback to 911; summary is a printable one-page screen; stack question added |
 | 2026-11-06 | Q-41, new REQ-52 | D12:L1 | stack and local run decided |
 | 2026-11-06 | Q-38, REQ-28, OOS-6; Q-15 | D13:L1, L2 | login mocked, single demo user; hotline shown on a mood dip |
+| 2026-11-06 | Q-21, REQ-3, new REQ-53, Q-42 | D14:L1 | English via a dropdown, start in Spanish |
+| 2026-11-06 | REQ-7 | D14:L2 | source-research corrections applied to cards and seed answers: source lines, two-week baby-blues wording, chamomile per LactMed, ice 24 hours, nettle/raspberry marked no clinical source; Card 6 and the wound warning left unchanged |
