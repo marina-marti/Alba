@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
+import MascotMount from "@/components/MascotMount";
 
 export const metadata: Metadata = {
   title: "Alba",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main className="page-enter flex-1 px-6 pb-36 pt-6">{children}</main>
           <BottomNav />
+          <MascotMount />
         </div>
       </body>
     </html>
