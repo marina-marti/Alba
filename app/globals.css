@@ -105,3 +105,78 @@ a.card:active { transform: translateY(0) scale(0.99); }
     scroll-behavior: auto !important;
   }
 }
+
+/* floating mascot: one 16 s cycle (wave, then a deep breath), rest otherwise */
+body:has(.mascot) main { padding-bottom: 13rem; }
+.mascot {
+  position: fixed;
+  z-index: 9;
+  bottom: 6.5rem;
+  right: max(1rem, calc((100vw - 36rem) / 2 + 1rem));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 9999px;
+  animation: m-float 4s ease-in-out infinite;
+}
+.mascot-svg { width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 10px 14px rgba(120, 80, 50, 0.25)); }
+.mascot-label {
+  position: absolute;
+  right: 100%;
+  margin-right: 0.5rem;
+  white-space: nowrap;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.875rem;
+  color: #3a2f29;
+  box-shadow: 0 10px 24px -14px rgba(120, 80, 50, 0.5);
+  opacity: 0;
+  transform: translateX(6px);
+  pointer-events: none;
+  transition: opacity 250ms ease-out, transform 250ms ease-out;
+}
+.mascot:focus-visible .mascot-label { opacity: 1; transform: none; }
+@media (hover: hover) { .mascot:hover .mascot-label { opacity: 1; transform: none; } }
+.mascot:focus-visible { outline-offset: 6px; border-radius: 9999px; }
+
+.m-arm { transform-origin: 78px 64px; animation: m-wave 16s ease-in-out infinite; }
+.m-body { transform-origin: 50px 62px; animation: m-breath 16s ease-in-out infinite; }
+.m-eye { animation: m-blink 16s ease-in-out infinite; }
+.m-puff { animation: m-puff 16s ease-out infinite; }
+
+@keyframes m-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+/* arm rests tucked down; one wave of three swings at ~20-30% of the cycle */
+@keyframes m-wave {
+  0%, 18% { transform: rotate(85deg); }
+  22% { transform: rotate(20deg); }
+  24% { transform: rotate(-2deg); }
+  26% { transform: rotate(30deg); }
+  28% { transform: rotate(-2deg); }
+  30% { transform: rotate(30deg); }
+  32% { transform: rotate(10deg); }
+  36%, 100% { transform: rotate(85deg); }
+}
+/* deep breath at ~55-82%: inflate slowly, hold, ease out */
+@keyframes m-breath {
+  0%, 55% { transform: scale(1); }
+  68% { transform: scale(1.1); }
+  76% { transform: scale(1.1); }
+  82%, 100% { transform: scale(1); }
+}
+@keyframes m-blink {
+  0%, 57% { transform: scaleY(1); }
+  64%, 76% { transform: scaleY(0.1); }
+  81%, 100% { transform: scaleY(1); }
+}
+@keyframes m-puff {
+  0%, 77% { opacity: 0; transform: translate(0, 0); }
+  80% { opacity: 0.9; transform: translate(0, 2px); }
+  86%, 100% { opacity: 0; transform: translate(0, 8px); }
+}
+@media print { .mascot { display: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  .m-arm { transform: rotate(85deg); }
+}

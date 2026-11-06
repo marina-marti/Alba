@@ -4,6 +4,7 @@ import { I18nProvider } from "@/lib/i18n/client";
 import "./globals.css";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
+import MascotMount from "@/components/MascotMount";
 
 // The page title stays exactly "Alba" in both languages.
 export async function generateMetadata(): Promise<Metadata> {
@@ -26,6 +27,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Header />
           <main className="page-enter flex-1 px-6 pb-36 pt-6">{children}</main>
           <BottomNav />
+          <MascotMount />
         </div>
         </I18nProvider>
       </body>
