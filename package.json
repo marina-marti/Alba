@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "seed": "node scripts/seed.mjs",
+    "demo": "node scripts/seed.mjs && next dev"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.40.0",
