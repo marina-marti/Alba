@@ -16,8 +16,8 @@ const COPY = {
     refresh: "Preparar otra rutina",
     error: "No pudimos preparar tu rutina ahora. Inténtalo de nuevo.",
     retry: "Intentar de nuevo",
-    signup: "Completa tu registro para ver la rutina de tu semana. Mientras tanto, esta es la de la semana 1.",
-    signupLink: "Ir al registro",
+    signup: "Añade la fecha del parto para ver la rutina de tu semana. Mientras tanto, esta es la de la semana 1.",
+    signupLink: "Ir a mi perfil",
   },
   en: {
     title: "Gentle movement",
@@ -28,8 +28,8 @@ const COPY = {
     refresh: "Prepare another routine",
     error: "We couldn't prepare your routine right now. Please try again.",
     retry: "Try again",
-    signup: "Finish signing up to see the routine for your week. For now, this is week 1.",
-    signupLink: "Go to sign-up",
+    signup: "Add your delivery date to see the routine for your week. For now, this is week 1.",
+    signupLink: "Go to my profile",
   },
 } as const;
 
@@ -47,7 +47,7 @@ export default async function Page() {
       {needsProfile && (
         <div className="card space-y-3">
           <p>{t.signup}</p>
-          <Link href="/registro" className="btn btn-quiet">
+          <Link href="/perfil" className="btn btn-quiet">
             {t.signupLink}
           </Link>
         </div>

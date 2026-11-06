@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Sunrise, Wave } from "@/components/Curves";
 import LanguageSelect from "@/components/LanguageSelect";
+import ProfileBubble from "@/components/ProfileBubble";
+import { getProfile } from "@/lib/db";
 
 export default function Header() {
   return (
@@ -9,7 +11,10 @@ export default function Header() {
         <Sunrise className="h-6 w-9" />
         Alba
       </Link>
-      <LanguageSelect />
+      <div className="flex items-center gap-2">
+        <LanguageSelect />
+        <ProfileBubble name={getProfile()?.name ?? null} />
+      </div>
       <Wave className="absolute inset-x-6 bottom-0 h-5 w-[calc(100%-3rem)]" />
     </header>
   );

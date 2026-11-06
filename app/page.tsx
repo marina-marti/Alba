@@ -18,8 +18,6 @@ const COPY = {
     watchAction: "Si notas alguna, llama a tu médico ahora.",
     seeAll: "Ver todas",
     optionsTitle: "¿Qué quieres hacer?",
-    start: "Empezar",
-    login: "Entrar",
     options: {
       checkin: ["Check-in diario", "¿Cómo estás hoy?"],
       ask: ["Pregúntale a Alba", "Tus dudas, con calma"],
@@ -40,8 +38,6 @@ const COPY = {
     watchAction: "If you notice any of these, call your doctor now.",
     seeAll: "See all",
     optionsTitle: "What would you like to do?",
-    start: "Get started",
-    login: "Sign in",
     options: {
       checkin: ["Daily check-in", "How are you today?"],
       ask: ["Ask Alba", "Your questions, calmly"],
@@ -116,7 +112,7 @@ export default async function Home() {
         ) : (
           <>
             <p className="relative mt-3 text-balance text-base text-ink-soft">{t.noDate}</p>
-            <Link href="/registro" className="btn relative mt-4 !px-6 !py-2 text-sm">
+            <Link href="/perfil" className="btn relative mt-4 !px-6 !py-2 text-sm">
               {t.addDate}
             </Link>
           </>
@@ -168,15 +164,6 @@ export default async function Home() {
           ))}
         </div>
       </section>
-
-      <div className="flex items-center justify-center gap-8">
-        <Link href="/registro" className="link inline-flex min-h-11 items-center">
-          {t.start}
-        </Link>
-        <Link href="/login" className="link inline-flex min-h-11 items-center">
-          {t.login}
-        </Link>
-      </div>
     </div>
   );
 }

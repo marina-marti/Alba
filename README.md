@@ -2,7 +2,7 @@
 
 - Alba is a private, Spanish-first companion for the first weeks after a baby arrives (web app plus WhatsApp).
 - It tracks how a mom is doing, gives plain information, and sends her to her doctor fast when something looks wrong.
-- Hackathon demo: runs locally, one demo user, no real login.
+- Hackathon demo: runs locally, no login: the app starts with a ready user (Marina, from `content/demo/seed-user.json`).
 
 ## Run
 
@@ -22,7 +22,7 @@ Another port: `npm run demo -- -p 3013`.
 
 ## Demo path (3 minutes)
 
-Log in at `/login` (any id), then:
+Open `/` (no login; Marina is already there, profile bubble top right), then:
 
 1. Day 3, welcome on WhatsApp, in Spanish: timeline at `/recordatorios`
 2. Day 5, mood dip: seeded check-ins on days 4-5; trigger it live at `/checkin` (mood 1-2) -> `/alerta?motivo=animo`
@@ -35,13 +35,14 @@ Log in at `/login` (any id), then:
 9. Visit-day reminder: `/recordatorios`
 10. "She confirms she went": `/visita`
 
-Also: `/registro` (sign-up), `/semana-1` (cards), `/pregunta` (Ask Alba).
+Also: `/perfil` (edit delivery date, appointment, clinic phone), `/semana-1` (cards), `/pregunta` (Ask Alba).
 
 Check everything before going on stage (server running): `node scripts/rehearse.mjs [baseUrl]`.
 
 ## Reset
 
-- `npm run seed` wipes and reloads the demo user (safe to repeat).
+- On first run (empty profile table) the app creates the starter user and her check-ins by itself.
+- `npm run seed` wipes and reloads the starter user (safe to repeat).
 - `node scripts/seed.mjs --reset` empties check-ins, profile and the simulated tables (schema kept).
 - Data lives in `./data/alba.db` (git-ignored).
 

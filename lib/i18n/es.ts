@@ -18,8 +18,6 @@ export const es = {
   "home.summary": "Resumen para tu cita",
   "home.circle": "Círculo",
   "home.movement": "Movimiento suave",
-  "home.start": "Empezar",
-  "home.login": "Entrar",
 
   "week1.title": "Tu primera semana",
   "week1.source": "Fuente:",
@@ -135,26 +133,18 @@ export const es = {
 
   "movement.title": "Movimiento suave",
 
-  "login.title": "Entrar",
-  "login.label": "Tu número de teléfono o correo electrónico",
-  "login.error": "Escribe tu teléfono o correo para entrar.",
-  "login.submit": "Entrar",
-  "login.first": "¿Primera vez?",
-  "login.create": "Crear mi espacio",
 
-  "reg.title": "Crear tu espacio",
-  "reg.whatsapp": "Tu número de WhatsApp",
-  "reg.delivery": "Fecha de parto",
-  "reg.appointment": "Fecha de tu cita (opcional)",
-  "reg.clinic": "Teléfono de tu clínica (opcional)",
-  "reg.consent": "Texto de consentimiento provisional",
-  "reg.error": "Revisa tus datos: el WhatsApp, la fecha de parto y el consentimiento son necesarios.",
-  "reg.submit": "Crear mi espacio",
-  "reg.already": "¿Ya tienes espacio?",
-  "reg.login": "Entrar",
-  "reg.okTitle": "Tu espacio está listo",
-  "reg.okText": "Listo, guardamos tus datos. Gracias por confiar en Alba.",
-  "reg.okBtn": "Hacer mi primer check-in",
+  "profile.label": "Perfil",
+  "profile.title": "Tu perfil",
+  "profile.intro": "Estos datos se usan para tus semanas, tu cita y la llamada a tu clínica.",
+  "profile.noDate": "Añade la fecha del parto para ver en qué semana vas.",
+  "profile.delivery": "Fecha del parto",
+  "profile.appointment": "Fecha de tu cita",
+  "profile.clinic": "Teléfono de tu clínica",
+  "profile.whatsapp": "Tu número de WhatsApp",
+  "profile.save": "Guardar",
+  "profile.saved": "Listo, guardamos tus datos.",
+  "profile.error": "Revisa los datos: las fechas y los teléfonos no parecen válidos.",
 } as const;
 
 export type Key = keyof typeof es;

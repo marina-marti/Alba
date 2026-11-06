@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const base = (process.argv[2] ?? "http://localhost:3000").replace(/\/$/, "");
 const root = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
-const routes = ["/login", "/registro", "/checkin", "/semana-1", "/pregunta", "/banderas", "/alerta",
+const routes = ["/", "/perfil", "/checkin", "/semana-1", "/pregunta", "/banderas", "/alerta",
   "/alerta?motivo=animo", "/resumen", "/circulo", "/recordatorios", "/visita", "/entrenamiento"];
 const forbidden = /postpartum|posparto|medical/i;
 let failed = false;
@@ -15,7 +15,7 @@ let failed = false;
 for (const r of routes) {
   let status = 0, bad = null;
   try {
-    const res = await fetch(base + r, { headers: { cookie: "alba_demo=1" }, redirect: "manual" });
+    const res = await fetch(base + r, { redirect: "manual" });
     status = res.status;
     const html = await res.text();
     const m = html.match(forbidden);
