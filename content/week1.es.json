@@ -11,7 +11,7 @@
         "Cólicos (entuertos): normales los primeros días, más fuertes al amamantar.",
         "Pechos: primero calostro, luego sube la leche y puede haber hinchazón.",
         "Hinchazón de manos, tobillos y cara es común y suele pasar sola.",
-        "Llorar fácil o sentirte abrumada es común la primera semana; si dura más de 2 semanas o empeora, es momento de pedir ayuda — no es debilidad."
+        "Llorar fácil o sentirte abrumada es común en las primeras dos semanas; si dura más de 2 semanas o empeora, es momento de pedir ayuda — no es debilidad. Si se siente muy intenso, pide ayuda antes. Fuente: NIMH (rev. 2023); MedlinePlus (act. 9 dic 2025)."
       ]
     },
     {
@@ -42,14 +42,14 @@
       "id": "w1-c4",
       "title": "Remedios caseros y cuidado (pregunta a tu médico primero)",
       "body": [
-        "Perineo: agua tibia con una botella (peri bottle) de adelante hacia atrás, secar suave sin frotar. Hielo envuelto las primeras 24–48 h; después, baños de asiento tibios. Toallitas de hamamelis o spray anestésico si tu médico lo aprueba.",
+        "Perineo: agua tibia con una botella (peri bottle) de adelante hacia atrás, secar suave sin frotar. Hielo envuelto las primeras 24 horas; después, baños de asiento tibios. Toallitas de hamamelis o spray anestésico si tu médico lo aprueba.",
         "Dolor/cólicos: ibuprofeno o acetaminofén según te indicó tu médico.",
         "Estreñimiento: agua, fruta, verdura y caminar un poco cada día.",
-        "Comida de cuarentena: caldos, sopas y comidas calientes, fáciles de digerir. Avena, jengibre, cúrcuma y canela son tradicionales en esta etapa.",
+        "Comida de cuarentena: caldos, sopas y comidas calientes, fáciles de digerir. Avena, jengibre, cúrcuma y canela son tradicionales en esta etapa (tradición, sin fuente clínica).",
         {
           "section": "Tés",
           "label": "tradicional, pregunta a tu promotora",
-          "text": "Tés — tradicional, pregunta a tu promotora, nunca una recomendación médica: manzanilla (calma y ayuda a dormir), hoja de frambuesa roja y ortiga (tradicionalmente para el útero y el hierro). Empieza con uno a la vez. Evita la salvia en dosis medicinales y el exceso de menta fuerte mientras amamantas — pueden bajar la leche."
+          "text": "Tés — tradicional, pregunta a tu promotora, nunca una recomendación médica: manzanilla (calma y ayuda a dormir; no hay datos de seguridad de la manzanilla mientras amamantas, pregunta primero a tu médico o promotora), hoja de frambuesa roja y ortiga (tradicionalmente para el útero y el hierro; sin fuente clínica). Empieza con uno a la vez. Evita la salvia en dosis medicinales y el exceso de menta fuerte mientras amamantas — pueden bajar la leche (sin confirmar)."
         }
       ]
     },
@@ -58,11 +58,12 @@
       "title": "Qué pedirle a tu familia (la cuarentena, en práctica)",
       "body": [
         "\"Quédate con el bebé mientras duermo una siesta.\"",
-        "\"Tráeme agua y comida caliente, no tengo que levantarme.\"",
+        "\"Tráeme agua y comida caliente, no tengo que levantarme.\" (tradición, sin fuente clínica)",
         "\"Ayúdame con la casa y con los otros niños esta semana.\"",
         "\"Acompáñame a la llamada con la clínica.\"",
         "\"Si me ves triste más de dos semanas, o lloro mucho y no puedo dormir, ayúdame a llamar a la línea 1-833-TLC-MAMA.\""
-      ]
+      ],
+      "source": "NHS (rev. 18 mar 2026); NIMH (rev. 2023)"
     },
     {
       "id": "w1-c6",
