@@ -1,3 +1,4 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { serverExternalPackages: ["better-sqlite3"] };
+// NEXT_DIST_DIR lets two dev servers run from this folder without sharing (and corrupting) one .next
+const nextConfig = { serverExternalPackages: ["better-sqlite3"], distDir: process.env.NEXT_DIST_DIR || ".next" };
 export default nextConfig;
