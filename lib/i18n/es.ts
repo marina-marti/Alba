@@ -181,6 +181,22 @@ export const es = {
   "cal.done": "Hecho hoy",
   "cal.undo": "Hecho hoy (toca para quitar)",
   "cal.doneHint": "Anota que hoy hiciste tus ejercicios.",
+  "clinics.title": "Clínicas cerca de ti",
+  "clinics.intro": "Un mapa de ejemplo con clínicas inventadas, para ver cómo se vería.",
+  "clinics.mapLabel": "Mapa ilustrado de ejemplo con cuatro clínicas",
+  "clinics.you": "Tú",
+  "clinics.useLocation": "Usar mi ubicación",
+  "clinics.exampleLocation": "Ubicación de ejemplo",
+  "clinics.pin": "Clínica {n}: {name}, a {km} km",
+  "clinics.hint": "Toca un número en el mapa o en la lista para ver los detalles.",
+  "clinics.listTitle": "Clínicas de ejemplo",
+  "clinics.km": "{km} km",
+  "clinics.hours": "Horario",
+  "clinics.call": "Llamar al {phone}",
+  "clinics.directions": "Cómo llegar",
+  "clinics.close": "Cerrar detalles",
+  "clinics.note": "Estas clínicas son de ejemplo para la demostración. Alba es solo para registrar y informar: llama a tu propia clínica para pedir o confirmar una cita.",
+  "clinics.urgent": "¿Necesitas ayuda urgente?",
 } as const;
 
 export type Key = keyof typeof es;

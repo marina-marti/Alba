@@ -1,0 +1,8 @@
+{
+  "clinics": [
+    { "id": "cl-1", "name": "Example Community Clinic", "type": "Community clinic", "distance_km": 1.5, "hours": "Monday to Friday, 8 am to 5 pm", "phone": "+1 555 0101", "x": 28, "y": 40, "simulated": true },
+    { "id": "cl-2", "name": "Example Women's Health Center", "type": "Women's health", "distance_km": 1.0, "hours": "Monday to Saturday, 9 am to 6 pm", "phone": "+1 555 0102", "x": 66, "y": 48, "simulated": true },
+    { "id": "cl-3", "name": "Example Family Health House", "type": "Family health", "distance_km": 1.5, "hours": "Tuesday to Saturday, 10 am to 4 pm", "phone": "+1 555 0103", "x": 74, "y": 76, "simulated": true },
+    { "id": "cl-4", "name": "Example Neighborhood Clinic", "type": "Community clinic and lactation support", "distance_km": 1.7, "hours": "Monday to Friday, 7:30 am to 3:30 pm", "phone": "+1 555 0100", "x": 22, "y": 74, "simulated": true }
+  ]
+}
