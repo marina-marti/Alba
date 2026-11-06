@@ -120,7 +120,7 @@ body:has(.mascot) main { padding-bottom: 13rem; }
   position: fixed;
   z-index: 9;
   bottom: 6.5rem;
-  right: max(1rem, calc((100vw - 36rem) / 2 + 1rem));
+  right: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;

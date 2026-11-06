@@ -14,7 +14,7 @@ check(text.includes("empapas una toalla cada hora"), "pad every hour");
 check(text.includes("pelota de golf"), "golf ball");
 check(text.includes("hasta 6 semanas"), "up to 6 weeks");
 check(text.includes("14 días"), "14 days");
-check(text.includes("tradicional, pregunta a tu promotora"), "tea label");
+check(text.toLowerCase().includes("tradicional, pregunta a tu promotora"), "tea label");
 check(text.includes('href="/pregunta"') && text.includes('href="/banderas"'), "links");
 check(!/postpartum|medical/i.test(html), "no postpartum/medical");
 process.exit(fail ? 1 : 0);

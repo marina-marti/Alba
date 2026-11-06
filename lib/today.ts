@@ -39,7 +39,8 @@ export function clampWeek(week: number): number {
 
 /** "viernes, 6 de noviembre" / "Friday, November 6" */
 export function longDate(now: Date, lang: Lang): string {
-  return new Intl.DateTimeFormat(lang === "en" ? "en-US" : "es-ES", { weekday: "long", day: "numeric", month: "long" }).format(now);
+  const text = new Intl.DateTimeFormat(lang === "en" ? "en-US" : "es-ES", { weekday: "long", day: "numeric", month: "long" }).format(now);
+  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 /** "Semana 2 (12 días desde el parto)" / "Week 2 (12 days since birth)" */

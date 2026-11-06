@@ -44,6 +44,6 @@ test("weekLine wording, plural and singular, never the banned words", () => {
   for (const l of ["es", "en"] as const) assert.doesNotMatch(weekLine(5, l), /postpartum|posparto|medical/i);
 });
 test("longDate in both languages", () => {
-  assert.equal(longDate(at(2026, 11, 6), "es"), "viernes, 6 de noviembre");
+  assert.equal(longDate(at(2026, 11, 6), "es"), "Viernes, 6 de noviembre");
   assert.equal(longDate(at(2026, 11, 6), "en"), "Friday, November 6");
 });

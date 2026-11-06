@@ -15,8 +15,19 @@ export type SeedUser = {
   checkins: { day: number; bleeding: number; pain: number; mood: number; healing: number; pad_soak: number; note?: string | null }[];
 };
 
-export function readSeedUser(root: string): SeedUser {
-  return JSON.parse(fs.readFileSync(path.join(root, "content", "demo", "seed-user.json"), "utf8"));
+/** The starter user is always in week 2 on the day the data is created (owner decision D16:L1). */
+export const STARTER_DAYS_SINCE_BIRTH = 10;
+
+function isoLocal(d: Date): string {
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+export function readSeedUser(root: string, today: Date = new Date()): SeedUser {
+  const seed: SeedUser = JSON.parse(fs.readFileSync(path.join(root, "content", "demo", "seed-user.json"), "utf8"));
+  const delivery = new Date(today.getFullYear(), today.getMonth(), today.getDate() - STARTER_DAYS_SINCE_BIRTH);
+  // Check-ins after today would be in the future, so only days 0..STARTER_DAYS_SINCE_BIRTH are kept.
+  return { ...seed, delivery_date: isoLocal(delivery), checkins: seed.checkins.filter((c) => c.day <= STARTER_DAYS_SINCE_BIRTH) };
 }
 
 /** Creates the tables and adds profile.name when missing. Never drops or rewrites data. */

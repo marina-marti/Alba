@@ -42,10 +42,10 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D1:L12a | "Plain-language red flags from day one" | need | REQ-25 |
 | D1:L12b | "Mental-health check-ins that escalate…" | need | REQ-27 |
 | D1:L12c | "plus 988 for crisis" | need | duplicate of D1:L12b |
-| D1:L13a | "Secure login" | need | REQ-28 |
+| D1:L13a | "Secure login" | need | removed (amendment log) |
 | D1:L13b | "anonymous posting" | need | duplicate of D1:L10e |
 | D1:L13c | "minimal data" | need | REQ-29 |
-| D1:L13d | "consent in Spanish" | need | REQ-30 |
+| D1:L13d | "consent in Spanish" | need | removed (amendment log) |
 | D1:L13e | "a discreet name" | need | duplicate of D1:L2b |
 | D1:L13f | "A shared phone never reveals what the app is." | need | REQ-44 |
 | D1:L15a | "Very easy to use, organic, almost meditative" | need | Q-22 |
@@ -103,7 +103,7 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D4:L4 | "we need to do research on bleeding" | answer | C-1 (still open) |
 | D5:L1 | "simulated = WhatsApp messages, Circle content, Day 3–41 timeline" | answer | OOS-2 |
 | D6:L1 | "check-ins and notes on the server, no real names, no retention policy yet" | answer | REQ-29 |
-| D6:L2 | "phone-number or email login, posts show a random alias" | answer | REQ-28 |
+| D6:L2 | "phone-number or email login, posts show a random alias" | answer | removed (amendment log) |
 | D6:L3 | "we will connect alba to the claude api for the demo" | answer | REQ-46 |
 | D6:L4 | "make sure this works critically" | priority | duplicate of D6:L3 |
 | D6:L5 | "US first, TLC-MAMA and 988" | answer | OOS-4 |
@@ -112,7 +112,7 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D7:L1 | "a: 3–4 days" | answer | C-1 (resolved) |
 | D7:L2 | "show the seed answer for the two live questions" | answer | REQ-46 |
 | D7:L3 | "only the question she types plus the page she is on" | answer | REQ-46 |
-| D7:L4 | "she enters her WhatsApp number and ticks consent at sign-up" | answer | REQ-48 |
+| D7:L4 | "she enters her WhatsApp number and ticks consent at sign-up" | answer | removed (amendment log) |
 | D7:L5a | "the chat bot" | answer | duplicate of D6:L3 |
 | D7:L5b | "the personalized workouts" | answer | REQ-47 |
 | D7:L5c | "the rest doesnt need claude right now" | answer | C-4 (side A) |
@@ -120,7 +120,7 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D8:L2 | "claude for the summary and weekly research articles" | answer | REQ-46 |
 | D8:L3 | "you decide timeout" | answer | Q-31 |
 | D8:L4 | "promotora review and moderation are shown as simulated roles" | answer | OOS-2 |
-| D8:L5 | "she enters her delivery date at sign-up" | answer | REQ-48 |
+| D8:L5 | "she enters her delivery date at sign-up" | answer | removed (amendment log) |
 | D8:L6 | "call if soaking a pad every hour, golf-ball clots" | answer | REQ-7 |
 | D9:L1 | "show an error message for now" | answer | REQ-46 |
 | D9:L2 | "she enters her appointment date in the app" | answer | REQ-49 |
@@ -137,11 +137,15 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D11:L2 | "she enters her clinic phone number with her appointment date" | answer | REQ-49 |
 | D11:L3 | "a one-page screen she can print or save as PDF" | answer | REQ-6 |
 | D12:L1 | "Next.js App Router with TypeScript and Tailwind … run locally for the demo" | answer | REQ-52 |
-| D13:L1a | "have a login page" | answer | REQ-28 |
+| D13:L1a | "have a login page" | answer | removed (amendment log) |
 | D13:L1b | "real auth is not needed" | answer | OOS-6 |
 | D13:L2 | "show the hotline" | answer | REQ-43 |
 | D14:L1 | "a dropdown to switch language somewhere on the page" | answer | REQ-53 |
 | D14:L2 | "apply the findings you have" | answer | REQ-7 |
+| D15:L1 | "remove the auth page entirely" | answer | OOS-6 |
+| D15:L2 | "start the homepage with a user already" | answer | REQ-55 |
+| D15:L3 | "a buble with their profile at the top right corner" | answer | REQ-54 |
+| D16:L1 | "week 2 for the starter demo" | answer | REQ-55 |
 
 Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant offer); D2:L2, L11, L20 — headings, rehearsal and meta.
 
@@ -154,6 +158,8 @@ Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant off
 | Q-37 | failure cases | citation check has no method or failure case (D10:L5) |
 | Q-1 | scope edges | delivery form, resolved by D4:L3 |
 | Q-41 | scope edges | no stack or deploy target in the input; hackathon README lists it as a to-do |
+| Q-43 | scope edges | profile contents not given (D15:L3) |
+| Q-44 | data | starter user delivery date not given (D15:L2) |
 | Q-38 | defaults: access and roles | "Secure login" has no rule (D1:L13) |
 | Q-39 | failure cases | fallback stated only for the two live questions (D7:L2) |
 | Q-40 | triggers & timing | welcome on day 3 vs at sign-up (D1:L21, D6:L6) |
@@ -183,4 +189,4 @@ Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant off
 | Q-20 | defaults: devices, accessibility | no device or network limits |
 | Q-11 | defaults: access and roles | roles named, permissions silent |
 
-**Closure:** every row one disposition · every spec ID referenced · all 53 REQ, 4 C, 6 OOS named; Q-1…Q-42 named by a row or the scan table
+**Closure:** every row one disposition · every spec ID referenced · all 55 REQ, 4 C, 6 OOS named; Q-1…Q-44 named by a row or the scan table
