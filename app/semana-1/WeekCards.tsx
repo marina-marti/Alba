@@ -1,11 +1,13 @@
 "use client";
 import { useState } from "react";
 import { Chevron } from "@/components/Curves";
+import { useI18n } from "@/lib/i18n/client";
 
 export type Item = string | { section?: string; label?: string; text: string };
 export type WeekCard = { id: string; title: string; body: Item[]; source?: string };
 
 export default function WeekCards({ cards }: { cards: WeekCard[] }) {
+  const { t } = useI18n();
   const [open, setOpen] = useState<string | null>(cards[0]?.id ?? null);
   return (
     <ul className="space-y-4">
@@ -46,7 +48,7 @@ export default function WeekCards({ cards }: { cards: WeekCard[] }) {
                       </div>
                     )
                   )}
-                  {c.source && <p className="text-sm text-ink-soft">Fuente: {c.source}</p>}
+                  {c.source && <p className="text-sm text-ink-soft">{t("week1.source")} {c.source}</p>}
                 </div>
               </div>
             </div>

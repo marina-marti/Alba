@@ -1,23 +1,23 @@
-import fs from "node:fs";
-import path from "node:path";
 import Link from "next/link";
-import WeekCards, { type WeekCard } from "./WeekCards";
+import WeekCards from "./WeekCards";
+import { loadWeek1 } from "@/lib/content";
+import { getI18n } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
-export default function Page() {
-  const file = path.join(process.cwd(), "content", "week1.es.json");
-  const data = JSON.parse(fs.readFileSync(file, "utf8")) as { cards: WeekCard[] };
+export default async function Page() {
+  const { lang, t } = await getI18n();
+  const data = loadWeek1(lang);
   return (
     <div className="space-y-8">
-      <h1 className="page-title">Tu primera semana</h1>
+      <h1 className="page-title">{t("week1.title")}</h1>
       <WeekCards cards={data.cards} />
       <div className="grid gap-4 pt-2">
         <Link href="/pregunta" className="btn">
-          Pregúntale a Alba
+          {t("week1.ask")}
         </Link>
         <Link href="/banderas" className="btn btn-quiet">
-          Cuándo llamar a tu médico
+          {t("week1.whenToCall")}
         </Link>
       </div>
     </div>

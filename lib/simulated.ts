@@ -36,19 +36,22 @@ function db() {
 // Random alias generator (REQ-17, AC-28). The author is intentionally not stored.
 const A = ["Luna", "Sol", "Brisa", "Alba", "Río", "Nube", "Flor", "Estrella", "Lluvia", "Colibrí"];
 const B = ["cálida", "serena", "valiente", "tranquila", "de Mayo", "del Valle", "de Abril", "suave", "luminosa", "del Mar"];
-export function randomAlias(): string {
-  return `${A[Math.floor(Math.random() * A.length)]} ${B[Math.floor(Math.random() * B.length)]}`;
+const A_EN = ["Moon", "Sun", "Breeze", "Dawn", "River", "Cloud", "Flower", "Star", "Rain", "Hummingbird"];
+const B_EN = ["Warm", "Calm", "Brave", "Quiet", "Gentle", "Bright", "Soft", "Golden", "Misty", "Clear"];
+const pick = <T,>(a: T[]) => a[Math.floor(Math.random() * a.length)];
+export function randomAlias(lang: "es" | "en" = "es"): string {
+  return lang === "en" ? `${pick(B_EN)} ${pick(A_EN)}` : `${pick(A)} ${pick(B)}`;
 }
 
 export type UserPost = { id: number; kind: string; alias: string; text: string; created_at: string };
 export function listUserPosts(): UserPost[] {
   return db().prepare("SELECT * FROM sim_circle_posts ORDER BY id DESC").all() as UserPost[];
 }
-export function addUserPost(kind: "question" | "quick_win", text: string): void {
+export function addUserPost(kind: "question" | "quick_win", text: string, lang: "es" | "en" = "es"): void {
   const t = text.trim().slice(0, 500);
   if (!t) return;
   db().prepare("INSERT INTO sim_circle_posts (kind, alias, text, created_at) VALUES (?,?,?,?)")
-    .run(kind, randomAlias(), t, new Date().toISOString());
+    .run(kind, randomAlias(lang), t, new Date().toISOString());
 }
 
 export function checklistState(): Record<string, boolean> {

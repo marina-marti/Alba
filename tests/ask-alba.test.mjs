@@ -7,6 +7,9 @@ import fs from "node:fs";
 const G = JSON.parse(fs.readFileSync("content/guardrails.es.json", "utf8"));
 const SEED = JSON.parse(fs.readFileSync("content/seed-qa.json", "utf8"));
 const D = G.disclaimer;
+const GE = JSON.parse(fs.readFileSync("content/guardrails.en.json", "utf8"));
+const SEED_EN = JSON.parse(fs.readFileSync("content/seed-qa.en.json", "utf8"));
+const DE = GE.disclaimer;
 
 test("five seed questions answer from the seed, with source and disclaimer", async () => {
   assert.equal(SEED.items.length, 5);
@@ -28,7 +31,7 @@ test("bleeding answer mentions red 3-4 days", async () => {
   assert.match(r.answer, /3–4 días/);
 });
 test("red flag: llama a tu médico ahora, no reassurance, disclaimer", async () => {
-  for (const q of ["Empapo una toalla cada hora", "I am soaking a pad every hour", "tengo fiebre y escalofríos", "pasé coágulos grandes", "chest pain since morning", "dolor de cabeza muy fuerte"]) {
+  for (const q of ["Empapo una toalla cada hora", "tengo fiebre y escalofríos", "pasé coágulos grandes", "dolor de cabeza muy fuerte"]) {
     const r = await answerQuestion({ question: q });
     assert.match(r.answer.toLowerCase(), /llama a tu médico ahora/, q);
     assert.doesNotMatch(r.answer.toLowerCase(), /normal|tranquila|no te preocupes|suele|don't worry|reassur/, q);
@@ -43,7 +46,7 @@ test("red flag is not delegated to generate", async () => {
   assert.match(r.answer, /llama a tu médico ahora/i);
 });
 test("low mood names TLC-MAMA (es, en, not-in-seed wording)", async () => {
-  for (const q of ["Me siento triste y no puedo dormir", "me siento muy deprimida", "I feel so sad and hopeless"]) {
+  for (const q of ["Me siento triste y no puedo dormir", "me siento muy deprimida"]) {
     const r = await answerQuestion({ question: q });
     assert.match(r.answer, /1-833-TLC-MAMA/, q);
     assert.ok(r.answer.endsWith(D), q);
@@ -57,17 +60,21 @@ test("unsure: es and en, with phrase, source, disclaimer", async () => {
   assert.ok(es.source);
   const en = await answerQuestion({ question: "Can I dye my hair this week?" });
   assert.match(en.answer, /^I can't answer that right now/);
-  assert.ok(en.answer.includes(G.unsure_phrase));
-  assert.ok(en.answer.endsWith(D));
+  assert.ok(en.answer.includes(GE.unsure_phrase));
+  assert.ok(en.answer.endsWith(DE));
 });
-test("English seed question without generator answers in English, not Spanish seed", async () => {
+test("English seed question without generator answers from the English seed (REQ-35)", async () => {
   const r = await answerQuestion({ question: "Is chamomile tea ok for me?" });
-  assert.match(r.answer, /^I can't answer/);
   assert.equal(r.lang, "en");
+  assert.equal(r.usedSeed, true);
+  assert.match(r.answer, /^Chamomile is traditionally/);
 });
 test("every answer ends with the exact disclaimer", async () => {
-  for (const q of ["hola", "¿Qué puedo pedirle a mi familia esta semana?", "what is the weather", "fiebre"]) {
+  for (const q of ["hola", "¿Qué puedo pedirle a mi familia esta semana?", "fiebre"]) {
     assert.ok((await answerQuestion({ question: q })).answer.endsWith(D), q);
+  }
+  for (const q of ["what is the weather", "I have a fever"]) {
+    assert.ok((await answerQuestion({ question: q })).answer.endsWith(DE), q);
   }
 });
 test("no 'posparto' in displayed source", async () => {
@@ -107,4 +114,92 @@ test("AC-71: slow or failing generator on a live question falls back to seed ans
 test("default timeout is 5000 ms", async () => {
   const m = await import("../lib/ask-alba.ts");
   assert.equal(m.GENERATE_TIMEOUT_MS, 5000);
+});
+
+// ---- English paths (REQ-35: answer language follows the QUESTION) ----
+const EN_SEED_QUESTIONS = [
+  "Is this bleeding normal on day 9?",
+  "Can I drink chamomile tea?",
+  "When can I start pelvic floor exercises?",
+  "I feel sad and can't sleep",
+  "How do I ask my family for help?",
+];
+test("English: the five seed questions answer from the English seed with the English disclaimer", async () => {
+  assert.equal(SEED_EN.items.length, 5);
+  for (const [i, it] of SEED_EN.items.entries()) {
+    for (const q of [it.question, EN_SEED_QUESTIONS[i]]) {
+      const r = await answerQuestion({ question: q, page: "semana-1" });
+      assert.equal(r.lang, "en", q);
+      assert.equal(r.usedSeed, true, q);
+      assert.equal(r.answer, it.answer, q);
+      assert.ok(r.answer.endsWith(DE), q);
+      assert.equal(r.source, it.source, q);
+    }
+  }
+});
+test("English: match groups need every group (chamomile alone; family without ask/help does not match)", async () => {
+  const r = await answerQuestion({ question: "Can my family do the dishes" });
+  assert.equal(r.usedSeed, false);
+  assert.match(r.answer, /^I can't answer that right now/);
+});
+test("English red flag: 'call your doctor now', no reassurance, never delegated, disclaimer", async () => {
+  let called = false;
+  for (const q of ["I am soaking a pad every hour", "chest pain since morning", "I have a fever", "I passed big clots", "severe headache and blurred vision"]) {
+    const r = await answerQuestion({ question: q }, { generate: async () => { called = true; return "it is normal"; } });
+    assert.equal(r.kind, "red-flag", q);
+    assert.equal(r.lang, "en", q);
+    assert.match(r.answer, /^Call your doctor now\./, q);
+    assert.ok(r.answer.includes("call 911"), q);
+    assert.doesNotMatch(r.answer.toLowerCase(), /normal|don't worry|do not worry|reassur|fine\b/, q);
+    assert.doesNotMatch(r.answer, /[áéíóúñ]|llama|médico|Círculo/i, q);
+    assert.ok(r.answer.endsWith(DE), q);
+    assert.ok(r.source && !/señales/.test(r.source), q);
+  }
+  assert.equal(called, false);
+});
+test("English low mood: TLC-MAMA hotline text, English disclaimer, crisis skips the seed", async () => {
+  for (const q of ["I feel so sad and hopeless", "I'm overwhelmed and anxious", "I want to hurt myself"]) {
+    const r = await answerQuestion({ question: q });
+    assert.equal(r.lang, "en", q);
+    assert.match(r.answer, /1-833-TLC-MAMA/, q);
+    assert.match(r.answer, /988/, q);
+    assert.doesNotMatch(r.answer, /Círculo|\bno estás\b/i, q);
+    assert.ok(r.answer.endsWith(DE), q);
+  }
+  const crisis = await answerQuestion({ question: "I am sad, can't sleep and want to hurt myself" });
+  assert.equal(crisis.usedSeed, false);
+  assert.match(crisis.answer, /^Feeling this way/);
+});
+test("English unsure: English phrase, source, disclaimer; failing generator also unsure", async () => {
+  const r = await answerQuestion({ question: "Can I dye my hair this week?" });
+  assert.equal(r.kind, "unsure");
+  assert.equal(r.answer, `I can't answer that right now. Please ${GE.unsure_phrase} ${DE}`);
+  assert.ok(r.source);
+  const f = await answerQuestion({ question: "Can I dye my hair this week?" }, { generate: async () => null });
+  assert.equal(f.kind, "error");
+  assert.ok(f.answer.endsWith(DE));
+});
+test("English live question: slow generator falls back to the English seed (AC-71)", async () => {
+  for (const it of SEED_EN.items.filter((i) => i.live)) {
+    const r = await answerQuestion({ question: it.question }, { generate: () => new Promise((res) => setTimeout(() => res("late"), 300)), timeoutMs: 30 });
+    assert.equal(r.usedSeed, true);
+    assert.equal(r.answer, it.answer);
+  }
+});
+test("English generated text gets the English disclaimer and English source label", async () => {
+  const r = await answerQuestion({ question: "Can I dye my hair this week?" }, { generate: async (q) => { assert.equal(q.guardrails.disclaimer, DE); return "Sure."; } });
+  assert.ok(r.answer.endsWith(DE));
+  assert.equal(r.source, "Claude (unverified)");
+});
+test("answer language follows the question, not anything else: Spanish question stays Spanish", async () => {
+  const r = await answerQuestion({ question: "¿Puedo tomar té de manzanilla?" });
+  assert.equal(r.lang, "es");
+  assert.ok(r.answer.endsWith(D));
+});
+test("no 'postpartum', 'medical' or 'posparto' in any English answer", async () => {
+  const qs = [...EN_SEED_QUESTIONS, "I am soaking a pad every hour", "I feel so sad", "Can I dye my hair this week?"];
+  for (const q of qs) {
+    const r = await answerQuestion({ question: q });
+    assert.doesNotMatch(r.answer + " " + r.source.replace(/Postnatal/g, ""), /postpartum|medical|posparto/i, q);
+  }
 });

@@ -2,10 +2,12 @@
 import { useState } from "react";
 import { Button } from "@/components/Button";
 import Card from "@/components/Card";
+import { useI18n } from "@/lib/i18n/client";
 
 type Msg = { q: string; a?: string; source?: string; error?: boolean };
 
 export default function AskForm({ page }: { page: string }) {
+  const { t } = useI18n();
   const [text, setText] = useState("");
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [busy, setBusy] = useState(false);
@@ -25,9 +27,9 @@ export default function AskForm({ page }: { page: string }) {
         body: JSON.stringify({ question: q, page }),
       });
       const data = await res.json();
-      next = res.ok ? { a: data.answer, source: data.source } : { a: data.error ?? "No pude responder ahora. Inténtalo de nuevo.", error: true };
+      next = res.ok ? { a: data.answer, source: data.source } : { a: data.error ?? t("ask.error"), error: true };
     } catch {
-      next = { a: "No pude responder ahora. Inténtalo de nuevo.", error: true };
+      next = { a: t("ask.error"), error: true };
     }
     setMsgs((m) => m.map((x, i) => (i === m.length - 1 ? { ...x, ...next } : x)));
     setBusy(false);
@@ -36,7 +38,7 @@ export default function AskForm({ page }: { page: string }) {
   return (
     <div className="space-y-6">
       {msgs.length === 0 && (
-        <p className="text-lg text-ink-soft">Escribe lo que te preocupa. Te respondo con calma y te digo de dónde viene la información.</p>
+        <p className="text-lg text-ink-soft">{t("ask.intro")}</p>
       )}
       <div className="space-y-6" aria-live="polite">
         {msgs.map((m, i) => (
@@ -45,27 +47,27 @@ export default function AskForm({ page }: { page: string }) {
             {m.a ? (
               <Card className="text-base leading-relaxed">
                 <p>{m.a}</p>
-                {m.source && <p className="mt-3 text-sm text-ink-soft">Fuente: {m.source}</p>}
+                {m.source && <p className="mt-3 text-sm text-ink-soft">{t("ask.source")} {m.source}</p>}
               </Card>
             ) : (
-              <p className="text-sm text-ink-soft">Pensando…</p>
+              <p className="text-sm text-ink-soft">{t("ask.thinking")}</p>
             )}
           </div>
         ))}
       </div>
       <form onSubmit={send} className="space-y-4">
-        <label htmlFor="q" className="sr-only">Tu pregunta</label>
+        <label htmlFor="q" className="sr-only">{t("ask.label")}</label>
         <textarea
           id="q"
           value={text}
           onChange={(e) => setText(e.target.value)}
           rows={3}
           maxLength={500}
-          placeholder="Escribe tu pregunta…"
+          placeholder={t("ask.placeholder")}
           className="field text-lg"
         />
         <Button type="submit" disabled={busy || !text.trim()} className="w-full">
-          {busy ? "Un momento…" : "Preguntar"}
+          {busy ? t("ask.busy") : t("ask.send")}
         </Button>
       </form>
     </div>
