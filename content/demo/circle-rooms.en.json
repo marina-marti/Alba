@@ -1,0 +1,586 @@
+{
+ "simulated": true,
+ "rooms": [
+  {
+   "id": "sleep",
+   "slug": "no-puedo-dormir",
+   "name": "Can't sleep",
+   "description": "For the long, wide-awake nights.",
+   "icon": "moon",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Warm Moon",
+     "text": "It is 3 in the morning and I cannot sleep even though the baby is asleep. Does this happen to anyone else? I feel very alone.",
+     "minutesAgo": 420,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Gentle River",
+     "text": "Right here with you, mama. I am awake too, with the light turned low.",
+     "minutesAgo": 405,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hi, mama. I am here with you. It happens to many of us. If you can, rest when the baby rests, and ask someone to keep you company for a little while. You are doing well.",
+     "minutesAgo": 380,
+     "kind": "audio",
+     "duration": "0:30",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Bright Sun",
+     "text": "Today I sat down with a glass of water, no rush. Small, but it felt good.",
+     "minutesAgo": 300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Calm Breeze",
+     "text": "How do you manage to sleep when the baby sleeps? I feel guilty leaving the dishes undone.",
+     "minutesAgo": 180,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "The dishes can wait, mama. Resting is also taking care of the baby. And if you can, ask someone to keep you company for a while.",
+     "minutesAgo": 150,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Quiet Flower",
+     "text": "Thank you. Today I asked my sister to stay for an hour and I could close my eyes.",
+     "minutesAgo": 60,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "That is great, mama. Asking for help counts. If the tiredness does not go away or worries you a lot, ask your doctor.",
+     "minutesAgo": 45,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "baby",
+   "slug": "cuidar-al-bebe",
+   "name": "Baby handling",
+   "description": "Holding, bathing and soothing, one step at a time.",
+   "icon": "baby",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Warm Cloud",
+     "text": "I am scared to bathe the baby. So tiny, I feel like they will slip.",
+     "minutesAgo": 1500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Feeling nervous is natural, mama. Go slowly, with a warm room and everything within reach. If you like, ask someone to be with you the first time, or ask your promotora or your clinic.",
+     "minutesAgo": 1460,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Clear Hummingbird",
+     "text": "How do you hold the baby when they cry a lot? I do not know what to do anymore.",
+     "minutesAgo": 900,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hi, mama. When they cry a lot, take a deep breath too. Hold them close to your chest, talk softly and walk slowly. If they do not settle or something worries you, call their pediatrician or your clinic.",
+     "minutesAgo": 880,
+     "kind": "audio",
+     "duration": "0:25",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Soft Rain",
+     "text": "Singing softly while rocking helped me. I forgot the songs, so I sing my mom's.",
+     "minutesAgo": 600,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Bright Star",
+     "text": "Today I changed the diaper by myself and neither of us cried.",
+     "minutesAgo": 240,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "What a lovely win, mama! It gets easier every day. And remember: taking care of you is also taking care of the baby.",
+     "minutesAgo": 200,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "unsure",
+   "slug": "no-estoy-segura",
+   "name": "Not sure",
+   "description": "For when you do not know who to ask.",
+   "icon": "question",
+   "banner": {
+    "text": "If you are unsure, ask a promotora or call your doctor. Nobody here will judge you."
+   },
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Quiet River",
+     "text": "I do not know if what I feel is normal. Everything is new and I do not know who to ask.",
+     "minutesAgo": 2000,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Thank you for writing, mama. You can ask anything here. If something about your body or the baby worries you, the safest thing is to ask your doctor or call your clinic.",
+     "minutesAgo": 1980,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Calm Moon",
+     "text": "Is it normal that I feel like crying for no reason?",
+     "minutesAgo": 900,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Thank you for telling us, mama. I cannot say if it is normal or not. What matters is that you tell your doctor today, so they can listen and support you. If you think about hurting yourself, call your doctor today.",
+     "minutesAgo": 880,
+     "kind": "audio",
+     "duration": "0:28",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Misty Breeze",
+     "text": "I am not sure the baby eats enough. How can I tell?",
+     "minutesAgo": 300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "That is a good question to ask your doctor or the baby's clinic today; they can check. Meanwhile, write down how often the baby eats to bring to the visit.",
+     "minutesAgo": 270,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Warm Sun",
+     "text": "Thank you, mama. I already wrote my questions on my phone for the visit.",
+     "minutesAgo": 100,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Great idea. And if something changes before the visit or scares you, do not wait: call your doctor.",
+     "minutesAgo": 90,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "discharge",
+   "slug": "flujo",
+   "name": "Discharge",
+   "description": "Questions about discharge after birth.",
+   "icon": "drop",
+   "banner": {
+    "text": "Call your doctor today, do not wait, if you soak a pad every hour, have clots the size of a golf ball or bigger, the discharge smells foul, or you have a fever of 100.4°F (38°C) or higher.",
+    "link": {
+     "href": "/banderas",
+     "label": "See all the red flags"
+    }
+   },
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Gentle Flower",
+     "text": "How long does discharge last after birth? It has been several days and I am worried.",
+     "minutesAgo": 1300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Thank you for asking, mama. Every body is different and I cannot tell you what is normal for you. Ask your doctor today or call your clinic; they know what to watch for.",
+     "minutesAgo": 1280,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Golden Moon",
+     "text": "Today I noticed a strong smell in the discharge. What do I do?",
+     "minutesAgo": 800,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hi, mama. If the discharge smells foul, call your doctor today, do not wait until tomorrow. Even without other symptoms, it is better to be checked. We are here with you.",
+     "minutesAgo": 770,
+     "kind": "audio",
+     "duration": "0:20",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Soft Star",
+     "text": "I got scared: a big clot came out and I am soaking a pad every hour.",
+     "minutesAgo": 500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Mama, this cannot wait. Call your doctor right now. If they do not answer or you feel very unwell, ask someone to take you to the emergency room. Tell us how you are afterwards.",
+     "minutesAgo": 495,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Soft Star",
+     "text": "I talked to my doctor and they are expecting me. Thank you.",
+     "minutesAgo": 450,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "I am glad you called, mama. We are thinking of you.",
+     "minutesAgo": 440,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "feeding",
+   "slug": "alimentacion",
+   "name": "Feeding",
+   "description": "Breast, bottle and everything that comes with mealtime.",
+   "icon": "bottle",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Warm Hummingbird",
+     "text": "My baby wants to eat all the time and I am exhausted. Does it happen to you?",
+     "minutesAgo": 1000,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Gentle Cloud",
+     "text": "Me too. It helps me to have water and a snack within reach before I sit down.",
+     "minutesAgo": 960,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Thank you for sharing, mama. Get comfortable, with a cushion and a glass of water nearby. If you have questions about how your baby eats, ask your promotora or the clinic.",
+     "minutesAgo": 940,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Bright Breeze",
+     "text": "My breast hurts a lot when I feed, like it is burning.",
+     "minutesAgo": 500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hi, mama. If it hurts a lot, do not put up with it in silence. Ask your doctor or your clinic today. And if the pain comes with fever, or the breast turns red and hot, call your doctor now.",
+     "minutesAgo": 480,
+     "kind": "audio",
+     "duration": "0:25",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Misty Rain",
+     "text": "Today the baby ate calmly for the first time. I just kept looking at them for a while.",
+     "minutesAgo": 200,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "What a lovely moment, mama. Keep it, it counts for a lot.",
+     "minutesAgo": 190,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "low",
+   "slug": "me-siento-decaida",
+   "name": "Feeling low",
+   "description": "A soft place for the sad days.",
+   "icon": "heart",
+   "banner": {
+    "text": "If you feel very low or have thoughts of hurting yourself or the baby, call the 1-833-TLC-MAMA line (1-833-852-6262), free, confidential, 24/7, in Spanish and English. You can also call your doctor."
+   },
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Brave Moon",
+     "text": "I am very sad today and I do not know why. I should be happy.",
+     "minutesAgo": 1700,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Thank you for saying it, mama. Feeling this way does not make you a bad mom. Tell your doctor today, so they can listen and support you. You do not have to carry this alone.",
+     "minutesAgo": 1680,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Clear Sun",
+     "text": "The same happened to me. Talking with my sister helped me feel less alone.",
+     "minutesAgo": 1000,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hi, mama. We are here. If the sadness lasts several days or you feel you cannot manage, ask your doctor for help today. And if you think about hurting yourself, call the line you see above or your doctor right now.",
+     "minutesAgo": 960,
+     "kind": "audio",
+     "duration": "0:25",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Calm Flower",
+     "text": "Today I went out for a five-minute walk with the baby. It was little, but I could breathe.",
+     "minutesAgo": 400,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Five minutes count, mama. I am glad you went out. If the sad days continue, tell your doctor.",
+     "minutesAgo": 390,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Warm Rain",
+     "text": "Will it pass? I am afraid of staying like this.",
+     "minutesAgo": 90,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "That question is for your doctor, mama, and it is best to ask it today. Call them or ask someone you trust to go with you to the clinic. We are listening here.",
+     "minutesAgo": 80,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "recovery",
+   "slug": "recuperacion-y-movimiento",
+   "name": "Recovery and movement",
+   "description": "Getting moving again, at your own pace.",
+   "icon": "walk",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Quiet Breeze",
+     "text": "When can I start exercising again? I miss moving.",
+     "minutesAgo": 1200,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "I understand, mama. Every body is different, so ask your doctor when you can start. Meanwhile, if you feel like it and it does not hurt, walking slowly around the house can feel good.",
+     "minutesAgo": 1180,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Calm Sun",
+     "text": "My wound hurts when I get up. Is that normal?",
+     "minutesAgo": 700,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hi, mama. I cannot tell you if it is normal. Ask your doctor today, and call now if the wound looks red, hot or has pus, or if you have a fever. Meanwhile, get up slowly and ask for help.",
+     "minutesAgo": 680,
+     "kind": "audio",
+     "duration": "0:20",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Misty Moon",
+     "text": "Today I did some gentle breathing and felt calmer.",
+     "minutesAgo": 300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Quiet Hummingbird",
+     "text": "I walk down the hallway every afternoon. Just a little, but it is my moment.",
+     "minutesAgo": 120,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "What a lovely ritual, mama. Go at your own pace and rest when your body asks you to.",
+     "minutesAgo": 100,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "help",
+   "slug": "pedir-ayuda",
+   "name": "Asking for help",
+   "description": "How to ask for a hand, without guilt.",
+   "icon": "hand",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Warm Star",
+     "text": "It is hard for me to ask for help. I feel I should manage alone.",
+     "minutesAgo": 2500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Asking for help is not a failure, mama: it is taking care of you and the baby. Start small, like asking someone to wash the dishes or hold the baby for a while.",
+     "minutesAgo": 2480,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Gentle Cloud",
+     "text": "How do I tell my partner I need more help without fighting?",
+     "minutesAgo": 1500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hi, mama. Try saying something concrete and calm, like: \"I need two hours to rest, can you help this afternoon?\" Asking for something clear is often easier than explaining everything. And your promotora is here whenever you want to talk it through.",
+     "minutesAgo": 1480,
+     "kind": "audio",
+     "duration": "0:30",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Golden Flower",
+     "text": "Today I asked my neighbor to watch my kids so I could go to my visit. She said yes.",
+     "minutesAgo": 700,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Great, mama! Asking for help works out more often than we think.",
+     "minutesAgo": 690,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Soft Sun",
+     "text": "I did not know how either. This week I asked for a meal to be brought one day and it helped a lot.",
+     "minutesAgo": 200,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  }
+ ]
+}

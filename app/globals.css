@@ -70,6 +70,15 @@ body {
   .profile-bubble:active { transform: scale(0.96); }
   .profile-bubble:focus-visible { @apply outline-none; box-shadow: 0 0 0 4px rgba(77, 106, 73, 0.18); }
 
+  /* chat bubbles (Circle rooms): moms one color, promotora another, own message to the right */
+  .bubble { @apply max-w-[88%] rounded-3xl px-5 py-3 shadow-soft; }
+  .bubble-mom { @apply rounded-tl-lg bg-sage-100; }
+  .bubble-pro { @apply rounded-tl-lg bg-dawn-200; }
+  .bubble-me { @apply rounded-tr-lg bg-sage-300; }
+  .room-composer {
+    @apply sticky bottom-24 z-[5] -mx-2 rounded-4xl bg-dawn-50/95 p-2 shadow-lift backdrop-blur;
+  }
+
   .field:focus { @apply border-sage-600 bg-white outline-none; box-shadow: 0 0 0 4px rgba(77, 106, 73, 0.18); }
 
   /* a choice pill (radio/checkbox via peer) */
@@ -198,3 +207,6 @@ body:has(.mascot) main { padding-bottom: 13rem; }
 .clinic-pin { position: absolute; width: 44px; height: 44px; margin: -22px 0 0 -22px; display: flex; align-items: center; justify-content: center; border-radius: 9999px; background: transparent; }
 .clinic-pin-body { display: flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 9999px; background: #fff; border: 2px solid #e9ab7e; color: #3a2f29; font-family: ui-serif, Georgia, serif; font-size: 1rem; box-shadow: 0 8px 16px -6px rgba(120, 80, 50, 0.45); transition: transform 300ms ease-out, background-color 300ms ease-out, box-shadow 300ms ease-out; }
 .clinic-pin-body.is-on { transform: scale(1.25); background: #f1c39d; box-shadow: 0 0 0 6px rgba(241, 195, 157, 0.45), 0 10px 20px -6px rgba(120, 80, 50, 0.5); }
+/* the chat composer needs the corner: the mascot steps aside on a room page */
+body:has(.room-composer) .mascot { display: none; }
+body:has(.room-composer) main { padding-bottom: 9rem; }

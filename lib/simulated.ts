@@ -2,6 +2,8 @@ import "server-only";
 import fs from "node:fs";
 import path from "node:path";
 import { getDb } from "@/lib/db";
+import { ensureRoomTable, insertRoomMessage, selectLatestByRoom, selectRoomMessages } from "@/lib/rooms-core";
+import type { RoomDb } from "@/lib/rooms-core";
 
 // SIMULATED (OOS-2): all demo content below is read from content/demo/*.json; nothing is sent or moderated for real.
 
@@ -28,6 +30,7 @@ function db() {
       CREATE TABLE IF NOT EXISTS sim_checklist (item_id TEXT PRIMARY KEY, done INTEGER DEFAULT 0, updated_at TEXT);
       CREATE TABLE IF NOT EXISTS sim_confirmations (kind TEXT PRIMARY KEY, confirmed_at TEXT);
     `);
+    ensureRoomTable(d as unknown as RoomDb);
     ready = true;
   }
   return d;
@@ -74,4 +77,21 @@ export function confirmations(): Record<string, string> {
 export function confirm(kind: string): void {
   if (kind !== "clinic_call" && kind !== "visit_attended") return;
   db().prepare("INSERT OR IGNORE INTO sim_confirmations (kind, confirmed_at) VALUES (?,?)").run(kind, new Date().toISOString());
+}
+
+// Circle rooms (REQ-56). Mom messages are stored; nobody answers them (no replies are generated).
+export type RoomMessage = { id: number; room: string; alias: string; text: string; created_at: string };
+export type RoomContent = {
+  id: string; slug: string; name: string; description: string; icon: string; simulated: true;
+  banner?: { text: string; link?: { href: string; label: string } };
+  messages: { who: "mom" | "promotora"; alias: string; text: string; minutesAgo: number; kind: "text" | "audio"; duration?: string; simulated: true }[];
+};
+export function listRoomMessages(room: string): RoomMessage[] {
+  return selectRoomMessages(db() as unknown as RoomDb, room);
+}
+export function latestRoomMessages(): Record<string, RoomMessage> {
+  return selectLatestByRoom(db() as unknown as RoomDb);
+}
+export function addRoomMessage(room: string, text: string, lang: "es" | "en" = "es"): boolean {
+  return insertRoomMessage(db() as unknown as RoomDb, room, randomAlias(lang), text);
 }
