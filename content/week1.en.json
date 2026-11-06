@@ -1,0 +1,78 @@
+{
+  "week": 1,
+  "lang": "en",
+  "cards": [
+    {
+      "id": "w1-c1",
+      "title": "What to expect this week",
+      "body": [
+        "Bleeding (lochia): bright red and heavy for the first 3–4 days, then pink/brown and lighter for about 14 days. The flow lasts up to 6 weeks in total. It can increase when you walk or breastfeed — rest and it should ease again.",
+        "Call your doctor today if you soak a pad every hour or pass clots the size of a golf ball.",
+        "Cramps (afterpains): normal in the first days, stronger when you breastfeed.",
+        "Breasts: first colostrum, then your milk comes in and there may be swelling.",
+        "Swelling of the hands, ankles and face is common and usually goes away on its own.",
+        "Crying easily or feeling overwhelmed is common in the first two weeks; if it lasts more than 2 weeks or gets worse, it is time to ask for help — it is not weakness. If it feels very intense, ask for help sooner. Source: NIMH (rev. 2023); MedlinePlus (updated 9 Dec 2025)."
+      ]
+    },
+    {
+      "id": "w1-c2",
+      "title": "What to avoid",
+      "body": [
+        "Do not use tampons or a menstrual cup for the first 6 weeks — pads only.",
+        "No vaginal douching.",
+        "Do not lift heavy things or do hard exercise; gentle walking is fine.",
+        "Do not stay in bed all day — move a little every day, but rest when the bleeding increases.",
+        "Do not wait for the 6-week appointment if something worries you — call sooner."
+      ]
+    },
+    {
+      "id": "w1-c3",
+      "title": "What to watch for (red flags — call today, don't wait)",
+      "body": [
+        "You soak a pad every hour, or clots the size of a golf ball or bigger.",
+        "Bleeding that had eased and suddenly comes back heavy.",
+        "Fever of 100.4°F (38°C) or higher.",
+        "Foul-smelling discharge.",
+        "Severe headache, changes in vision, chest pain, trouble breathing.",
+        "Severe belly pain, or the wound looks red, hot or has pus.",
+        "Thoughts of hurting yourself or the baby — call 988 or the 1-833-TLC-MAMA line (1-833-852-6262), free, confidential, 24/7, in Spanish and English."
+      ]
+    },
+    {
+      "id": "w1-c4",
+      "title": "Home remedies and self-care (ask your doctor first)",
+      "body": [
+        "Perineum: rinse with warm water from a bottle (peri bottle) front to back, pat dry gently without rubbing. Wrapped ice for the first 24 hours; after that, warm sitz baths. Witch hazel wipes or numbing spray if your doctor approves.",
+        "Pain/cramps: ibuprofen or acetaminophen as your doctor told you.",
+        "Constipation: water, fruit, vegetables and a little walking every day.",
+        "Cuarentena food: broths, soups and warm meals, easy to digest. Oatmeal, ginger, turmeric and cinnamon are traditional at this stage (tradition, no clinical source).",
+        {
+          "section": "Teas",
+          "label": "traditional — ask your promotora",
+          "text": "Teas — traditional — ask your promotora, never a health recommendation: chamomile (calms and helps with sleep; there are no safety data for chamomile while you breastfeed, ask your doctor or promotora first), red raspberry leaf and nettle (traditionally for the uterus and iron; no clinical source). Start with one at a time. Avoid sage in medicinal doses and too much strong peppermint while you breastfeed — they may lower your milk (unconfirmed)."
+        }
+      ]
+    },
+    {
+      "id": "w1-c5",
+      "title": "What to ask your family for (cuarentena, in practice)",
+      "body": [
+        "\"Stay with the baby while I take a nap.\"",
+        "\"Bring me water and a warm meal, I don't have to get up.\" (tradition, no clinical source)",
+        "\"Help me with the house and the other kids this week.\"",
+        "\"Come with me to the call with the clinic.\"",
+        "\"If you see me sad for more than two weeks, or I cry a lot and can't sleep, help me call the 1-833-TLC-MAMA line.\""
+      ],
+      "source": "NHS (rev. 18 Mar 2026); NIMH (rev. 2023)"
+    },
+    {
+      "id": "w1-c6",
+      "title": "Gentle movement, Week 1",
+      "body": [
+        "Pelvic floor: you can start gently from day 1, if you feel ready. Short and long squeezes, 3 times a day, without pain.",
+        "Walking: short walks around the house; if the bleeding increases, rest.",
+        "No sit-ups, running or lifting until your doctor gives you the okay (typically at the 6-week check-up)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "simulated": true,
+  "posts": [
+    {"id":"p1","type":"question","time":"03:04","anonymous":true,"alias":"Warm Moon","text":"It's 3 in the morning and I can't sleep even though the baby can. Does anyone else go through this? I feel very alone.","simulated":true,"spec":["AC-19","AC-26","AC-28"]},
+    {"id":"p2","type":"promotora_audio_reply","reply_to":"p1","author":"Circle promotora","transcript":"Hi, mama. I'm here with you. This happens to many of us. If you can, rest when the baby rests, and ask someone to keep you company for a little while. You are doing well.","duration":"0:30","audio":null,"simulated":true,"spec":["AC-27","REQ-14","AC-23"]},
+    {"id":"p3","type":"quick_win","anonymous":false,"alias":"May Sun","text":"Today I drank a hot tea sitting down, with no rush. Small, but it did me good.","simulated":true,"spec":["AC-19","AC-26"]}
+  ],
+  "tips": [
+    {"id":"t1","topic":"healing","title":"Go slowly","text":"Your body did something huge. Rest when you can and accept help without guilt.","simulated":true,"spec":["REQ-14","AC-23"]},
+    {"id":"t2","topic":"breastfeeding","title":"Get comfortable","text":"Find a quiet place, with a cushion and a glass of water nearby. Ask your promotora or your clinic if you have questions.","simulated":true,"spec":["REQ-14","AC-23"]},
+    {"id":"t3","topic":"childcare","title":"Ask for a hand","text":"Talk to a friend, relative or neighbor you trust to look after your kids while you go to your appointment.","simulated":true,"spec":["REQ-14","AC-23"]}
+  ]
+}

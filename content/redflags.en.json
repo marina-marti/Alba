@@ -1,0 +1,15 @@
+{
+  "id": "w1-c3",
+  "lang": "en",
+  "heading": "What to watch for (red flags — call today, don't wait)",
+  "action": "call your doctor now",
+  "items": [
+    { "id": "rf-1", "bleeding": true, "text": "You soak a pad every hour, or clots the size of a golf ball or bigger." },
+    { "id": "rf-2", "bleeding": true, "text": "Bleeding that had eased and suddenly comes back heavy." },
+    { "id": "rf-3", "bleeding": false, "text": "Fever of 100.4°F (38°C) or higher." },
+    { "id": "rf-4", "bleeding": false, "text": "Foul-smelling discharge." },
+    { "id": "rf-5", "bleeding": false, "text": "Severe headache, changes in vision, chest pain, trouble breathing." },
+    { "id": "rf-6", "bleeding": false, "text": "Severe belly pain, or the wound looks red, hot or has pus." },
+    { "id": "rf-7", "bleeding": false, "text": "Thoughts of hurting yourself or the baby — call 988 or the 1-833-TLC-MAMA line (1-833-852-6262), free, confidential, 24/7, in Spanish and English." }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Get ready for your appointment",
+  "simulated": true,
+  "items": [
+    {"id":"childcare","label":"Childcare","done":false},
+    {"id":"transport","label":"Transport","done":false},
+    {"id":"questions","label":"Saved questions","done":false}
+  ],
+  "spec":["REQ-21","AC-35"]
+}

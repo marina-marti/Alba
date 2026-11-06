@@ -1,0 +1,16 @@
+{
+  "simulated": true,
+  "delivery_date": "2026-10-20",
+  "events": [
+    {"day":3,"channel":"whatsapp","text":"Hi! I'm Alba. I'm here to keep you company these days with your baby. You don't have to download anything: I write to you right here. 💛","spec":["REQ-24","AC-39","REQ-20","AC-33"]},
+    {"day":5,"channel":"app","text":"I can see these days have been heavy. You are not alone, and what you feel matters. If you want to talk to someone, the TLC-MAMA line is available for you.","spec":["REQ-45","OOS-2"]},
+    {"day":7,"channel":"circle","text":"3 a.m. and awake again. You posted anonymously in the Circle; a promotora answered with a short audio and another mom left you a tip.","spec":["REQ-12","AC-19","REQ-16","AC-26","AC-27","REQ-17","AC-28","REQ-14","AC-23"]},
+    {"day":9,"channel":"app","text":"Soaking a pad in an hour is a warning sign. Call your doctor now.","spec":["REQ-36","OOS-2"]},
+    {"day":14,"channel":"app","text":"Gentle pelvic floor exercises, at your own pace and within your cuarentena of rest. If something doesn't feel right, stop.","spec":["REQ-29","OOS-2"]},
+    {"day":20,"channel":"whatsapp","text":"It's been three weeks. A good time to call your clinic and book your appointment. Have you called yet?","spec":["REQ-18","AC-85","AC-30","REQ-20","AC-33"]},
+    {"day":35,"channel":"app","text":"Your appointment is coming up. Check your list: childcare, transport and saved questions.","spec":["REQ-21","AC-35"]},
+    {"day":38,"channel":"app","text":"Your one-page summary is ready to take to the appointment.","spec":["REQ-46","OOS-2"]},
+    {"day":41,"channel":"whatsapp","text":"Today is your appointment. You've got this! Bring your summary and your questions.","spec":["REQ-22","AC-36","REQ-20","AC-33"]},
+    {"day":41,"channel":"app","text":"After the appointment: did you go? Tell us and we'll celebrate with you.","spec":["REQ-23","AC-37"]}
+  ]
+}

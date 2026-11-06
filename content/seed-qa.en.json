@@ -1,0 +1,49 @@
+{
+  "lang": "en",
+  "disclaimer": "This is not health advice — ask your doctor or promotora.",
+  "items": [
+    {
+      "id": "qa-1",
+      "live": true,
+      "question": "Is this bleeding normal on day 9?",
+      "match": { "all_of_groups_any": [["bleeding", "discharge"], ["normal", "day 9"]] },
+      "answer": "Yes, it can be normal: bleeding is usually red for the first 3–4 days and then turns pink or brown for about 14 days; the flow can last up to 6 weeks in total. But call your doctor today if you soak a pad every hour, pass clots the size of a golf ball, or the bleeding comes back heavy after it had eased. This is not health advice — ask your doctor or promotora.",
+      "source": "MSD Manual / Cleveland Clinic",
+      "notes": "Same source change as the Spanish file: D2 cited 'MSD Manual / CDC Hear Her'; CDC Hear Her dropped (page not verified, docs/research-bleeding.md); Cleveland Clinic added."
+    },
+    {
+      "id": "qa-2",
+      "live": true,
+      "question": "Can I drink chamomile tea?",
+      "match": { "all_of_groups_any": [["chamomile"]] },
+      "answer": "Chamomile is traditionally used to calm and help with sleep. There are no data on its safety while you breastfeed, so ask your doctor or promotora first, especially if you take other medicines. Avoid medicinal sage and too much strong peppermint while you breastfeed (tradition, unconfirmed). This is not health advice — ask your doctor or promotora.",
+      "source": "LactMed (NIH), Chamomile, rev. 15 Feb 2021; NCCIH, Chamomile, Nov 2024 — traditional — ask your promotora, not a health recommendation"
+    },
+    {
+      "id": "qa-3",
+      "live": false,
+      "question": "When can I start pelvic floor exercises?",
+      "match": { "all_of_groups_any": [["pelvic floor", "kegel"]] },
+      "answer": "You can start gently from day 1, if you feel ready, with short and long squeezes 3 times a day, without pain. If you have a catheter, wait until it is taken out. This is not health advice — ask your doctor or promotora.",
+      "source": "NHS — physiotherapy leaflets"
+    },
+    {
+      "id": "qa-4",
+      "live": false,
+      "question": "I feel sad and I can't sleep",
+      "match": { "all_of_groups_any": [["sad"], ["sleep"]] },
+      "answer": "Feeling overwhelmed in the first two weeks is common, but if it lasts more than 2 weeks or gets worse, ask for help; if it feels very intense, ask sooner. You can call, free and in Spanish, the national maternal mental health hotline 1-833-TLC-MAMA (1-833-852-6262), 24/7, or 988 in a crisis. You are not alone — and you can also share it in the Circle. This is not health advice — ask your doctor or promotora.",
+      "source": "NIMH, Perinatal Depression (rev. 2023); HRSA, National Maternal Mental Health Hotline (announcement, 16 May 2023)",
+      "notes": "D2 names no source for this answer. Disclaimer added (D4:L1). Source line from docs/research-sources-mood-family.md section 3."
+    },
+    {
+      "id": "qa-5",
+      "live": false,
+      "question": "What can I ask my family for this week?",
+      "match": { "all_of_groups_any": [["family"], ["ask", "help"]] },
+      "answer": "Rest, water and a warm meal (tradition, no clinical source), help with the house and the kids, and someone to come with you to the call with the clinic. In the app, Week 1, card 5, you have ready-made phrases to send them on WhatsApp. This is not health advice — ask your doctor or promotora.",
+      "source": "NHS, Postnatal depression (rev. 18 Mar 2026); NIMH, Perinatal Depression (rev. 2023)",
+      "notes": "D2 names no source; points to the app card. Disclaimer added (D4:L1). Sources support rest, practical help and appointments, not the hot-food item (tradition, no clinical source)."
+    }
+  ]
+}

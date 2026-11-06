@@ -21,3 +21,20 @@ Applied from `docs/research-sources-mood-family.md` and `docs/research-sources-c
 6. "Sin fuente clínica" added to: cuarentena foods (Card 4), nettle and red raspberry leaf (Card 4), "comida caliente" (Card 5, QA-5). Sage/peppermint "pueden bajar la leche" (Card 4) and QA-2 line now end "(sin confirmar)"; LactMed says sage "purportedly", peppermint sentence not obtained.
 7. QA-3 source label "NHS — folletos de fisioterapia posparto" -> "NHS — folletos de fisioterapia" (word removed so content/ has no "posparto"; no claim changed).
 Deliberately unchanged: all warning signs (incl. "caliente" in the wound sign, not in sources), bleeding numbers, Card 6 "nada de abdominales" (open item for Marina), Card 3 hotline line, `redflags.es.json`.
+
+## English content 2026-11-06
+New files, same keys/ids/array lengths as the Spanish ones: `week1.en.json`, `redflags.en.json`, `guardrails.en.json`, `seed-qa.en.json`, `demo/timeline.en.json`, `demo/circle.en.json`, `demo/checklist.en.json`. Spanish stays the source of truth. `demo/seed-user.json` is data, not translated. Only `lang` differs (`"en"`) and, in `seed-qa.en.json`, each item has an extra `match` field.
+
+Loader/matcher must (lib/ask-alba.ts is NOT edited here):
+1. Language swap: read `<name>.en.json` instead of `<name>.es.json` (`seed-qa.json` -> `seed-qa.en.json`) when the UI/question language is English. `loadGuardrails()` today reads only `guardrails.es.json`; for English answers it must read `guardrails.en.json` (disclaimer, `red_flag.phrase` = "call your doctor now", `unsure_phrase` = "ask a promotora or in the Circle.", hotline).
+2. Seed matching in English: first the exact normalized `question` (same `normalize()` as Spanish). Then `match.all_of_groups_any`: an array of groups; the item matches when, for EVERY group, at least one term appears in the normalized question (same logic as the hard-coded `SEED_KEYWORDS`, e.g. qa-1 = (bleeding|discharge) AND (normal|day 9)). Terms are already lowercase/accent-free. This replaces the hard-coded `SEED_KEYWORDS` for English; the Spanish keywords stay as they are.
+3. Today `answerQuestion` returns the "I can't answer" text for English questions and never uses a seed (`seed && !en`). Using the English seed answers (including the AC-71 fallback for the two live questions) needs a code change in lib/ask-alba.ts and its test ("English seed question without generator...") — not done here.
+4. The English red-flag and low-mood sentences are still built in code; `source` strings built in code ("Alba, señales de alarma...") are still Spanish.
+
+Wording choices for Marina to review:
+- Disclaimer: "This is not health advice — ask your doctor or promotora." ("medical" avoided on screen, REQ-2/44). The Spanish "médico" (= doctor) is kept as "doctor".
+- "recomendación médica" -> "health recommendation"; "banderas rojas" -> "red flags"; "entuertos" -> "afterpains"; "sonda" -> "catheter"; "visto bueno" -> "the okay"; "herida ... caliente" -> "hot".
+- "Círculo" -> "Circle"; "cuarentena" kept in Spanish in English text (foods, timeline day 14, card 5 title) as a cultural term; "promotora" kept.
+- Source titles that contain the word "Postnatal" (NHS) are kept as the real title; no source contains "postpartum".
+- Circle aliases translated ("Luna cálida" -> "Warm Moon", "Sol de Mayo" -> "May Sun") and tip `topic` values translated (sanar -> healing, lactancia -> breastfeeding, cuidado de niños -> childcare); if code keys on `topic`, check.
+- Dates: "9 dic 2025" -> "9 Dec 2025", etc.
