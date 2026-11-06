@@ -14,6 +14,6 @@ Next.js App Router, TypeScript, Tailwind. Claude API only from server-side route
 1. Not a medical product: tracking, information and escalation only, never diagnosis (OOS-1). Every health answer ends with the disclaimer (REQ-39). Red-flag symptoms always say "llama a tu médico ahora", never reassurance (REQ-36).
 2. Nothing on screen, in the page title or in notifications may say postpartum or medical (REQ-2, REQ-44).
 3. Spanish first (REQ-3). Ask Alba answers in the language she asks in (REQ-35).
-4. Claude API: Ask Alba sends only the typed question and the page she is on; the summary alone gets check-ins and notes (REQ-46). On failure, the two live questions fall back to the seed answer after 5 seconds; other failures show an error message.
+4. Claude API: Ask Alba sends only the typed question and the page she is on; the workouts send only the week number. Check-ins, notes and profile data never go to Claude; the one-page summary is built locally (REQ-46, D19:L1). On failure, the two live questions fall back to the seed answer after 5 seconds; other failures show an error message.
 5. Stage files by name, never `git add -A`. Commit only when Marina says so. No secrets in files.
 6. Verify before "done": run it, read the output.

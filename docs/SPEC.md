@@ -1,9 +1,9 @@
 # Spec — Alba, a postpartum companion
 
-**Status:** Draft — TBD remain (21 open questions, including Q-31 to confirm; all 4 contradictions resolved) · **Shape:** full — more than 15 requirements, WhatsApp integration, health data
-**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D18 owner answers (3,160 words) · **Spec:** 6385 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
-**Length:** 6385 vs 3,160 — dense input: nearly every line carries a need (58 REQ, 47 questions, 4 contradictions); none dropped to meet the count
-**Counts:** 58 REQ (3 removed) · 100 AC · 4 contradictions (4 resolved) · 47 questions (26 resolved) · 0 assumptions · 6 proposed (3 approved) · 7 out of scope
+**Status:** Draft — TBD remain (22 open questions, including Q-31 to confirm; all 4 contradictions resolved) · **Shape:** full — more than 15 requirements, WhatsApp integration, health data
+**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D19 owner answers (3,209 words) · **Spec:** 6540 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
+**Length:** 6540 vs 3,209 — dense input: nearly every line carries a need (58 REQ, 48 questions, 4 contradictions); none dropped to meet the count
+**Counts:** 58 REQ (3 removed) · 102 AC · 4 contradictions (4 resolved) · 48 questions (26 resolved) · 0 assumptions · 6 proposed (3 approved) · 7 out of scope
 
 ## Problem
 
@@ -54,11 +54,12 @@ Alba shall let a mom add free-form notes.
 - AC-8 Given she writes a note, When she saves it, Then it is saved as part of that day's check-in (D10:L1).
 
 ### REQ-6 — One-page doctor summary
-Alba's AI shall condense her check-ins and notes into a one-page summary she hands her doctor at the visit.
-- Source: D1:L8 — "The AI condenses it all into a one-page summary she hands her doctor at the visit"; D11:L3 — "a one-page screen she can print or save as PDF"; D8:L2 — "claude for the summary and weekly research articles to pull based on the week theyre in"
+Alba shall build, locally, a one-page summary of her check-ins and notes that she hands her doctor at the visit.
+- Source: D1:L8 — "The AI condenses it all into a one-page summary she hands her doctor at the visit"; D11:L3 — "a one-page screen she can print or save as PDF"; D8:L2 — "claude for the summary and weekly research articles to pull based on the week theyre in"; D19:L1 — "a local summary of what is happening"
 - AC-9 Given check-ins and notes exist, When the summary is produced, Then it is one page.
 - AC-10 Given the summary, When produced, Then it is a one-page screen she can print or save as PDF (D11:L3); trigger, sharing, language and period are TBD → Q-18.
-- AC-78 Given the summary is produced with the Claude API (permitted, D8:L2), When the call is made, Then the API receives her check-ins and notes for the summary only (D9:L3).
+- AC-78 Given the summary is built, When it is shown, Then nothing was sent to the Claude API or any other service (D19:L1).
+- AC-109 Given she has check-ins, When the summary is shown, Then it states the days logged, per question the latest, average and range, the days with a soaked pad and the days with notes, with no judgement or advice (D19:L1).
 
 ### REQ-7 — Week 1 milestone cards
 Alba shall show Week 1 milestone cards: what to expect, what to avoid, what to watch, home remedies, what to ask family, gentle movement.
@@ -278,7 +279,7 @@ Alba shall be a web app with WhatsApp integration.
 - AC-69 Given the WhatsApp integration, When Alba sends a message, Then it arrives in WhatsApp.
 
 ### REQ-46 — Claude API
-Alba shall use the Claude API in the demo for the chat bot (Ask Alba); it may also use it for the one-page summary and weekly research.
+Alba shall use the Claude API in the demo for the chat bot (Ask Alba); it is not used for the one-page summary (D19:L1).
 - Source: D6:L3 — "we will connect alba to the claude api for the demo"; D7:L5 — "the chat bot and the personalized workouts"; D8:L2 — "claude for the summary and weekly research articles to pull based on the week theyre in"
 - Priority: critical (D6:L4 "make sure this works critically")
 - AC-70 Given the demo, When the two live questions (D2:L13) are asked, Then Ask Alba answers each through the Claude API.
@@ -351,9 +352,10 @@ Alba shall show a calendar on the dashboard of what she has done: check-ins, exe
 - AC-105 Given today, When she opens the dashboard, Then her overall status of health today is shown; what it contains is TBD → Q-47.
 
 ### REQ-58 — Clinic map (demo)
-Alba shall show an illustrated demo map of mock clinics near her, with a simulated "use my location" button.
-- Source: D17:L2 — "a map of some local clinics available depending on the users location"; D18:L1 — "illustrated demo map"
+Alba shall show an illustrated demo map of mock low-cost clinics near her, with a simulated "use my location" button.
+- Source: D17:L2 — "a map of some local clinics available depending on the users location"; D18:L1 — "illustrated demo map"; D19:L2 — "a local map with low cost clinics around the area"
 - AC-107 Given the clinic page, When it opens, Then a soft illustrated map with pins and a list of mock clinics is shown.
+- AC-110 Given the clinic list, When it is shown, Then each clinic shows that it is low cost; what counts as low cost is TBD → Q-48.
 - AC-108 Given the "use my location" button, When she taps it, Then the clinics are shown without reading her real location and nothing leaves her phone (D18:L1).
 
 ## Users and roles
@@ -431,7 +433,7 @@ Alba shall show an illustrated demo map of mock clinics near her, with a simulat
 | B | "you can use claude for the summary and weekly research articles" | D8:L2 (product owner) |
 
 - Depends on it: REQ-6, REQ-9, REQ-46
-- **Resolved** (D8:L2): B — the owner answered Q-28 with it.
+- **Resolved** (D8:L2): B — the owner answered Q-28 with it. Later changed by D19:L1: the one-page summary no longer uses Claude (Q-32 withdrawn).
 
 ## Open questions
 
@@ -456,6 +458,7 @@ _Ranked by impact × uncertainty, highest first._
 | Q-42 | I1×U3=3 | Is the chosen language kept across pages and visits? | she must re-pick each time | "dropdown to switch language" D14:L1 | session / device / none | REQ-53 |
 | Q-43 | I1×U3=3 | What does the profile show, and what can she edit there (WhatsApp number, appointment date, clinic number)? | missing fields | "bubble with their profile" D15:L3 | list | REQ-54, 49 |
 | Q-47 | I3×U3=9 | What is "overall status of health today": her own ratings only, or a judgment of how she is doing? | reads as a diagnosis | "overall status of health today" D17:L3 | her ratings only / other | REQ-57 |
+| Q-48 | I2×U3=6 | Should the low-cost clinics be real local clinics from an outside data source (needs her location) or mock examples for the demo? | false or missing clinics | "low cost clinics around the area" D19:L2 | mock / real | REQ-58 |
 | Q-22 | I1×U3=3 | What makes it "very easy to use" and "meditative"; what palette? | rework | "almost meditative" D1:L15 | reference | REQ-31 |
 | Q-23 | I1×U3=3 | What does cuarentena mean here: length, rules? | wrong framing | "la cuarentena" D1:L17 | days | REQ-33 |
 | Q-35 | I1×U3=3 | What does the error message say, in Spanish? | confusing screen | "show an error message" D9:L1 | text | REQ-46 |
@@ -513,3 +516,4 @@ _Model-originated. Not requirements. Each needs a person's approval (amend) befo
 | 2026-11-06 | Q-44, REQ-55 | D16:L1 | starter user in week 2 |
 | 2026-11-06 | new REQ-56, REQ-57, P-6, OOS-7, Q-45, Q-46, Q-47 | D17:L1–L4 | Circle chats by category; dashboard calendar; clinic map proposed; HIPAA review deferred |
 | 2026-11-06 | Q-45, Q-46, REQ-56, REQ-57, P-6 → REQ-58 | D18:L1–L3 | eight Circle rooms; calendar fills the right side; illustrated demo clinic map |
+| 2026-11-06 | REQ-6, REQ-46, C-4 note, REQ-58, new Q-48 | D19:L1, L2 | the one-page summary is built locally and nothing is sent to Claude; low-cost clinics asked for on the map |

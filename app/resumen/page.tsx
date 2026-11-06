@@ -1,6 +1,5 @@
 import { getProfile, listCheckins } from "@/lib/db";
-import { buildSummary, type SummaryResult } from "@/lib/summary";
-import { makeNarrate } from "@/lib/claude-summary";
+import { buildSummary, summaryStats, type SummaryResult } from "@/lib/summary";
 import PrintButton from "./PrintButton";
 import { getI18n } from "@/lib/i18n/server";
 import type { Lang } from "@/lib/i18n/lang";
@@ -23,13 +22,6 @@ const printCss = `
   #resumen { page-break-after: avoid; break-after: avoid; }
 }`;
 
-function withDeadline<T>(p: Promise<T>, ms: number): Promise<T> {
-  return new Promise<T>((resolve, reject) => {
-    const t = setTimeout(() => reject(new Error("timeout")), ms);
-    p.then((v) => { clearTimeout(t); resolve(v); }, (e) => { clearTimeout(t); reject(e); });
-  });
-}
-
 const fmt = (iso: string | null, lang: Lang) => {
   if (!iso) return "—";
   const d = new Date(iso + (iso.length === 10 ? "T12:00:00" : ""));
@@ -41,25 +33,16 @@ export default async function Page() {
   const profile = getProfile();
   let summary: SummaryResult | null = null;
   let failed = false;
-  let narrateFailed = false;
   try {
-    const checkins = listCheckins();
-    summary = await buildSummary(checkins, profile);
-    if (process.env.CLAUDE_API_KEY && summary.rows.length > 0) {
-      // AC-78: only check-ins and notes go to Claude. AC-81: on failure show the table + a line.
-      try {
-        const narrative = await withDeadline(buildSummary(checkins, profile, { narrate: makeNarrate() }), 20000);
-        summary = narrative;
-        if (!narrative.narrative) narrateFailed = true;
-      } catch {
-        narrateFailed = true;
-      }
-    } else if (summary.rows.length > 0) {
-      narrateFailed = true;
-    }
+    summary = buildSummary(listCheckins(), profile); // built here from her own check-ins; nothing is sent to any service
   } catch {
     failed = true; // AC-81: error message, no table
   }
+  const stats = summary ? summaryStats(summary.rows) : null;
+  const num = (n: number) => n.toLocaleString(lang, { minimumFractionDigits: 0, maximumFractionDigits: 1 });
+  const metrics = stats
+    ? ([["summary.colBleeding", stats.bleeding], ["summary.colPain", stats.pain], ["summary.colMood", stats.mood], ["summary.colHealing", stats.healing]] as const)
+    : [];
 
   return (
     <div id="resumen">
@@ -79,11 +62,19 @@ export default async function Page() {
         </p>
       ) : summary ? (
         <>
-          {summary.narrative && <p className="mt-6 text-base print:mt-3 print:text-sm">{summary.narrative}</p>}
-          {narrateFailed && !summary.narrative && (
-            <p role="alert" className="no-print mt-6 rounded-3xl bg-dawn-100 p-5">
-              {t("summary.narrateFailed")}
-            </p>
+          {stats && (
+            <section aria-labelledby="local-summary" className="mt-6 space-y-2 print:mt-3">
+              <h2 id="local-summary" className="font-serif text-xl print:text-base">{t("summary.local.title")}</h2>
+              <ul className="list-disc space-y-1 pl-5 text-base print:text-xs">
+                <li>{t("summary.local.span", { n: stats.n, from: fmt(stats.from, lang), to: fmt(stats.to, lang) })}</li>
+                {metrics.map(([k, m]) => (
+                  <li key={k}>{t("summary.local.metric", { name: t(k), last: num(m.last), avg: num(m.avg), min: num(m.min), max: num(m.max) })}</li>
+                ))}
+                <li>{t("summary.local.pad", { n: stats.padDays })}</li>
+                <li>{t("summary.local.notes", { n: stats.noteDays })}</li>
+              </ul>
+              <p className="text-sm text-ink-soft print:text-xs print:text-black">{t("summary.localNote")}</p>
+            </section>
           )}
           <div className="mt-6 overflow-x-auto rounded-3xl bg-white/70 p-3 shadow-soft print:rounded-none print:bg-transparent print:p-0 print:shadow-none">
             <table className="w-full text-left text-sm print:text-xs [&_td]:px-2 [&_td]:py-2 [&_th]:px-2 [&_th]:py-2">

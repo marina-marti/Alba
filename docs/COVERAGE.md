@@ -154,6 +154,8 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D18:L1 | "illustrated demo map" | answer | REQ-58 |
 | D18:L2 | "feeding, feeling low, recovery and movement, asking for help" | answer | REQ-56 |
 | D18:L3 | "add the calendar to fill the right side of the page" | answer | REQ-57 |
+| D19:L1 | "a local summary of what is happening" | answer | REQ-6 |
+| D19:L2 | "a local map with low cost clinics around the area" | need | REQ-58 |
 
 Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant offer); D2:L2, L11, L20 — headings, rehearsal and meta.
 
@@ -166,6 +168,7 @@ Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant off
 | Q-37 | failure cases | citation check has no method or failure case (D10:L5) |
 | Q-1 | scope edges | delivery form, resolved by D4:L3 |
 | Q-41 | scope edges | no stack or deploy target in the input; hackathon README lists it as a to-do |
+| Q-48 | integrations | low-cost clinics: real data or mock (D19:L2) |
 | Q-46 | integrations | clinic map data source and location use not given (D17:L2) |
 | Q-47 | terms | "overall status of health" undefined (D17:L3) |
 | Q-43 | scope edges | profile contents not given (D15:L3) |
@@ -199,4 +202,4 @@ Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant off
 | Q-20 | defaults: devices, accessibility | no device or network limits |
 | Q-11 | defaults: access and roles | roles named, permissions silent |
 
-**Closure:** every row one disposition · every spec ID referenced · all 58 REQ, 4 C, 7 OOS named; Q-1…Q-47 named by a row or the scan table
+**Closure:** every row one disposition · every spec ID referenced · all 58 REQ, 4 C, 7 OOS named; Q-1…Q-48 named by a row or the scan table

@@ -4,7 +4,6 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import { answerQuestion } from "../lib/ask-alba.ts";
 import { buildGenerate, parseReply } from "../lib/claude-generate.ts";
-import { buildNarrate } from "../lib/claude-summary.ts";
 import { buildSummary } from "../lib/summary.ts";
 
 const G = JSON.parse(fs.readFileSync("content/guardrails.es.json", "utf8"));
@@ -81,20 +80,6 @@ test("red flag never reaches the client", async () => {
   const r = await answerQuestion({ question: "empapo una toalla cada hora" }, { generate: buildGenerate(async () => { called = true; return "{}"; }) });
   assert.equal(called, false);
   assert.match(r.answer, /llama a tu médico ahora/i);
-});
-
-test("summary narrate receives only check-ins and notes; wire payload has no profile", async () => {
-  const checkins = [{ id: 1, day: "2026-11-01", bleeding: 3, pain: 2, mood: 4, healing: 3, pad_soak: 0, note: "dormí poco", created_at: "x" }];
-  const profile = { delivery_date: "2026-10-25", appointment_date: "2026-12-06" };
-  let sent, received;
-  const narrate = buildNarrate(async (a) => { sent = a; return "Resumen breve."; });
-  const r = await buildSummary(checkins, profile, { narrate: async (d) => { received = d; return narrate(d); } });
-  assert.deepEqual(Object.keys(received).sort(), ["checkins", "notes"]);
-  assert.equal(r.narrative, "Resumen breve.");
-  const wire = JSON.stringify(sent);
-  assert.doesNotMatch(wire, /2026-10-25|2026-12-06|delivery|appointment/);
-  assert.match(wire, /dormí poco/);
-  await assert.rejects(() => buildNarrate(async () => { throw new Error("x"); })({ checkins: [], notes: [] }));
 });
 
 test("model-written source line is replaced (no duplicate); English answer ends with the English disclaimer only", async () => {
