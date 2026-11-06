@@ -1,9 +1,9 @@
 # Spec — Alba, a postpartum companion
 
-**Status:** Draft — TBD remain (20 open questions, including Q-31 to confirm; all 4 contradictions resolved) · **Shape:** full — more than 15 requirements, WhatsApp integration, health data
-**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D16 owner answers (3,005 words) · **Spec:** 5988 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
-**Length:** 5988 vs 3,005 — dense input: nearly every line carries a need (55 REQ, 44 questions, 4 contradictions); none dropped to meet the count
-**Counts:** 55 REQ (3 removed) · 93 AC · 4 contradictions (4 resolved) · 44 questions (24 resolved) · 0 assumptions · 5 proposed (2 approved) · 6 out of scope
+**Status:** Draft — TBD remain (21 open questions, including Q-31 to confirm; all 4 contradictions resolved) · **Shape:** full — more than 15 requirements, WhatsApp integration, health data
+**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D18 owner answers (3,160 words) · **Spec:** 6385 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
+**Length:** 6385 vs 3,160 — dense input: nearly every line carries a need (58 REQ, 47 questions, 4 contradictions); none dropped to meet the count
+**Counts:** 58 REQ (3 removed) · 100 AC · 4 contradictions (4 resolved) · 47 questions (26 resolved) · 0 assumptions · 6 proposed (3 approved) · 7 out of scope
 
 ## Problem
 
@@ -22,6 +22,7 @@
 - **OOS-4** Only US hotlines, no Mexico hotlines — D6:L5 "US first, TLC-MAMA and 988"
 - **OOS-5** Full verification of Claude-cited sources comes later — D11:L1 "the full check can come later"
 - **OOS-6** Real authentication, multiple users, and the login, sign-up and consent screens, for the demo — D13:L1 "real auth is not needed"; D15:L1 "remove the auth page entirely"
+- **OOS-7** HIPAA review is revisited later — D17:L4 "lets revisit hippa later"
 
 ## Requirements
 
@@ -336,6 +337,25 @@ Alba shall start with a signed-in starter user whose profile is already filled i
 - AC-97 Given Alba is started for the first time, When the home page loads, Then it shows the starter user's date and week with no login or sign-up step.
 - AC-98 Given the starter user, When the profile is read, Then the delivery date puts her in week 2 on the day the starter data is created (D16:L1).
 
+### REQ-56 — Circle chats by category
+The Circle shall offer mock chats in categories such as can't sleep, baby handling, not sure and discharge.
+- Source: D17:L1 — "different categories, such as cant sleep, baby handeling, not sure, discharge etc."; D18:L2 — "feeding, feeling low, recovery and movement, asking for help"
+- AC-101 Given the Circle, When a mom opens it, Then eight mock chat rooms are listed: can't sleep, baby handling, not sure, discharge, feeding, feeling low, recovery and movement, asking for help (D17:L1, D18:L2).
+
+### REQ-57 — Calendar on the dashboard
+Alba shall show a calendar on the dashboard of what she has done: check-ins, exercises and her overall status of health today.
+- Source: D17:L3 — "a calendar on the dashboard that shows what shes done, ie check in, exercises, overall status of health today"; D18:L3 — "add the calendar to fill the right side of the page"
+- AC-103 Given she has done a check-in on a day, When she opens the dashboard, Then that day is marked as checked in.
+- AC-104 Given she has done an exercise on a day, When she opens the dashboard, Then that day is marked as exercised.
+- AC-106 Given a wide screen, When the dashboard opens, Then the calendar fills the right side of the page (D18:L3).
+- AC-105 Given today, When she opens the dashboard, Then her overall status of health today is shown; what it contains is TBD → Q-47.
+
+### REQ-58 — Clinic map (demo)
+Alba shall show an illustrated demo map of mock clinics near her, with a simulated "use my location" button.
+- Source: D17:L2 — "a map of some local clinics available depending on the users location"; D18:L1 — "illustrated demo map"
+- AC-107 Given the clinic page, When it opens, Then a soft illustrated map with pins and a list of mock clinics is shown.
+- AC-108 Given the "use my location" button, When she taps it, Then the clinics are shown without reading her real location and nothing leaves her phone (D18:L1).
+
 ## Users and roles
 - Mom — D1:L4 — REQ-4…REQ-44 — observed
 - Promotora — D1:L10 — REQ-10, REQ-14 — observed
@@ -435,12 +455,13 @@ _Ranked by impact × uncertainty, highest first._
 | Q-39 | I2×U2=4 | What does she see if a Claude call fails on any Ask Alba question other than the two live ones? | blank answer | "error message for now" D9:L1 | seed / error | REQ-46, 34 |
 | Q-42 | I1×U3=3 | Is the chosen language kept across pages and visits? | she must re-pick each time | "dropdown to switch language" D14:L1 | session / device / none | REQ-53 |
 | Q-43 | I1×U3=3 | What does the profile show, and what can she edit there (WhatsApp number, appointment date, clinic number)? | missing fields | "bubble with their profile" D15:L3 | list | REQ-54, 49 |
+| Q-47 | I3×U3=9 | What is "overall status of health today": her own ratings only, or a judgment of how she is doing? | reads as a diagnosis | "overall status of health today" D17:L3 | her ratings only / other | REQ-57 |
 | Q-22 | I1×U3=3 | What makes it "very easy to use" and "meditative"; what palette? | rework | "almost meditative" D1:L15 | reference | REQ-31 |
 | Q-23 | I1×U3=3 | What does cuarentena mean here: length, rules? | wrong framing | "la cuarentena" D1:L17 | days | REQ-33 |
 | Q-35 | I1×U3=3 | What does the error message say, in Spanish? | confusing screen | "show an error message" D9:L1 | text | REQ-46 |
 | Q-40 | I1×U3=3 | Is the WhatsApp welcome sent at sign-up or on day 3? | welcome mistimed | "Day 3, welcome in WhatsApp" D1:L21 | at sign-up / day 3 | REQ-24 |
 
-_Resolved:_ Q-1 → web app with WhatsApp integration (D4:L3). Q-12 → demo scope in OOS-2 (D5:L1). Q-2 → check-ins and notes on the server, no real names, no retention policy (D6:L1; OOS-3). Q-3 → phone or email login, random alias, moderators see author (D6:L2). Q-7 → US first (D6:L5; OOS-4). Q-24 → starts in the app, reminders on WhatsApp (D6:L6). C-1 → 3–4 days (D7:L1). Q-26 → seed answer fallback (D7:L2). Q-27 → WhatsApp number and consent at sign-up (D7:L4). Q-25 narrowed to the consent text; Ask Alba sends only the question and page (D7:L3). Q-28 → Claude also for summary and weekly research (D8:L2; supersedes D7:L5 "the rest doesnt need claude"). Q-29 → workouts depend on the week (D8:L1). Q-5 → promotora review and moderation simulated (D8:L4). Q-6 → delivery date entered at sign-up (D8:L5). Q-30 → cautious values in AC-80 (D8:L6). Q-31 → 5 seconds chosen by the drafter at the owner's request, to confirm. Q-33 → error message for now (D9:L1). Q-34 → she enters the appointment date (D9:L2). Q-32 → check-ins and notes to the API for the summary only (D9:L3). Q-4 narrowed: Claude may cite others (D9:L4). P-4 → REQ-50 (D9:L5). Q-9 → 1–5 scales, pad yes/no, note (D10:L1). Q-14 → full-screen message with tap-to-call (D10:L2). Q-15 narrowed: mood-dip trigger set (D10:L3). Q-13 narrowed: day 20, visit at 6 weeks, 12-week outer limit (D10:L4). P-5 → REQ-51 (D10:L5). Q-37 → seed answers cite named sources, Claude-named sources flagged "sin verificar", full check later (D11:L1; OOS-5). Q-36 → she enters the clinic number, falls back to 911 (D11:L2). Q-18 narrowed: one-page printable screen (D11:L3). Q-41 → stack and local run (D12:L1; REQ-52). Q-38 and Q-24 → no login or sign-up; the demo starts with a starter user (D15:L1, L2; REQ-55, OOS-6). Q-44 → week 2 (D16:L1). Q-21 → English too, via a dropdown, starting in Spanish (D14:L1; REQ-53). Q-38 → mocked login, one demo user (D13:L1; OOS-6). Q-15: the TLC-MAMA hotline is shown on a mood dip (D13:L2); 988 trigger still open. C-2 → A (D4:L1). C-3 → B (D4:L2).
+_Resolved:_ Q-1 → web app with WhatsApp integration (D4:L3). Q-12 → demo scope in OOS-2 (D5:L1). Q-2 → check-ins and notes on the server, no real names, no retention policy (D6:L1; OOS-3). Q-3 → phone or email login, random alias, moderators see author (D6:L2). Q-7 → US first (D6:L5; OOS-4). Q-24 → starts in the app, reminders on WhatsApp (D6:L6). C-1 → 3–4 days (D7:L1). Q-26 → seed answer fallback (D7:L2). Q-27 → WhatsApp number and consent at sign-up (D7:L4). Q-25 narrowed to the consent text; Ask Alba sends only the question and page (D7:L3). Q-28 → Claude also for summary and weekly research (D8:L2; supersedes D7:L5 "the rest doesnt need claude"). Q-29 → workouts depend on the week (D8:L1). Q-5 → promotora review and moderation simulated (D8:L4). Q-6 → delivery date entered at sign-up (D8:L5). Q-30 → cautious values in AC-80 (D8:L6). Q-31 → 5 seconds chosen by the drafter at the owner's request, to confirm. Q-33 → error message for now (D9:L1). Q-34 → she enters the appointment date (D9:L2). Q-32 → check-ins and notes to the API for the summary only (D9:L3). Q-4 narrowed: Claude may cite others (D9:L4). P-4 → REQ-50 (D9:L5). Q-9 → 1–5 scales, pad yes/no, note (D10:L1). Q-14 → full-screen message with tap-to-call (D10:L2). Q-15 narrowed: mood-dip trigger set (D10:L3). Q-13 narrowed: day 20, visit at 6 weeks, 12-week outer limit (D10:L4). P-5 → REQ-51 (D10:L5). Q-37 → seed answers cite named sources, Claude-named sources flagged "sin verificar", full check later (D11:L1; OOS-5). Q-36 → she enters the clinic number, falls back to 911 (D11:L2). Q-18 narrowed: one-page printable screen (D11:L3). Q-41 → stack and local run (D12:L1; REQ-52). Q-38 and Q-24 → no login or sign-up; the demo starts with a starter user (D15:L1, L2; REQ-55, OOS-6). Q-44 → week 2 (D16:L1). Q-45 → eight Circle rooms (D18:L2). Q-46 → illustrated demo map (D18:L1; REQ-58). Q-21 → English too, via a dropdown, starting in Spanish (D14:L1; REQ-53). Q-38 → mocked login, one demo user (D13:L1; OOS-6). Q-15: the TLC-MAMA hotline is shown on a mood dip (D13:L2); 988 trigger still open. C-2 → A (D4:L1). C-3 → B (D4:L2).
 
 ## Assumptions
 
@@ -455,6 +476,7 @@ _Model-originated. Not requirements. Each needs a person's approval (amend) befo
 - **P-3** Metrics: share reaching the 3-week and the visit touchpoints — prompted by D1:L11; risk: no baseline.
 - **P-4** Keep the Claude API key server-side only — approved → REQ-50 (D9:L5).
 - **P-5** Check that sources Claude cites exist and are medical — approved → REQ-51 (D10:L5).
+- **P-6** Map of local clinics by her location — approved → REQ-58 (D18:L1).
 
 ## Amendment log
 
@@ -489,3 +511,5 @@ _Model-originated. Not requirements. Each needs a person's approval (amend) befo
 | 2026-11-06 | REQ-7 | D14:L2 | source-research corrections applied to cards and seed answers: source lines, two-week baby-blues wording, chamomile per LactMed, ice 24 hours, nettle/raspberry marked no clinical source; Card 6 and the wound warning left unchanged |
 | 2026-11-06 | REQ-28, 30, 48 removed; OOS-6; new REQ-54, 55; Q-43, Q-44 | D15:L1–L3 | login, sign-up and consent screens removed; the demo starts with a starter user (named by the owner; not written in this spec) and a profile bubble at the top right. Supersedes "no real names" (D6:L1) for this demo persona only |
 | 2026-11-06 | Q-44, REQ-55 | D16:L1 | starter user in week 2 |
+| 2026-11-06 | new REQ-56, REQ-57, P-6, OOS-7, Q-45, Q-46, Q-47 | D17:L1–L4 | Circle chats by category; dashboard calendar; clinic map proposed; HIPAA review deferred |
+| 2026-11-06 | Q-45, Q-46, REQ-56, REQ-57, P-6 → REQ-58 | D18:L1–L3 | eight Circle rooms; calendar fills the right side; illustrated demo clinic map |
