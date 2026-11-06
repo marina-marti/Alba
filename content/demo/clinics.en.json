@@ -1,8 +1,128 @@
 {
-  "clinics": [
-    { "id": "cl-1", "name": "Example Community Clinic", "type": "Community clinic", "distance_km": 1.5, "hours": "Monday to Friday, 8 am to 5 pm", "phone": "+1 555 0101", "x": 28, "y": 40, "simulated": true },
-    { "id": "cl-2", "name": "Example Women's Health Center", "type": "Women's health", "distance_km": 1.0, "hours": "Monday to Saturday, 9 am to 6 pm", "phone": "+1 555 0102", "x": 66, "y": 48, "simulated": true },
-    { "id": "cl-3", "name": "Example Family Health House", "type": "Family health", "distance_km": 1.5, "hours": "Tuesday to Saturday, 10 am to 4 pm", "phone": "+1 555 0103", "x": 74, "y": 76, "simulated": true },
-    { "id": "cl-4", "name": "Example Neighborhood Clinic", "type": "Community clinic and lactation support", "distance_km": 1.7, "hours": "Monday to Friday, 7:30 am to 3:30 pm", "phone": "+1 555 0100", "x": 22, "y": 74, "simulated": true }
-  ]
+ "town": {
+  "name": "Valle Ejemplo",
+  "state": "USA"
+ },
+ "clinics": [
+  {
+   "id": "cl-1",
+   "name": "Promotora Lupita (example)",
+   "kind": "promotora",
+   "type": "Community health worker",
+   "distance_km": 2.1,
+   "getting_there": "On foot, about 25 minutes from the square",
+   "hours": "Monday to Friday, 9:00 to 14:00",
+   "cost": "free",
+   "services": "Home visits before and after birth, breastfeeding help and company during the cuarentena.",
+   "phone": "+1 555 0101",
+   "x": 40,
+   "y": 55,
+   "simulated": true
+  },
+  {
+   "id": "cl-2",
+   "name": "Los Álamos Community House (example)",
+   "kind": "community",
+   "type": "Community house",
+   "distance_km": 3.8,
+   "getting_there": "On foot, about 20 minutes; or the shared ride at 8:00",
+   "hours": "Tuesday and Thursday, 10:00 to 13:00",
+   "cost": "free",
+   "services": "Women's circle, a place to rest and talk, and help finding a ride to your visit.",
+   "phone": "+1 555 0102",
+   "x": 67,
+   "y": 71,
+   "simulated": true
+  },
+  {
+   "id": "cl-3",
+   "name": "Example Community Health Center",
+   "kind": "clinic",
+   "type": "Community health center (sliding-scale fee)",
+   "distance_km": 4.0,
+   "getting_there": "Shared ride at 7:00 and 12:00 from the square",
+   "hours": "Monday to Friday, 8:00 to 15:00",
+   "cost": "low",
+   "services": "Checkups before and after birth, breastfeeding help and guidance on the cuarentena.",
+   "phone": "+1 555 0103",
+   "x": 66,
+   "y": 44,
+   "simulated": true
+  },
+  {
+   "id": "cl-4",
+   "name": "Promotora Rosa (example)",
+   "kind": "promotora",
+   "type": "Community health worker",
+   "distance_km": 4.3,
+   "getting_there": "On foot, about 50 minutes; or by bicycle, 20 minutes",
+   "hours": "Monday, Wednesday and Friday, 8:00 to 13:00",
+   "cost": "free",
+   "services": "Home checkups after birth, breastfeeding help and reminders for your visit.",
+   "phone": "+1 555 0104",
+   "x": 30,
+   "y": 70,
+   "simulated": true
+  },
+  {
+   "id": "cl-5",
+   "name": "Parish Hall (example)",
+   "kind": "community",
+   "type": "Parish hall, women's circle",
+   "distance_km": 6.0,
+   "getting_there": "Shared ride at 9:00 on Saturdays",
+   "hours": "Saturdays, 10:00 to 12:30",
+   "cost": "free",
+   "services": "Women's circle with tea and bread, rest support and company during the cuarentena.",
+   "phone": "+1 555 0105",
+   "x": 24,
+   "y": 40,
+   "simulated": true
+  },
+  {
+   "id": "cl-6",
+   "name": "El Camino Mobile Clinic (example)",
+   "kind": "clinic",
+   "type": "Mobile clinic, visits on Wednesdays",
+   "distance_km": 7.6,
+   "getting_there": "Stops at the town square on Wednesdays, 9:00 to 12:00",
+   "hours": "Wednesdays, 9:00 to 12:00",
+   "cost": "low",
+   "services": "Checkups after birth, breastfeeding help and a ride to your follow-up visit.",
+   "phone": "+1 555 0106",
+   "x": 84,
+   "y": 82,
+   "simulated": true
+  },
+  {
+   "id": "cl-7",
+   "name": "Promotora Elena (example)",
+   "kind": "promotora",
+   "type": "Community health worker",
+   "distance_km": 8.8,
+   "getting_there": "Shared ride at 7:30; get off at the crossroads",
+   "hours": "Tuesday and Thursday, 9:00 to 15:00",
+   "cost": "free",
+   "services": "Home visits, breastfeeding help, rest support and a ride to the clinic.",
+   "phone": "+1 555 0107",
+   "x": 86,
+   "y": 26,
+   "simulated": true
+  },
+  {
+   "id": "cl-8",
+   "name": "Example Hills Clinic",
+   "kind": "clinic",
+   "type": "Family health clinic",
+   "distance_km": 10.1,
+   "getting_there": "Shared ride at 6:30; about 1.5 hours each way",
+   "hours": "Monday to Saturday, 8:00 to 16:00",
+   "cost": "low",
+   "services": "Checkups before and after birth, breastfeeding help and guidance for your six-week visit.",
+   "phone": "+1 555 0108",
+   "x": 12,
+   "y": 16,
+   "simulated": true
+  }
+ ]
 }

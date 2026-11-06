@@ -1,11 +1,19 @@
 // Demo clinic map (REQ-58). Pure and dependency-free so node:test can load it.
-// Everything here is simulated (OOS-2): the clinics are invented and no location is ever read.
+// Everything here is simulated (OOS-2): the places are invented and no location is ever read.
+export type ClinicKind = "promotora" | "clinic" | "community";
+export type ClinicCost = "free" | "low";
+export const CLINIC_KINDS: readonly ClinicKind[] = ["promotora", "clinic", "community"];
+export type Town = { name: string; state: string };
 export type Clinic = {
   id: string;
   name: string;
+  kind: ClinicKind;
   type: string;
   distance_km: number;
+  getting_there: string;
   hours: string;
+  cost: ClinicCost;
+  services: string;
   phone: string; // fictional, +1 555 010x
   x: number; // 0..100 on the map
   y: number;
@@ -19,7 +27,7 @@ export const YOU_EXAMPLE: Point = { x: 44, y: 54 };
 
 const MAP_W = 4; // map is 4:3, so one x percent is 4 units and one y percent is 3
 const MAP_H = 3;
-const KM_PER_UNIT = 1 / 70;
+const KM_PER_UNIT = 0.05; // rural scale: the far corner is about 10 km away
 
 /** Fictional distance in km from a map point, one decimal. */
 export function distanceKm(from: Point, to: Point): number {
