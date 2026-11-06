@@ -11,18 +11,18 @@ function textFor(id: string, text: string) {
 
 export default function Page() {
   return (
-    <main className="mx-auto max-w-md space-y-4 px-5 pb-28 pt-6">
-      <h1 className="text-2xl font-semibold text-ink">Banderas rojas</h1>
-      <p className="text-ink-soft">Llama hoy, no esperes. Si notas alguna de estas señales, {flags.action}.</p>
+    <div className="space-y-6">
+      <h1 className="page-title">Banderas rojas</h1>
+      <p className="text-lg text-ink-soft">Llama hoy, no esperes. Si notas alguna de estas señales, {flags.action}.</p>
       <Card>
-        <ul className="space-y-3">
+        <ul className="space-y-5">
           {flags.items.map((i) => (
             <li key={i.id} className="text-ink">
               {textFor(i.id, i.text)}
               {i.id === "rf-7" && (
                 <>
                   {" "}
-                  <a href="tel:18338526262" className="font-medium text-dawn-500 underline">
+                  <a href="tel:18338526262" className="link">
                     1-833-TLC-MAMA (1-833-852-6262)
                   </a>
                   , gratis, confidencial, 24/7, en español e inglés.
@@ -32,9 +32,9 @@ export default function Page() {
           ))}
         </ul>
       </Card>
-      <Link href="/alerta" className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-dawn-400 px-6 py-3 font-medium text-white shadow-soft">
+      <Link href="/alerta" className="btn w-full">
         Llamar ahora
       </Link>
-    </main>
+    </div>
   );
 }

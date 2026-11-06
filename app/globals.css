@@ -4,14 +4,96 @@
 
 :root { color-scheme: light; }
 
+html { -webkit-text-size-adjust: 100%; }
+
 body {
-  @apply bg-dawn-50 text-ink antialiased;
-  background-image: linear-gradient(180deg, #fff6e8 0%, #fffaf3 40%, #f6f1ea 100%);
+  @apply bg-dawn-50 font-sans text-ink antialiased;
+  line-height: 1.7;
   min-height: 100vh;
+  overflow-x: clip;
+  background-image:
+    radial-gradient(120% 46% at 50% -8%, #fbd9b8 0%, rgba(251, 217, 184, 0) 70%),
+    radial-gradient(70% 36% at 105% 96%, #e2ebdb 0%, rgba(226, 235, 219, 0) 70%),
+    linear-gradient(180deg, #fdf8f0 0%, #f9f2e7 100%);
 }
 
-a, button { transition: all 250ms ease; }
+/* one focus look: soft sage ring that settles in */
+:focus-visible {
+  outline: 3px solid rgba(77, 106, 73, 0.6);
+  outline-offset: 4px;
+  border-radius: 1.5rem;
+  transition: outline-offset 250ms ease-out;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+::selection { background: #f5dcc1; }
+
+@layer components {
+  .page-title {
+    @apply font-serif text-[2rem] font-normal leading-tight tracking-tight text-ink;
+  }
+  .page-enter { animation: rise 500ms ease-out both; }
+
+  /* one card: soft paper, 32px curve, long soft shadow, no border */
+  .card {
+    @apply rounded-4xl bg-white/80 p-6 shadow-soft;
+    transition: transform 300ms ease-out, box-shadow 300ms ease-out, background-color 300ms ease-out;
+  }
+
+  /* one button pair: primary (apricot) and quiet (paper), plus a sage variant */
+  .btn {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-dawn-300 px-7 py-3 text-center font-medium text-ink shadow-soft;
+    transition: transform 300ms ease-out, box-shadow 300ms ease-out, background-color 300ms ease-out, opacity 300ms ease-out;
+  }
+  .btn-quiet { @apply bg-white/85; }
+  .btn-sage { @apply bg-sage-300; }
+  .btn:active { transform: translateY(1px) scale(0.98); box-shadow: 0 8px 20px -14px rgba(120, 80, 50, 0.4); transition-duration: 120ms; }
+  .btn:disabled { @apply cursor-not-allowed opacity-50; }
+
+  .field {
+    @apply min-h-12 w-full rounded-3xl border border-dawn-200 bg-white/90 px-5 py-3 text-ink shadow-none placeholder:text-ink-soft/70;
+    transition: border-color 250ms ease-out, box-shadow 250ms ease-out, background-color 250ms ease-out;
+  }
+  .field:focus { @apply border-sage-600 bg-white outline-none; box-shadow: 0 0 0 4px rgba(77, 106, 73, 0.18); }
+
+  /* a choice pill (radio/checkbox via peer) */
+  .choice {
+    @apply flex min-h-14 items-center justify-center rounded-full border border-dawn-200 bg-white/80 text-lg text-ink;
+    transition: background-color 250ms ease-out, border-color 250ms ease-out, transform 250ms ease-out, box-shadow 250ms ease-out;
+  }
+  .peer:checked + .choice { @apply border-dawn-400 bg-dawn-300 font-semibold; box-shadow: 0 10px 24px -14px rgba(120, 80, 50, 0.5); }
+  .peer:focus-visible + .choice { outline: 3px solid rgba(77, 106, 73, 0.6); outline-offset: 3px; }
+  .choice:active { transform: scale(0.97); }
+
+  /* one link look: faint hairline, a line draws in on hover */
+  .link {
+    @apply font-medium text-dawn-600;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor), linear-gradient(rgba(148, 65, 31, 0.3), rgba(148, 65, 31, 0.3));
+    background-repeat: no-repeat;
+    background-position: 0 100%, 0 100%;
+    background-size: 0% 1.5px, 100% 1px;
+    padding-bottom: 2px;
+    transition: background-size 350ms ease-out;
+  }
+}
+
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-1px); @apply bg-dawn-400 shadow-lift; }
+  .btn-quiet:hover { transform: translateY(-2px); @apply bg-white; }
+  .btn-sage:hover { @apply bg-sage-100; }
+  .btn:disabled:hover { transform: none; }
+  .btn:active:hover { transform: translateY(1px) scale(0.98); }
+  a.card:hover { transform: translateY(-2px); @apply shadow-lift; }
+  .link:hover { background-size: 100% 1.5px, 100% 1px; }
+  .choice:hover { @apply bg-white; }
+}
+a.card:active { transform: translateY(0) scale(0.99); }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; animation: none !important; }
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
 }

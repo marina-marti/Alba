@@ -34,26 +34,26 @@ export default function AskForm({ page }: { page: string }) {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {msgs.length === 0 && (
-        <p className="text-base leading-relaxed text-ink/70">Escribe lo que te preocupa. Te respondo con calma y te digo de dónde viene la información.</p>
+        <p className="text-lg text-ink-soft">Escribe lo que te preocupa. Te respondo con calma y te digo de dónde viene la información.</p>
       )}
-      <div className="space-y-4" aria-live="polite">
+      <div className="space-y-6" aria-live="polite">
         {msgs.map((m, i) => (
           <div key={i} className="space-y-2">
-            <p className="ml-auto w-fit max-w-[85%] rounded-3xl bg-dawn-400 px-4 py-3 text-white">{m.q}</p>
+            <p className="ml-auto w-fit max-w-[85%] rounded-3xl rounded-br-lg bg-dawn-300 px-5 py-3 text-ink">{m.q}</p>
             {m.a ? (
               <Card className="text-base leading-relaxed">
                 <p>{m.a}</p>
-                {m.source && <p className="mt-3 text-sm text-ink/60">Fuente: {m.source}</p>}
+                {m.source && <p className="mt-3 text-sm text-ink-soft">Fuente: {m.source}</p>}
               </Card>
             ) : (
-              <p className="text-sm text-ink/60">Pensando…</p>
+              <p className="text-sm text-ink-soft">Pensando…</p>
             )}
           </div>
         ))}
       </div>
-      <form onSubmit={send} className="space-y-3">
+      <form onSubmit={send} className="space-y-4">
         <label htmlFor="q" className="sr-only">Tu pregunta</label>
         <textarea
           id="q"
@@ -62,9 +62,9 @@ export default function AskForm({ page }: { page: string }) {
           rows={3}
           maxLength={500}
           placeholder="Escribe tu pregunta…"
-          className="w-full rounded-3xl border border-dawn-200 bg-white/90 p-4 text-lg shadow-soft focus:outline-none focus:ring-2 focus:ring-dawn-400"
+          className="field text-lg"
         />
-        <Button type="submit" disabled={busy || !text.trim()} className="w-full disabled:opacity-50">
+        <Button type="submit" disabled={busy || !text.trim()} className="w-full">
           {busy ? "Un momento…" : "Preguntar"}
         </Button>
       </form>

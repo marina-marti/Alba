@@ -5,9 +5,9 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ d
   const raw = Array.isArray(sp.desde) ? sp.desde[0] : sp.desde;
   const desde = (raw ?? "").replace(/[^\p{L}\p{N}\s\-_/]/gu, "").trim().slice(0, 60);
   return (
-    <div className="space-y-4">
-      <h1 className="text-xl font-semibold">Pregúntale a Alba</h1>
-      {desde && <p className="text-sm text-ink/60">desde: {desde}</p>}
+    <div className="space-y-6">
+      <h1 className="page-title">Pregúntale a Alba</h1>
+      {desde && <p className="text-sm text-ink-soft">desde: {desde}</p>}
       <AskForm page={desde} />
     </div>
   );

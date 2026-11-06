@@ -16,19 +16,19 @@ async function entrar(formData: FormData) {
 export default async function Page({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
   return (
-    <div className="space-y-5">
-      <h1 className="text-xl font-semibold">Entrar</h1>
+    <div className="space-y-8">
+      <h1 className="page-title">Entrar</h1>
       <Card>
-        <form action={entrar} className="space-y-4">
+        <form action={entrar} className="space-y-5">
           <label className="block space-y-2">
-            <span className="text-sm">Tu número de teléfono o correo electrónico</span>
+            <span className="text-base text-ink-soft">Tu número de teléfono o correo electrónico</span>
             <input
               name="id"
               type="text"
               inputMode="email"
               autoComplete="username"
               required
-              className="min-h-12 w-full rounded-2xl border border-black/10 bg-white px-4"
+              className="field"
               placeholder="+1 555 123 4567"
             />
           </label>
@@ -36,8 +36,8 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ e
           <Button type="submit" className="w-full">Entrar</Button>
         </form>
       </Card>
-      <p className="text-center text-sm">
-        ¿Primera vez? <ButtonLink href="/registro" className="ml-2 !min-h-10 !px-4 !py-2">Crear mi espacio</ButtonLink>
+      <p className="text-center text-base text-ink-soft">
+        ¿Primera vez? <ButtonLink href="/registro" variant="quiet" className="ml-2 !min-h-11 !px-5 !py-2">Crear mi espacio</ButtonLink>
       </p>
     </div>
   );

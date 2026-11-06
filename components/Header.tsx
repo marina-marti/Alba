@@ -1,11 +1,14 @@
 import Link from "next/link";
+import { Sunrise, Wave } from "@/components/Curves";
 
 export default function Header() {
   return (
-    <header className="px-5 pt-6">
-      <Link href="/" className="text-2xl font-semibold tracking-wide text-dawn-500">
+    <header className="relative px-6 pb-8 pt-8">
+      <Link href="/" className="inline-flex min-h-11 items-center gap-3 font-serif text-3xl tracking-wide text-dawn-500">
+        <Sunrise className="h-6 w-9" />
         Alba
       </Link>
+      <Wave className="absolute inset-x-6 bottom-0 h-5 w-[calc(100%-3rem)]" />
     </header>
   );
 }
