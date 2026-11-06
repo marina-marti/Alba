@@ -1,0 +1,8 @@
+{
+  "clinics": [
+    { "id": "cl-1", "name": "Clínica Comunitaria Ejemplo", "type": "Clínica comunitaria", "distance_km": 1.5, "hours": "Lunes a viernes, 8:00 a 17:00", "phone": "+1 555 0101", "x": 28, "y": 40, "simulated": true },
+    { "id": "cl-2", "name": "Centro de Salud de la Mujer Ejemplo", "type": "Salud de la mujer", "distance_km": 1.0, "hours": "Lunes a sábado, 9:00 a 18:00", "phone": "+1 555 0102", "x": 66, "y": 48, "simulated": true },
+    { "id": "cl-3", "name": "Casa de Salud Familiar Ejemplo", "type": "Salud familiar", "distance_km": 1.5, "hours": "Martes a sábado, 10:00 a 16:00", "phone": "+1 555 0103", "x": 74, "y": 76, "simulated": true },
+    { "id": "cl-4", "name": "Clínica del Barrio Ejemplo", "type": "Clínica comunitaria y lactancia", "distance_km": 1.7, "hours": "Lunes a viernes, 7:30 a 15:30", "phone": "+1 555 0100", "x": 22, "y": 74, "simulated": true }
+  ]
+}
