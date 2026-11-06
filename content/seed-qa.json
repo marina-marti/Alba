@@ -1,0 +1,43 @@
+{
+  "disclaimer": "Esto no es consejo médico — pregunta a tu médico o promotora.",
+  "items": [
+    {
+      "id": "qa-1",
+      "live": true,
+      "question": "¿Es normal este sangrado en el día 9?",
+      "answer": "Sí, puede ser normal: el sangrado suele ser rojo los primeros 3–4 días y luego se vuelve rosado o marrón durante unos 14 días; el flujo puede durar hasta 6 semanas en total. Pero llama a tu médico hoy si empapas una toalla cada hora, pasas coágulos del tamaño de una pelota de golf, o el sangrado vuelve fuerte después de haberse calmado. Esto no es consejo médico — pregunta a tu médico o promotora.",
+      "source": "MSD Manual / Cleveland Clinic",
+      "notes": "D2 cited 'MSD Manual / CDC Hear Her'. CDC Hear Her dropped: page not verified (docs/research-bleeding.md). Cleveland Clinic added: verified there."
+    },
+    {
+      "id": "qa-2",
+      "live": true,
+      "question": "¿Puedo tomar té de manzanilla?",
+      "answer": "La manzanilla se usa tradicionalmente para calmar y ayudar a dormir, y suele considerarse suave. Tómala con moderación y pregúntale a tu médico o promotora si amamantas o tomas otros medicamentos. Evita la salvia medicinal y el exceso de menta fuerte mientras amamantas. Esto no es consejo médico — pregunta a tu médico o promotora.",
+      "source": "guías tradicionales de tés posparto — tradicional, pregunta a tu promotora, no es una recomendación médica"
+    },
+    {
+      "id": "qa-3",
+      "live": false,
+      "question": "¿Cuándo puedo empezar ejercicios de piso pélvico?",
+      "answer": "Puedes empezar suave desde el día 1, si te sientes lista, con contracciones cortas y largas 3 veces al día, sin dolor. Si tienes sonda, espera a que te la quiten. Esto no es consejo médico — pregunta a tu médico o promotora.",
+      "source": "NHS — folletos de fisioterapia posparto"
+    },
+    {
+      "id": "qa-4",
+      "live": false,
+      "question": "Me siento triste y no puedo dormir",
+      "answer": "Sentirse abrumada la primera semana es común, pero si dura más de 2 semanas o empeora, pide ayuda. Puedes llamar gratis y en español a la línea nacional de salud mental materna 1-833-TLC-MAMA (1-833-852-6262), 24/7, o al 988 en crisis. No estás sola — y también puedes contarlo en el Círculo. Esto no es consejo médico — pregunta a tu médico o promotora.",
+      "source": "línea nacional de salud mental materna 1-833-TLC-MAMA",
+      "notes": "D2 names no source for this answer; the hotline is the only source named in its text. Disclaimer added (D4:L1)."
+    },
+    {
+      "id": "qa-5",
+      "live": false,
+      "question": "¿Qué puedo pedirle a mi familia esta semana?",
+      "answer": "Descanso, agua y comida caliente, ayuda con la casa y los niños, y que te acompañen a la llamada con la clínica. En la app, Semana 1, tarjeta 5, tienes las frases listas para mandarles por WhatsApp. Esto no es consejo médico — pregunta a tu médico o promotora.",
+      "source": "Alba, Semana 1, tarjeta 5",
+      "notes": "D2 names no source; points to the app card. Disclaimer added (D4:L1)."
+    }
+  ]
+}

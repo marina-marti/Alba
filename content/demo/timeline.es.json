@@ -1,0 +1,16 @@
+{
+  "simulated": true,
+  "delivery_date": "2026-10-20",
+  "events": [
+    {"day":3,"channel":"whatsapp","text":"¡Hola! Soy Alba. Estoy aquí para acompañarte estos días con tu bebé. No tienes que descargar nada: aquí mismo te escribo. 💛","spec":["REQ-24","AC-39","REQ-20","AC-33"]},
+    {"day":5,"channel":"app","text":"Veo que estos días han sido pesados. No estás sola, y lo que sientes importa. Si quieres hablar con alguien, la línea TLC-MAMA está disponible para ti.","spec":["REQ-45","OOS-2"]},
+    {"day":7,"channel":"circle","text":"3 a. m. y despierta otra vez. Publicaste de forma anónima en el Círculo; una promotora te respondió con un audio corto y otra mamá te dejó un consejo.","spec":["REQ-12","AC-19","REQ-16","AC-26","AC-27","REQ-17","AC-28","REQ-14","AC-23"]},
+    {"day":9,"channel":"app","text":"Empapar una toalla en una hora es una señal de alerta. Llama a tu médico ahora.","spec":["REQ-36","OOS-2"]},
+    {"day":14,"channel":"app","text":"Ejercicios suaves para el suelo pélvico, a tu ritmo y dentro de tu cuarentena de descanso. Si algo no te hace sentir bien, para.","spec":["REQ-29","OOS-2"]},
+    {"day":20,"channel":"whatsapp","text":"Ya van tres semanas. Es buen momento para llamar a tu clínica y pedir tu cita. ¿Ya llamaste?","spec":["REQ-18","AC-85","AC-30","REQ-20","AC-33"]},
+    {"day":35,"channel":"app","text":"Tu cita se acerca. Revisa tu lista: cuidado de los niños, transporte y preguntas guardadas.","spec":["REQ-21","AC-35"]},
+    {"day":38,"channel":"app","text":"Tu resumen de una página está listo para llevarlo a la cita.","spec":["REQ-46","OOS-2"]},
+    {"day":41,"channel":"whatsapp","text":"Hoy es tu cita. ¡Tú puedes! Lleva tu resumen y tus preguntas.","spec":["REQ-22","AC-36","REQ-20","AC-33"]},
+    {"day":41,"channel":"app","text":"Después de la cita: ¿fuiste? Cuéntanos y lo celebramos contigo.","spec":["REQ-23","AC-37"]}
+  ]
+}

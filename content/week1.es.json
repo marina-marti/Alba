@@ -1,0 +1,77 @@
+{
+  "week": 1,
+  "lang": "es",
+  "cards": [
+    {
+      "id": "w1-c1",
+      "title": "Qué esperar esta semana",
+      "body": [
+        "Sangrado (loquios): rojo vivo y abundante los primeros 3–4 días, luego rosado/marrón y más ligero durante unos 14 días. El flujo dura hasta 6 semanas en total. Puede aumentar al caminar o amamantar — descansa y vuelve a bajar.",
+        "Llama a tu médico hoy si empapas una toalla cada hora o pasas coágulos del tamaño de una pelota de golf.",
+        "Cólicos (entuertos): normales los primeros días, más fuertes al amamantar.",
+        "Pechos: primero calostro, luego sube la leche y puede haber hinchazón.",
+        "Hinchazón de manos, tobillos y cara es común y suele pasar sola.",
+        "Llorar fácil o sentirte abrumada es común la primera semana; si dura más de 2 semanas o empeora, es momento de pedir ayuda — no es debilidad."
+      ]
+    },
+    {
+      "id": "w1-c2",
+      "title": "Qué evitar",
+      "body": [
+        "No uses tampones ni copa menstrual las primeras 6 semanas — solo toallas.",
+        "No duchas vaginales.",
+        "No levantes cosas pesadas ni hagas ejercicio fuerte; caminar suave, sí.",
+        "No te quedes en cama todo el día — muévete un poco cada día, pero descansa cuando el sangrado aumente.",
+        "No esperes a la cita de 6 semanas si algo te preocupa — llama antes."
+      ]
+    },
+    {
+      "id": "w1-c3",
+      "title": "Qué vigilar (banderas rojas — llama hoy, no esperes)",
+      "body": [
+        "Empapas una toalla cada hora, o coágulos del tamaño de una pelota de golf o más grandes.",
+        "Sangrado que se había calmado y vuelve fuerte de repente.",
+        "Fiebre de 100.4°F (38°C) o más.",
+        "Flujo con mal olor.",
+        "Dolor de cabeza fuerte, cambios en la vista, dolor en el pecho, dificultad para respirar.",
+        "Dolor abdominal fuerte, o la herida se ve roja, caliente o con pus.",
+        "Pensamientos de hacerte daño a ti o al bebé — llama al 988 o a la línea 1-833-TLC-MAMA (1-833-852-6262), gratis, confidencial, 24/7, en español e inglés."
+      ]
+    },
+    {
+      "id": "w1-c4",
+      "title": "Remedios caseros y cuidado (pregunta a tu médico primero)",
+      "body": [
+        "Perineo: agua tibia con una botella (peri bottle) de adelante hacia atrás, secar suave sin frotar. Hielo envuelto las primeras 24–48 h; después, baños de asiento tibios. Toallitas de hamamelis o spray anestésico si tu médico lo aprueba.",
+        "Dolor/cólicos: ibuprofeno o acetaminofén según te indicó tu médico.",
+        "Estreñimiento: agua, fruta, verdura y caminar un poco cada día.",
+        "Comida de cuarentena: caldos, sopas y comidas calientes, fáciles de digerir. Avena, jengibre, cúrcuma y canela son tradicionales en esta etapa.",
+        {
+          "section": "Tés",
+          "label": "tradicional, pregunta a tu promotora",
+          "text": "Tés — tradicional, pregunta a tu promotora, nunca una recomendación médica: manzanilla (calma y ayuda a dormir), hoja de frambuesa roja y ortiga (tradicionalmente para el útero y el hierro). Empieza con uno a la vez. Evita la salvia en dosis medicinales y el exceso de menta fuerte mientras amamantas — pueden bajar la leche."
+        }
+      ]
+    },
+    {
+      "id": "w1-c5",
+      "title": "Qué pedirle a tu familia (la cuarentena, en práctica)",
+      "body": [
+        "\"Quédate con el bebé mientras duermo una siesta.\"",
+        "\"Tráeme agua y comida caliente, no tengo que levantarme.\"",
+        "\"Ayúdame con la casa y con los otros niños esta semana.\"",
+        "\"Acompáñame a la llamada con la clínica.\"",
+        "\"Si me ves triste más de dos semanas, o lloro mucho y no puedo dormir, ayúdame a llamar a la línea 1-833-TLC-MAMA.\""
+      ]
+    },
+    {
+      "id": "w1-c6",
+      "title": "Movimiento suave, Semana 1",
+      "body": [
+        "Piso pélvico: puedes empezar suave desde el día 1, si te sientes lista. Contracciones cortas y largas, 3 veces al día, sin dolor.",
+        "Caminar: paseos cortos en casa; si el sangrado aumenta, descansa.",
+        "Nada de abdominales, correr ni cargar peso hasta que tu médico te dé el visto bueno (típicamente en la revisión de 6 semanas)."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Prepara tu cita",
+  "simulated": true,
+  "items": [
+    {"id":"childcare","label":"Cuidado de los niños","done":false},
+    {"id":"transport","label":"Transporte","done":false},
+    {"id":"questions","label":"Preguntas guardadas","done":false}
+  ],
+  "spec":["REQ-21","AC-35"]
+}

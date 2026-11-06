@@ -1,0 +1,15 @@
+{
+  "id": "w1-c3",
+  "lang": "es",
+  "heading": "Qué vigilar (banderas rojas — llama hoy, no esperes)",
+  "action": "llama a tu médico ahora",
+  "items": [
+    { "id": "rf-1", "bleeding": true, "text": "Empapas una toalla cada hora, o coágulos del tamaño de una pelota de golf o más grandes." },
+    { "id": "rf-2", "bleeding": true, "text": "Sangrado que se había calmado y vuelve fuerte de repente." },
+    { "id": "rf-3", "bleeding": false, "text": "Fiebre de 100.4°F (38°C) o más." },
+    { "id": "rf-4", "bleeding": false, "text": "Flujo con mal olor." },
+    { "id": "rf-5", "bleeding": false, "text": "Dolor de cabeza fuerte, cambios en la vista, dolor en el pecho, dificultad para respirar." },
+    { "id": "rf-6", "bleeding": false, "text": "Dolor abdominal fuerte, o la herida se ve roja, caliente o con pus." },
+    { "id": "rf-7", "bleeding": false, "text": "Pensamientos de hacerte daño a ti o al bebé — llama al 988 o a la línea 1-833-TLC-MAMA (1-833-852-6262), gratis, confidencial, 24/7, en español e inglés." }
+  ]
+}
