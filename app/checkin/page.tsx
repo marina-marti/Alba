@@ -1,15 +1,11 @@
 import Card from "@/components/Card";
 import { Button } from "@/components/Button";
 import { submitCheckin } from "./actions";
+import { getI18n } from "@/lib/i18n/server";
 
-const QUESTIONS = [
-  { name: "bleeding", label: "Sangrado", low: "muy poco", high: "mucho" },
-  { name: "pain", label: "Dolor", low: "nada", high: "mucho" },
-  { name: "mood", label: "Ánimo", low: "bajo", high: "bien" },
-  { name: "healing", label: "Sanación", low: "difícil", high: "va bien" },
-];
+const NAMES = ["bleeding", "pain", "mood", "healing"] as const;
 
-function Scale({ name, label, low, high }: (typeof QUESTIONS)[number]) {
+function Scale({ name, label, low, high }: { name: string; label: string; low: string; high: string }) {
   return (
     <fieldset className="space-y-3">
       <legend className="text-lg font-medium">{label}</legend>
@@ -31,20 +27,27 @@ function Scale({ name, label, low, high }: (typeof QUESTIONS)[number]) {
   );
 }
 
-export default function Page() {
+export default async function Page() {
+  const { t } = await getI18n();
+  const QUESTIONS = NAMES.map((name) => ({
+    name,
+    label: t(`checkin.${name}`),
+    low: t(`checkin.${name}.low`),
+    high: t(`checkin.${name}.high`),
+  }));
   return (
     <div className="space-y-8">
-      <h1 className="page-title">¿Cómo estás hoy?</h1>
-      <p className="text-lg text-ink-soft">Elige un número del 1 al 5. Solo toma un minuto.</p>
+      <h1 className="page-title">{t("checkin.title")}</h1>
+      <p className="text-lg text-ink-soft">{t("checkin.intro")}</p>
       <form action={submitCheckin} className="space-y-6">
         <Card className="space-y-8">
           <Scale {...QUESTIONS[0]} />
           <fieldset className="space-y-3">
-            <legend className="text-lg font-medium">¿Empapaste una toalla en una hora?</legend>
+            <legend className="text-lg font-medium">{t("checkin.padQ")}</legend>
             <div className="grid grid-cols-2 gap-2">
               {[
-                ["0", "No"],
-                ["1", "Sí"],
+                ["0", t("checkin.no")],
+                ["1", t("checkin.yes")],
               ].map(([v, t]) => (
                 <label key={v} className="cursor-pointer">
                   <input type="radio" name="pad_soak" value={v} defaultChecked={v === "0"} className="peer sr-only" />
@@ -63,19 +66,19 @@ export default function Page() {
         ))}
         <Card className="space-y-3">
           <label htmlFor="note" className="text-lg font-medium">
-            Una nota (opcional)
+            {t("checkin.noteLabel")}
           </label>
           <textarea
             id="note"
             name="note"
             rows={4}
             maxLength={2000}
-            placeholder="Lo que quieras recordar de hoy"
+            placeholder={t("checkin.notePlaceholder")}
             className="field"
           />
         </Card>
         <Button type="submit" className="w-full">
-          Guardar
+          {t("checkin.save")}
         </Button>
       </form>
     </div>

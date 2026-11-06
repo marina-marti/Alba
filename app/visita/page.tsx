@@ -1,14 +1,17 @@
 import Card from "@/components/Card";
 import { Button } from "@/components/Button";
 import { getProfile } from "@/lib/db";
-import { readDemo, checklistState, confirmations, type ChecklistItem } from "@/lib/simulated";
+import { checklistState, confirmations } from "@/lib/simulated";
+import { loadDemoChecklist, loadDemoSeedUser } from "@/lib/content";
+import { getI18n } from "@/lib/i18n/server";
 import { toggleItem, confirmAction } from "./actions";
 
 export const dynamic = "force-dynamic";
 
-export default function Page() {
-  const list = readDemo<{ title: string; items: ChecklistItem[] }>("checklist.es.json");
-  const seed = readDemo<{ appointment_date: string }>("seed-user.json");
+export default async function Page() {
+  const { lang, t } = await getI18n();
+  const list = loadDemoChecklist(lang);
+  const seed = loadDemoSeedUser();
   const date = getProfile()?.appointment_date ?? seed.appointment_date; // which visit this is for: open (Q-13)
   const state = checklistState();
   const conf = confirmations();
@@ -16,7 +19,7 @@ export default function Page() {
   return (
     <div className="space-y-8">
       <h1 className="page-title">{list.title}</h1>
-      <p className="text-lg text-ink-soft">Tu cita: {date}</p>
+      <p className="text-lg text-ink-soft">{t("visit.date", { date })}</p>
 
       <Card>
         <ul className="space-y-1">
@@ -40,8 +43,8 @@ export default function Page() {
       </Card>
 
       {([
-        ["clinic_call", "Llamar a tu clínica", "Ya van tres semanas. ¿Ya llamaste a tu clínica?", "Ya llamé a la clínica", "Anotado. ¡Gracias por avisarnos!"],
-        ["visit_attended", "Después de tu cita", "¿Fuiste a tu cita?", "Fui a mi cita", "¡Qué bien! Lo celebramos contigo."],
+        ["clinic_call", t("visit.clinicTitle"), t("visit.clinicQ"), t("visit.clinicBtn"), t("visit.clinicOk")],
+        ["visit_attended", t("visit.attendedTitle"), t("visit.attendedQ"), t("visit.attendedBtn"), t("visit.attendedOk")],
       ] as const).map(([kind, title, q, label, ok]) => (
         <Card key={kind}>
           <h2 className="font-serif text-xl">{title}</h2>

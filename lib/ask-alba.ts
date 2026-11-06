@@ -13,7 +13,10 @@ export type GuardrailsFile = {
   unsure_phrase: string;
   disclaimer: string;
 };
-type SeedItem = { id: string; live: boolean; question: string; answer: string; source: string };
+type SeedItem = {
+  id: string; live: boolean; question: string; answer: string; source: string;
+  match?: { all_of_groups_any: string[][] }; // English seed items only
+};
 
 export type GenerateInput = { question: string; page: string; guardrails: GuardrailsFile };
 export type GenerateFn = (q: GenerateInput) => Promise<string | null>;
@@ -24,11 +27,11 @@ export const GENERATE_TIMEOUT_MS = 5000;
 function readJson<T>(file: string): T {
   return JSON.parse(fs.readFileSync(path.join(process.cwd(), "content", file), "utf8")) as T;
 }
-export function loadGuardrails(): GuardrailsFile {
-  return readJson<GuardrailsFile>("guardrails.es.json");
+export function loadGuardrails(lang: "es" | "en" = "es"): GuardrailsFile {
+  return readJson<GuardrailsFile>(`guardrails.${lang}.json`);
 }
-export function loadSeed(): { disclaimer: string; items: SeedItem[] } {
-  return readJson("seed-qa.json");
+export function loadSeed(lang: "es" | "en" = "es"): { disclaimer: string; items: SeedItem[] } {
+  return readJson(lang === "en" ? "seed-qa.en.json" : "seed-qa.json");
 }
 
 export function normalize(s: string): string {
@@ -41,7 +44,7 @@ export function normalize(s: string): string {
     .trim();
 }
 
-const EN_WORDS = /\b(the|is|are|my|can|i|am|what|when|how|why|do|does|should|it|this|normal|baby|bleeding|sad|sleep|tea|feel|have|has|soaking|pad|hour|every|and|to|for|in|of|a)\b/g;
+const EN_WORDS = /\b(the|is|are|my|can|i|am|what|when|how|why|do|does|should|it|this|normal|baby|bleeding|sad|sleep|tea|feel|have|has|soaking|pad|hour|every|and|to|for|in|of|a|pain|chest|fever|headache|clots?|breathe|breathing|blurred|severe|since|morning|hurt|myself|overwhelmed|anxious|hopeless|depressed|weather|so|with|on|at|if|will|dye|hair|week)\b/g;
 const ES_WORDS = /\b(el|la|los|las|es|esta|este|mi|puedo|que|como|cuando|por|para|una|un|de|en|y|me|no|se|con|sangrado|dia|siento|triste|dormir|te|tengo|tomar|familia)\b/g;
 export function detectLanguage(question: string): "es" | "en" {
   if (/[¿¡ñáéíóúü]/i.test(question)) return "es";
@@ -86,11 +89,18 @@ const SEED_KEYWORDS: Record<string, (n: string) => boolean> = {
   "qa-4": (n) => /triste|sad/.test(n) && /dormir|sleep/.test(n),
   "qa-5": (n) => /familia/.test(n) && /(pedir|pedirle|ayuda)/.test(n),
 };
-export function matchSeed(question: string, items = loadSeed().items): SeedItem | null {
+// English items carry `match.all_of_groups_any`: every group needs at least one term in the normalized question.
+function matchesGroups(groups: string[][], n: string): boolean {
+  return groups.every((g) => g.some((term) => n.includes(term)));
+}
+export function matchSeed(question: string, items?: SeedItem[], lang: "es" | "en" = "es"): SeedItem | null {
+  const list = items ?? loadSeed(lang).items;
   const n = normalize(question);
-  const exact = items.find((i) => normalize(i.question) === n);
+  const exact = list.find((i) => normalize(i.question) === n);
   if (exact) return exact;
-  return items.find((i) => SEED_KEYWORDS[i.id]?.(n)) ?? null;
+  return (
+    list.find((i) => (i.match ? matchesGroups(i.match.all_of_groups_any, n) : SEED_KEYWORDS[i.id]?.(n))) ?? null
+  );
 }
 
 /** Resolves to the generator's text, or null on timeout / error / empty. Never throws. */
@@ -114,7 +124,7 @@ export async function withTimeout(
 
 // "posparto" must not appear on screen (REQ-2): displayed sources are rewritten.
 function cleanSource(s: string): string {
-  return s.replace(/posparto/gi, "después del parto");
+  return s.replace(/posparto/gi, "después del parto").replace(/postpartum/gi, "after birth");
 }
 
 function withDisclaimer(text: string, disclaimer: string): string {
@@ -130,10 +140,10 @@ export async function answerQuestion(
 ): Promise<AskResult> {
   const question = (input.question ?? "").trim();
   const page = (input.page ?? "").trim();
-  const g = loadGuardrails();
-  const D = g.disclaimer;
-  const lang = detectLanguage(question);
+  const lang = detectLanguage(question); // REQ-35: the language of the QUESTION, not of the UI
   const en = lang === "en";
+  const g = loadGuardrails(lang);
+  const D = g.disclaimer;
   const mk = (answer: string, source: string, usedSeed: boolean, kind: string): AskResult => ({
     answer: withDisclaimer(answer, D),
     source: cleanSource(source),
@@ -145,23 +155,23 @@ export async function answerQuestion(
   // 1. Red flag: fixed text, never reassurance, never delegated to a generator (REQ-36).
   if (isRedFlag(question)) {
     const text = en
-      ? `Call your doctor now — ${g.red_flag.phrase}. What you describe can be a warning sign; do not wait. If you cannot reach them, call 911.`
+      ? `${g.red_flag.phrase[0].toUpperCase()}${g.red_flag.phrase.slice(1)}. What you describe can be a warning sign; do not wait. If you cannot reach them, call 911.`
       : `${g.red_flag.phrase[0].toUpperCase()}${g.red_flag.phrase.slice(1)}. Lo que describes puede ser una señal de alarma; no esperes. Si no logras comunicarte, llama al 911.`;
-    return mk(text, "Alba, señales de alarma (MSD Manual / Cleveland Clinic)", false, "red-flag");
+    return mk(text, en ? "Alba, warning signs (MSD Manual / Cleveland Clinic)" : "Alba, señales de alarma (MSD Manual / Cleveland Clinic)", false, "red-flag");
   }
 
   // 2. Low mood: name the hotline (REQ-37). Seed qa-4 when it matches.
   if (isLowMood(question)) {
-    const seed = loadSeed().items.find((i) => i.id === "qa-4")!;
+    const seed = loadSeed(lang).items.find((i) => i.id === "qa-4")!;
     const crisis = CRISIS.test(normalize(question));
-    if (!en && !crisis && matchSeed(question)?.id === "qa-4") return mk(seed.answer, seed.source, true, "low-mood");
+    if (!crisis && matchSeed(question, undefined, lang)?.id === "qa-4") return mk(seed.answer, seed.source, true, "low-mood");
     const text = en
-      ? `Feeling this way is more common than you think, and you are not alone. You can call, free, the national maternal mental health hotline ${g.low_mood.hotline}, 24/7, or ${g.low_mood.also}. You can also share it in the Círculo.`
+      ? `Feeling this way is more common than you think, and you are not alone. You can call, free, the national maternal mental health hotline ${g.low_mood.hotline}, 24/7, or ${g.low_mood.also}. You can also share it in the Circle.`
       : `No estás sola. Puedes llamar gratis y en español a la línea nacional de salud mental materna ${g.low_mood.hotline}, 24/7, o al ${g.low_mood.also}. También puedes contarlo en el Círculo.`;
-    return mk(text, "línea nacional de salud mental materna 1-833-TLC-MAMA", false, "low-mood");
+    return mk(text, en ? "national maternal mental health hotline 1-833-TLC-MAMA" : "línea nacional de salud mental materna 1-833-TLC-MAMA", false, "low-mood");
   }
 
-  const seed = matchSeed(question);
+  const seed = matchSeed(question, undefined, lang);
 
   // 3. Generator (T-007 injects one). Slow/failed -> seed answer if any (AC-71).
   if (opts.generate && question) {
@@ -169,13 +179,13 @@ export async function answerQuestion(
       () => opts.generate!({ question, page, guardrails: g }),
       opts.timeoutMs ?? GENERATE_TIMEOUT_MS,
     );
-    if (text) return mk(text, "Claude (sin verificar)", false, "generated");
-    if (seed && !en) return mk(seed.answer, seed.source, true, "seed-fallback");
+    if (text) return mk(text, en ? "Claude (unverified)" : "Claude (sin verificar)", false, "generated");
+    if (seed) return mk(seed.answer, seed.source, true, "seed-fallback");
     return unsure(mk, g, en, true);
   }
 
   // 4. No generator: seed for the Spanish seed questions, else graceful unsure.
-  if (seed && !en) return mk(seed.answer, seed.source, true, "seed");
+  if (seed) return mk(seed.answer, seed.source, true, "seed");
   return unsure(mk, g, en, false);
 }
 
@@ -186,7 +196,7 @@ function unsure(
   failed: boolean,
 ): AskResult {
   const text = en
-    ? `I can't answer that right now. Please ask a promotora or in the Círculo (${g.unsure_phrase})`
+    ? `I can't answer that right now. Please ${g.unsure_phrase}`
     : `No tengo esa información, ${g.unsure_phrase}`;
-  return mk(text, "Alba (sin fuente para esta pregunta)", false, failed ? "error" : "unsure");
+  return mk(text, en ? "Alba (no source for this question)" : "Alba (sin fuente para esta pregunta)", false, failed ? "error" : "unsure");
 }

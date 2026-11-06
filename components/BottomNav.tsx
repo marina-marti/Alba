@@ -1,20 +1,23 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useI18n } from "@/lib/i18n/client";
+import type { Key } from "@/lib/i18n/es";
 
-const items = [
-  { href: "/", label: "Inicio" },
-  { href: "/checkin", label: "Hoy" },
-  { href: "/pregunta", label: "Pregunta" },
-  { href: "/circulo", label: "Círculo" },
+const items: { href: string; label: Key }[] = [
+  { href: "/", label: "nav.home" },
+  { href: "/checkin", label: "nav.today" },
+  { href: "/pregunta", label: "nav.ask" },
+  { href: "/circulo", label: "nav.circle" },
 ];
 
 export default function BottomNav() {
   const path = usePathname();
+  const { t } = useI18n();
   const idx = items.findIndex((i) => i.href === path);
   return (
     <nav
-      aria-label="Navegación"
+      aria-label={t("nav.label")}
       className="fixed inset-x-4 bottom-4 z-10 mx-auto max-w-sm rounded-full bg-white/90 p-1.5 shadow-lift backdrop-blur"
     >
       <div className="relative grid grid-cols-4">
@@ -32,7 +35,7 @@ export default function BottomNav() {
               n === idx ? "font-semibold text-ink" : "text-ink-soft hover:text-ink"
             }`}
           >
-            {i.label}
+            {t(i.label)}
           </Link>
         ))}
       </div>

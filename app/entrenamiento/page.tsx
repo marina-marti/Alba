@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { currentWeek, workoutFor } from "@/lib/workouts";
 import { refreshWorkoutAction } from "./actions";
+import { getI18n } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
 
@@ -32,9 +33,8 @@ const COPY = {
   },
 } as const;
 
-export default async function Page({ searchParams }: { searchParams?: Promise<{ lang?: string }> }) {
-  const sp = (await searchParams) ?? {};
-  const lang = sp.lang === "en" ? "en" : "es";
+export default async function Page() {
+  const { lang } = await getI18n();
   const t = COPY[lang];
   const { week, needsProfile } = currentWeek();
   const r = await workoutFor(week, lang);
