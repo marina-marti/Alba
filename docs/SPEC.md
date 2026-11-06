@@ -1,8 +1,8 @@
 # Spec — Alba, a postpartum companion
 
 **Status:** Draft — TBD remain (22 open questions, including Q-31 to confirm; all 4 contradictions resolved) · **Shape:** full — more than 15 requirements, WhatsApp integration, health data
-**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D22 owner answers (3,312 words) · **Spec:** 6692 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
-**Length:** 6692 vs 3,312 — dense input: nearly every line carries a need (58 REQ, 50 questions, 4 contradictions); none dropped to meet the count
+**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D23 owner answers (3,339 words) · **Spec:** 6720 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
+**Length:** 6720 vs 3,339 — dense input: nearly every line carries a need (58 REQ, 50 questions, 4 contradictions); none dropped to meet the count
 **Counts:** 58 REQ (3 removed) · 103 AC · 4 contradictions (4 resolved) · 50 questions (28 resolved) · 0 assumptions · 6 proposed (3 approved) · 7 out of scope
 
 ## Problem
@@ -19,7 +19,7 @@
 - **OOS-1** Diagnosis — D1:L9 "Tracking and information only, never diagnosis."
 - **OOS-2** For the hackathon demo, WhatsApp messages, Circle content and the Day 3–41 timeline are simulated, not live — D5:L1 "simulated = WhatsApp messages, Circle content, Day 3–41 timeline". Live: Week 1 cards, Ask Alba with the 2 demo questions, check-in, red-flag escalation, one-page summary (D5:L1). Promotora review and moderation are also simulated (D8:L4).
 - **OOS-3** No retention policy for the demo — D6:L1 "no retention policy yet"
-- **OOS-4** Only US hotlines, no Mexico hotlines — D6:L5 "US first, TLC-MAMA and 988"
+- **OOS-4** Only US hotlines, no Mexico hotlines — D6:L5 "US first, TLC-MAMA and 988"; kept by D23:L1 "leave them as us numbers"
 - **OOS-5** Full verification of Claude-cited sources comes later — D11:L1 "the full check can come later"
 - **OOS-6** Real authentication, multiple users, and the login, sign-up and consent screens, for the demo — D13:L1 "real auth is not needed"; D15:L1 "remove the auth page entirely"
 - **OOS-7** HIPAA review is revisited later — D17:L4 "lets revisit hippa later"
@@ -521,3 +521,4 @@ _Model-originated. Not requirements. Each needs a person's approval (amend) befo
 | 2026-11-06 | REQ-58, Q-48 resolved; new Q-49, Q-50 | D20:L1, L2 | map in its own bottom tab; mock promotoras, clinics and community centers for a rural town in Mexico; hotline numbers for Mexico asked |
 | 2026-11-06 | REQ-58, Q-49 resolved | D21:L1 | mock town moved to the US; fake promotoras, community centers and clinics |
 | 2026-11-06 | REQ-43, AC-64 | D22:L1 | mood of 1 shows the support screen at once; a 2 needs yesterday also low |
+| 2026-11-06 | OOS-4 | D23:L1 | hotlines stay US numbers; the audience is Spanish-first women in the US |
