@@ -6,7 +6,7 @@ import { getProfile } from "@/lib/db";
 
 export default function Header() {
   return (
-    <header className="relative flex items-center justify-between gap-3 px-6 pb-8 pt-8">
+    <header className="relative flex items-center justify-between gap-3 px-6 pb-8 pt-8 lg:left-1/2 lg:w-[min(72rem,calc(100vw-4rem))] lg:-translate-x-1/2 lg:px-2">
       <Link href="/" className="inline-flex min-h-11 items-center gap-3 font-serif text-3xl tracking-wide text-dawn-500">
         <Sunrise className="h-6 w-9" />
         Alba

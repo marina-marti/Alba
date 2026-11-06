@@ -143,7 +143,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ m
       </div>
 
       {/* calendar: below the cards on mobile, the right column (sticky, full height) on wide screens */}
-      <div className="lg:sticky lg:top-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:p-1 lg:pb-6">
+      <div className="lg:sticky lg:top-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:p-1 lg:pb-32">
         <CalendarPanel mes={mes} dia={dia} />
       </div>
 
