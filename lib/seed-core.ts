@@ -15,6 +15,9 @@ export type SeedUser = {
   checkins: { day: number; bleeding: number; pain: number; mood: number; healing: number; pad_soak: number; note?: string | null }[];
 };
 
+/** Days since delivery on which the starter user did her exercises (REQ-57), so the calendar is not empty. */
+export const STARTER_EXERCISE_DAYS = [4, 6, 7, 9, 10];
+
 /** The starter user is always in week 2 on the day the data is created (owner decision D16:L1). */
 export const STARTER_DAYS_SINCE_BIRTH = 10;
 
@@ -43,6 +46,7 @@ export function ensureSchema(db: Database.Database): void {
       day TEXT, bleeding INTEGER, pain INTEGER, mood INTEGER, healing INTEGER,
       pad_soak INTEGER, note TEXT, created_at TEXT
     );
+    CREATE TABLE IF NOT EXISTS exercise_log (day TEXT PRIMARY KEY, week INTEGER, created_at TEXT);
     CREATE TABLE IF NOT EXISTS sim_circle_posts (
       id INTEGER PRIMARY KEY AUTOINCREMENT, kind TEXT, alias TEXT, text TEXT, created_at TEXT
     );
@@ -65,6 +69,9 @@ function insertSeed(db: Database.Database, seed: SeedUser): void {
     `INSERT OR IGNORE INTO profile (id, name, whatsapp, delivery_date, appointment_date, clinic_phone, consent, created_at)
      VALUES (1, ?, ?, ?, ?, ?, ?, ?)`
   ).run(STARTER_NAME, seed.whatsapp, seed.delivery_date, seed.appointment_date, seed.clinic_phone, seed.consent ? 1 : 0, dayDate(seed, 0));
+  // Exercise days: INSERT OR IGNORE, so rows that already exist are never overwritten.
+  const insEx = db.prepare("INSERT OR IGNORE INTO exercise_log (day, week, created_at) VALUES (?,?,?)");
+  for (const n of STARTER_EXERCISE_DAYS) if (n <= STARTER_DAYS_SINCE_BIRTH) insEx.run(dayDate(seed, n).slice(0, 10), Math.floor(n / 7) + 1, dayDate(seed, n));
   const has = (db.prepare("SELECT COUNT(*) c FROM checkins").get() as { c: number }).c;
   if (has > 0) return; // never touch check-ins that already exist
   const ins = db.prepare(
@@ -85,7 +92,7 @@ export function seedStarterIfEmpty(db: Database.Database, seed: SeedUser): boole
   return true;
 }
 
-export const TABLES = ["checkins", "profile", "sim_circle_posts", "sim_checklist", "sim_confirmations"];
+export const TABLES = ["checkins", "exercise_log", "profile", "sim_circle_posts", "sim_checklist", "sim_confirmations"];
 
 export function wipeAll(db: Database.Database): void {
   db.transaction(() => {

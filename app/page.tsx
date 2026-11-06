@@ -6,6 +6,7 @@ import { daysSince, longDate, weekLine, type Lang } from "@/lib/today";
 import flagsEs from "@/content/redflags.es.json";
 import flagsEn from "@/content/redflags.en.json";
 import Card from "@/components/Card";
+import CalendarPanel from "@/components/CalendarPanel";
 
 export const dynamic = "force-dynamic";
 
@@ -92,7 +93,8 @@ const SECONDARY: { key: Key; href: string }[] = [
   { key: "flags", href: "/banderas" },
 ];
 
-export default async function Home() {
+export default async function Home({ searchParams }: { searchParams: Promise<{ mes?: string | string[]; dia?: string | string[] }> }) {
+  const { mes, dia } = await searchParams;
   const lang = await getLang();
   const t = COPY[lang];
   const flags = lang === "en" ? flagsEn : flagsEs;
@@ -102,7 +104,9 @@ export default async function Home() {
   const items = flags.items.filter((i) => TOP_FLAGS.includes(i.id));
 
   return (
-    <div className="space-y-10">
+    // Home only: widen past the narrow column on large screens (two columns, calendar on the right).
+    <div className="space-y-10 lg:relative lg:left-1/2 lg:grid lg:w-[min(72rem,calc(100vw-4rem))] lg:-translate-x-1/2 lg:grid-cols-[minmax(0,34rem)_minmax(0,1fr)] lg:items-start lg:gap-x-10 lg:gap-y-10 lg:space-y-0">
+      <div className="space-y-10 lg:col-start-1 lg:row-start-1">
       {/* today circle */}
       <section className="relative mx-auto flex aspect-square w-full max-w-[22rem] flex-col items-center justify-center overflow-hidden rounded-full bg-gradient-to-b from-white/90 to-dawn-100/70 px-12 text-center shadow-soft">
         <p className="relative text-sm uppercase tracking-widest text-ink-soft">{t.today}</p>
@@ -136,8 +140,15 @@ export default async function Home() {
         </Link>
       </Card>
 
+      </div>
+
+      {/* calendar: below the cards on mobile, the right column (sticky, full height) on wide screens */}
+      <div className="lg:sticky lg:top-6 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto lg:p-1 lg:pb-6">
+        <CalendarPanel mes={mes} dia={dia} />
+      </div>
+
       {/* options */}
-      <section aria-labelledby="options-title" className="space-y-4">
+      <section aria-labelledby="options-title" className="space-y-4 lg:col-start-1 lg:row-start-2">
         <h2 id="options-title" className="px-1 font-serif text-2xl text-ink">
           {t.optionsTitle}
         </h2>

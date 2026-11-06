@@ -79,3 +79,19 @@ export function addCheckin(c: CheckinInput): number {
 export function listCheckins(): Checkin[] {
   return getDb().prepare("SELECT * FROM checkins ORDER BY day ASC, id ASC").all() as Checkin[];
 }
+
+/** Days she marked her exercises as done (YYYY-MM-DD, oldest first). */
+export function listExerciseDays(): string[] {
+  return (getDb().prepare("SELECT day FROM exercise_log ORDER BY day ASC").all() as { day: string }[]).map((r) => r.day);
+}
+
+/** Marks `day` as exercised, or removes the mark when it already is. Returns true when it is now marked. */
+export function toggleExercise(day: string, week: number): boolean {
+  const db = getDb();
+  return db.transaction(() => {
+    const gone = db.prepare("DELETE FROM exercise_log WHERE day=?").run(day).changes > 0;
+    if (gone) return false;
+    db.prepare("INSERT INTO exercise_log (day, week, created_at) VALUES (?,?,?)").run(day, week, new Date().toISOString());
+    return true;
+  })();
+}
