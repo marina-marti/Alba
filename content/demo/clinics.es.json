@@ -1,8 +1,128 @@
 {
-  "clinics": [
-    { "id": "cl-1", "name": "Clínica Comunitaria Ejemplo", "type": "Clínica comunitaria", "distance_km": 1.5, "hours": "Lunes a viernes, 8:00 a 17:00", "phone": "+1 555 0101", "x": 28, "y": 40, "simulated": true },
-    { "id": "cl-2", "name": "Centro de Salud de la Mujer Ejemplo", "type": "Salud de la mujer", "distance_km": 1.0, "hours": "Lunes a sábado, 9:00 a 18:00", "phone": "+1 555 0102", "x": 66, "y": 48, "simulated": true },
-    { "id": "cl-3", "name": "Casa de Salud Familiar Ejemplo", "type": "Salud familiar", "distance_km": 1.5, "hours": "Martes a sábado, 10:00 a 16:00", "phone": "+1 555 0103", "x": 74, "y": 76, "simulated": true },
-    { "id": "cl-4", "name": "Clínica del Barrio Ejemplo", "type": "Clínica comunitaria y lactancia", "distance_km": 1.7, "hours": "Lunes a viernes, 7:30 a 15:30", "phone": "+1 555 0100", "x": 22, "y": 74, "simulated": true }
-  ]
+ "town": {
+  "name": "Valle Ejemplo",
+  "state": "EE. UU."
+ },
+ "clinics": [
+  {
+   "id": "cl-1",
+   "name": "Promotora Lupita (ejemplo)",
+   "kind": "promotora",
+   "type": "Promotora de salud",
+   "distance_km": 2.1,
+   "getting_there": "A pie, unos 25 minutos desde la plaza",
+   "hours": "Lunes a viernes, 9:00 a 14:00",
+   "cost": "free",
+   "services": "Visitas en casa antes y después del parto, ayuda con la lactancia y acompañamiento en la cuarentena.",
+   "phone": "+1 555 0101",
+   "x": 40,
+   "y": 55,
+   "simulated": true
+  },
+  {
+   "id": "cl-2",
+   "name": "Casa Comunitaria Los Álamos (ejemplo)",
+   "kind": "community",
+   "type": "Casa comunitaria",
+   "distance_km": 3.8,
+   "getting_there": "A pie, unos 20 minutos; o en el transporte compartido de las 8:00",
+   "hours": "Martes y jueves, 10:00 a 13:00",
+   "cost": "free",
+   "services": "Círculo de mujeres, un lugar para descansar y platicar, y ayuda para conseguir un transporte a tu cita.",
+   "phone": "+1 555 0102",
+   "x": 67,
+   "y": 71,
+   "simulated": true
+  },
+  {
+   "id": "cl-3",
+   "name": "Centro de Salud Comunitario Ejemplo",
+   "kind": "clinic",
+   "type": "Centro de salud comunitario (tarifa según tus ingresos)",
+   "distance_km": 4.0,
+   "getting_there": "Transporte compartido a las 7:00 y 12:00 desde la plaza",
+   "hours": "Lunes a viernes, 8:00 a 15:00",
+   "cost": "low",
+   "services": "Revisiones antes y después del parto, ayuda con la lactancia y orientación sobre la cuarentena.",
+   "phone": "+1 555 0103",
+   "x": 66,
+   "y": 44,
+   "simulated": true
+  },
+  {
+   "id": "cl-4",
+   "name": "Promotora Rosa (ejemplo)",
+   "kind": "promotora",
+   "type": "Promotora de salud",
+   "distance_km": 4.3,
+   "getting_there": "A pie, unos 50 minutos; o en bicicleta, 20 minutos",
+   "hours": "Lunes, miércoles y viernes, 8:00 a 13:00",
+   "cost": "free",
+   "services": "Revisiones en casa después del parto, ayuda con la lactancia y recordatorios para tu cita.",
+   "phone": "+1 555 0104",
+   "x": 30,
+   "y": 70,
+   "simulated": true
+  },
+  {
+   "id": "cl-5",
+   "name": "Salón Parroquial (ejemplo)",
+   "kind": "community",
+   "type": "Salón parroquial, círculo de mujeres",
+   "distance_km": 6.0,
+   "getting_there": "Transporte compartido a las 9:00 los sábados",
+   "hours": "Sábados, 10:00 a 12:30",
+   "cost": "free",
+   "services": "Círculo de mujeres con té y pan, apoyo para descansar y compañía durante la cuarentena.",
+   "phone": "+1 555 0105",
+   "x": 24,
+   "y": 40,
+   "simulated": true
+  },
+  {
+   "id": "cl-6",
+   "name": "Clínica móvil El Camino (ejemplo)",
+   "kind": "clinic",
+   "type": "Clínica móvil, visita los miércoles",
+   "distance_km": 7.6,
+   "getting_there": "Pasa por la plaza los miércoles, de 9:00 a 12:00",
+   "hours": "Miércoles, 9:00 a 12:00",
+   "cost": "low",
+   "services": "Revisiones después del parto, ayuda con la lactancia y transporte a tu cita de seguimiento.",
+   "phone": "+1 555 0106",
+   "x": 84,
+   "y": 82,
+   "simulated": true
+  },
+  {
+   "id": "cl-7",
+   "name": "Promotora Elena (ejemplo)",
+   "kind": "promotora",
+   "type": "Promotora de salud",
+   "distance_km": 8.8,
+   "getting_there": "Transporte compartido a las 7:30; baja en el crucero",
+   "hours": "Martes y jueves, 9:00 a 15:00",
+   "cost": "free",
+   "services": "Visitas en casa, ayuda con la lactancia, apoyo para descansar y transporte a la clínica.",
+   "phone": "+1 555 0107",
+   "x": 86,
+   "y": 26,
+   "simulated": true
+  },
+  {
+   "id": "cl-8",
+   "name": "Clínica de las Lomas Ejemplo",
+   "kind": "clinic",
+   "type": "Clínica de salud familiar",
+   "distance_km": 10.1,
+   "getting_there": "Transporte compartido a las 6:30; 1 hora y media de camino",
+   "hours": "Lunes a sábado, 8:00 a 16:00",
+   "cost": "low",
+   "services": "Revisiones antes y después del parto, ayuda con la lactancia y orientación para tu cita a las seis semanas.",
+   "phone": "+1 555 0108",
+   "x": 12,
+   "y": 16,
+   "simulated": true
+  }
+ ]
 }
