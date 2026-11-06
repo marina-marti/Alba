@@ -1,8 +1,8 @@
 # Spec — Alba, a postpartum companion
 
 **Status:** Draft — TBD remain (22 open questions, including Q-31 to confirm; all 4 contradictions resolved) · **Shape:** full — more than 15 requirements, WhatsApp integration, health data
-**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D21 owner answers (3,272 words) · **Spec:** 6656 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
-**Length:** 6656 vs 3,272 — dense input: nearly every line carries a need (58 REQ, 50 questions, 4 contradictions); none dropped to meet the count
+**Built:** 2026-11-06 · **Input:** D1 pitch, D2 content pack, D3 owner message, D4–D22 owner answers (3,312 words) · **Spec:** 6692 words excl. citations · **Speaker:** product owner (D3:L1 adopts D1, D2)
+**Length:** 6692 vs 3,312 — dense input: nearly every line carries a need (58 REQ, 50 questions, 4 contradictions); none dropped to meet the count
 **Counts:** 58 REQ (3 removed) · 103 AC · 4 contradictions (4 resolved) · 50 questions (28 resolved) · 0 assumptions · 6 proposed (3 approved) · 7 out of scope
 
 ## Problem
@@ -264,8 +264,8 @@ Alba shall let a mom send the Week 1 "ask your family" phrases to family by What
 
 ### REQ-43 — Mood-dip response
 When a mood dip is detected, Alba shall respond with support and the TLC-MAMA hotline.
-- Source: D1:L21 — "mood dip — the app responds with support and the TLC-MAMA hotline"; D13:L2 — "show the hotline"; D10:L3 — "mood scored 1 or 2 on two check-ins in a row, or any note mentioning self-harm"
-- AC-64 Given a mood dip, When detected, Then a support message and the TLC-MAMA hotline are shown; a mood dip is mood scored 1 or 2 on two check-ins in a row, or any note mentioning self-harm (D10:L3).
+- Source: D1:L21 — "mood dip — the app responds with support and the TLC-MAMA hotline"; D22:L1 — "a 1 shows the support screen and TLC-MAMA hotline right away every time she saves"; D13:L2 — "show the hotline"; D10:L3 — "mood scored 1 or 2 on two check-ins in a row, or any note mentioning self-harm"
+- AC-64 Given a mood dip, When detected, Then a support message and the TLC-MAMA hotline are shown; a mood dip is a mood of 1, a mood of 2 when the previous check-in was also 1 or 2, or any note mentioning self-harm (D22:L1; supersedes the two-in-a-row rule of D10:L3).
 
 ### REQ-44 — Shared-phone privacy
 Alba shall not reveal on a shared phone what it is.
@@ -520,3 +520,4 @@ _Model-originated. Not requirements. Each needs a person's approval (amend) befo
 | 2026-11-06 | REQ-6, REQ-46, C-4 note, REQ-58, new Q-48 | D19:L1, L2 | the one-page summary is built locally and nothing is sent to Claude; low-cost clinics asked for on the map |
 | 2026-11-06 | REQ-58, Q-48 resolved; new Q-49, Q-50 | D20:L1, L2 | map in its own bottom tab; mock promotoras, clinics and community centers for a rural town in Mexico; hotline numbers for Mexico asked |
 | 2026-11-06 | REQ-58, Q-49 resolved | D21:L1 | mock town moved to the US; fake promotoras, community centers and clinics |
+| 2026-11-06 | REQ-43, AC-64 | D22:L1 | mood of 1 shows the support screen at once; a 2 needs yesterday also low |

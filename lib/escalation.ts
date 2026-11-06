@@ -36,10 +36,12 @@ const low = (m: number | null | undefined) => m === 1 || m === 2;
 /**
  * history = earlier check-ins (any order). If it also contains the latest
  * (same id), that row is ignored. Priority: selfharm > pad > mood.
+ * Mood: a 1 escalates at once; a 2 escalates when the previous check-in was also 1 or 2.
  */
 export function escalationFor(latest: CheckinInput, history: Checkin[]): Escalation | null {
   if (mentionsSelfHarm(latest.note)) return "selfharm";
   if (latest.pad_soak === 1) return "pad";
+  if (latest.mood === 1) return "mood"; // a 1 shows the support screen at once (D22:L1)
   if (low(latest.mood)) {
     const latestId = (latest as Partial<Checkin>).id;
     const prior = history

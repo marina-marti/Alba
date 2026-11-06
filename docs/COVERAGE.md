@@ -159,6 +159,7 @@ Every need-bearing unit of the input, with exactly one disposition. Speaker is t
 | D20:L1 | "add the map to a seperate tab at the bottom" | answer | REQ-58 |
 | D20:L2 | "promotoras or clinics or community centers, lets mock this data for a location in a rural town in mexico" | answer | Q-49 |
 | D21:L1 | "move it to US thats fine but its mocked anyways, mark some fake promotoras or community centers" | answer | REQ-58 |
+| D22:L1 | "mood 1 shows it at once" | answer | REQ-43 |
 
 Not need-bearing: D1:L3, L5, L7, L14, L18 (header), L20, L22, L24 (assistant offer); D2:L2, L11, L20 — headings, rehearsal and meta.
 
