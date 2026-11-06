@@ -1,0 +1,20 @@
+// Usage: node scripts/test-semana-1.mjs [baseUrl]
+import fs from "node:fs";
+const base = process.argv[2] ?? "http://localhost:3005";
+const data = JSON.parse(fs.readFileSync("content/week1.es.json", "utf8"));
+const html = await (await fetch(`${base}/semana-1`)).text();
+const dec = (s) => s.replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&amp;/g, "&");
+const text = dec(html);
+let fail = 0;
+const check = (ok, m) => { console.log(ok ? "ok  " : "FAIL", m); if (!ok) fail++; };
+check(data.cards.length === 6, "6 cards in JSON");
+for (const c of data.cards) check(text.includes(c.title), `title: ${c.title}`);
+check(text.includes("3–4 días"), "3–4 días");
+check(text.includes("empapas una toalla cada hora"), "pad every hour");
+check(text.includes("pelota de golf"), "golf ball");
+check(text.includes("hasta 6 semanas"), "up to 6 weeks");
+check(text.includes("14 días"), "14 days");
+check(text.includes("tradicional, pregunta a tu promotora"), "tea label");
+check(text.includes('href="/pregunta"') && text.includes('href="/banderas"'), "links");
+check(!/postpartum|medical/i.test(html), "no postpartum/medical");
+process.exit(fail ? 1 : 0);
