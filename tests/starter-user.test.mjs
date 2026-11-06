@@ -48,3 +48,28 @@ test("reseed (npm run seed) is repeatable and ends with one Marina", () => {
   assert.equal(n(db, "profile"), 1);
   assert.equal(n(db, "checkins"), seed.checkins.length);
 });
+
+test("starter exercise days (4, 6, 7, 9, 10 since delivery) are seeded once and never overwritten", () => {
+  const db = new Database(":memory:");
+  ensureSchema(db);
+  seedStarterIfEmpty(db, seed);
+  seedStarterIfEmpty(db, seed);
+  ensureSchema(db);
+  const days = db.prepare("SELECT day FROM exercise_log ORDER BY day").all().map((r) => r.day);
+  const at = (k) => { const d = new Date(`${seed.delivery_date}T00:00:00Z`); d.setUTCDate(d.getUTCDate() + k); return d.toISOString().slice(0, 10); };
+  assert.deepEqual(days, [4, 6, 7, 9, 10].map(at));
+  // an existing row survives a re-seed of the same days (INSERT OR IGNORE)
+  db.prepare("UPDATE exercise_log SET week=99 WHERE day=?").run(at(4));
+  reseedKeep(db);
+  assert.equal(db.prepare("SELECT week FROM exercise_log WHERE day=?").get(at(4)).week, 99);
+  // wipe clears it (seed --reset)
+  reseed(db, seed);
+  assert.equal(n(db, "exercise_log"), 5);
+  db.exec("DELETE FROM exercise_log");
+  assert.equal(n(db, "exercise_log"), 0);
+});
+
+function reseedKeep(db) {
+  // profile exists, so first-run seeding must be a no-op and keep her rows
+  assert.equal(seedStarterIfEmpty(db, seed), false);
+}

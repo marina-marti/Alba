@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { currentWeek, workoutFor } from "@/lib/workouts";
-import { refreshWorkoutAction } from "./actions";
+import { refreshWorkoutAction, toggleExerciseTodayAction } from "./actions";
+import { listExerciseDays } from "@/lib/db";
+import { isoLocal } from "@/lib/calendar";
 import { getI18n } from "@/lib/i18n/server";
 
 export const dynamic = "force-dynamic";
@@ -34,10 +36,11 @@ const COPY = {
 } as const;
 
 export default async function Page() {
-  const { lang } = await getI18n();
+  const { lang, t: t2 } = await getI18n();
   const t = COPY[lang];
   const { week, needsProfile } = currentWeek();
   const r = await workoutFor(week, lang);
+  const doneToday = listExerciseDays().includes(isoLocal(new Date()));
 
   return (
     <div className="space-y-8">
@@ -52,6 +55,12 @@ export default async function Page() {
           </Link>
         </div>
       )}
+      <form action={toggleExerciseTodayAction} className="space-y-1">
+        <button type="submit" aria-pressed={doneToday} className={`btn ${doneToday ? "btn-sage" : "btn-quiet"}`}>
+          {doneToday ? t2("cal.undo") : t2("cal.done")}
+        </button>
+        {!doneToday && <p className="text-sm text-ink-soft">{t2("cal.doneHint")}</p>}
+      </form>
       {r.ok ? (
         <>
           <section className="card space-y-4" aria-label={t.steps}>
