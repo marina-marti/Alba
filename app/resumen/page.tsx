@@ -1,5 +1,6 @@
 import { getProfile, listCheckins } from "@/lib/db";
 import { buildSummary, type SummaryResult } from "@/lib/summary";
+import { makeNarrate } from "@/lib/claude-summary";
 import PrintButton from "./PrintButton";
 
 export const dynamic = "force-dynamic";
@@ -20,6 +21,13 @@ const printCss = `
   #resumen { page-break-after: avoid; break-after: avoid; }
 }`;
 
+function withDeadline<T>(p: Promise<T>, ms: number): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error("timeout")), ms);
+    p.then((v) => { clearTimeout(t); resolve(v); }, (e) => { clearTimeout(t); reject(e); });
+  });
+}
+
 const fmt = (iso: string | null) => {
   if (!iso) return "—";
   const d = new Date(iso + (iso.length === 10 ? "T12:00:00" : ""));
@@ -30,8 +38,22 @@ export default async function Page() {
   const profile = getProfile();
   let summary: SummaryResult | null = null;
   let failed = false;
+  let narrateFailed = false;
   try {
-    summary = await buildSummary(listCheckins(), profile);
+    const checkins = listCheckins();
+    summary = await buildSummary(checkins, profile);
+    if (process.env.CLAUDE_API_KEY && summary.rows.length > 0) {
+      // AC-78: only check-ins and notes go to Claude. AC-81: on failure show the table + a line.
+      try {
+        const narrative = await withDeadline(buildSummary(checkins, profile, { narrate: makeNarrate() }), 20000);
+        summary = narrative;
+        if (!narrative.narrative) narrateFailed = true;
+      } catch {
+        narrateFailed = true;
+      }
+    } else if (summary.rows.length > 0) {
+      narrateFailed = true;
+    }
   } catch {
     failed = true; // AC-81: error message, no table
   }
@@ -55,6 +77,11 @@ export default async function Page() {
       ) : summary ? (
         <>
           {summary.narrative && <p className="mt-6 text-base print:mt-3 print:text-sm">{summary.narrative}</p>}
+          {narrateFailed && !summary.narrative && (
+            <p role="alert" className="no-print mt-6 rounded-3xl bg-dawn-100 p-5">
+              No pudimos preparar el texto del resumen. Aquí tienes la tabla.
+            </p>
+          )}
           <div className="mt-6 overflow-x-auto rounded-3xl bg-white/70 p-3 shadow-soft print:rounded-none print:bg-transparent print:p-0 print:shadow-none">
             <table className="w-full text-left text-sm print:text-xs [&_td]:px-2 [&_td]:py-2 [&_th]:px-2 [&_th]:py-2">
               <thead>

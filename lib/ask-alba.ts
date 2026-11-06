@@ -119,6 +119,8 @@ function cleanSource(s: string): string {
 
 function withDisclaimer(text: string, disclaimer: string): string {
   const t = text.trim();
+  // English answers (T-007) already end with the English disclaimer.
+  if (t.endsWith("This is not health advice — ask your doctor or promotora.")) return t;
   return t.endsWith(disclaimer) ? t : `${t} ${disclaimer}`;
 }
 
