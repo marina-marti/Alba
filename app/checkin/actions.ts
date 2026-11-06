@@ -1,6 +1,7 @@
 "use server";
 import { redirect } from "next/navigation";
-import { addCheckin, type Checkin } from "@/lib/db";
+import { addCheckin, listCheckins, type Checkin } from "@/lib/db";
+import { escalationFor } from "@/lib/escalation";
 
 export type SavedCheckin = Omit<Checkin, "created_at"> & { note: string | null };
 
@@ -32,8 +33,13 @@ export async function saveCheckinAction(formData: FormData): Promise<SavedChecki
   return { id, ...input };
 }
 
-/** Form action: save, then go to the confirmation page. */
+/** Form action: save, then go to the urgent screen if a red flag fires, else the confirmation page. */
 export async function submitCheckin(formData: FormData): Promise<void> {
-  await saveCheckinAction(formData);
+  const saved = await saveCheckinAction(formData);
+  const history = listCheckins().filter((c) => c.id !== saved.id);
+  const esc = escalationFor(saved, history);
+  if (esc === "pad") redirect("/alerta");
+  if (esc === "mood") redirect("/alerta?motivo=animo");
+  if (esc === "selfharm") redirect("/alerta?motivo=selfharm");
   redirect("/checkin/gracias");
 }
