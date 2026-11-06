@@ -108,11 +108,14 @@ export function finalize(parsed: { answer: string; sources: string[] }, lang: La
   const names = parsed.sources.map((s) => (isKnownSource(s, known) ? s : `${s.replace(/\s*\((sin verificar|unverified)\)\s*$/i, "")}${flag}`));
   // The model sometimes writes its own source line; ours replaces it so flags are always applied.
   let text = parsed.answer.replace(/\s*(Fuentes?|Sources?)\s*:[\s\S]*$/i, "").trim();
+  // The model may write its own disclaimer sentence ("This is not medical advice."): drop it so ours is the only one.
+  text = text.replace(/(?:^|\s)[^.!?]*\b(?:not (?:medical|health) advice|no es (?:un )?consejo m[eé]dico)[^.!?]*[.!?]/gi, " ").replace(/\s{2,}/g, " ").trim();
   if (names.length) text += ` ${label}${names.length > 1 ? "s" : ""}: ${names.join("; ")}.`;
   else text += ` ${label}: Claude${flag}.`;
   if (!text.includes(disclaimer)) text += ` ${disclaimer}`;
   const after = lang === "en" ? "after birth" : "después del parto";
   text = text.replace(/postpartum|posparto/gi, after);
+  if (lang === "en") text = text.replace(/\bmedical\b/gi, "health");
   return text;
 }
 
