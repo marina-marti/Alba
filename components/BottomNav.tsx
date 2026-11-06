@@ -14,7 +14,7 @@ const items: { href: string; label: Key }[] = [
 export default function BottomNav() {
   const path = usePathname();
   const { t } = useI18n();
-  const idx = items.findIndex((i) => i.href === path);
+  const idx = items.findIndex((i) => i.href === path || (i.href !== "/" && path.startsWith(i.href + "/")));
   return (
     <nav
       aria-label={t("nav.label")}

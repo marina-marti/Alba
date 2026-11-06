@@ -4,7 +4,7 @@ import path from "node:path";
 import type { Lang } from "@/lib/i18n/lang";
 import type { WeekCard } from "@/app/semana-1/WeekCards";
 import { loadGuardrails, loadSeed } from "@/lib/ask-alba";
-import type { CirclePost, Tip, TimelineEvent, ChecklistItem } from "@/lib/simulated";
+import type { CirclePost, Tip, TimelineEvent, ChecklistItem, RoomContent } from "@/lib/simulated";
 
 export { loadGuardrails };
 
@@ -28,6 +28,9 @@ export function loadSeedQa(lang: Lang) {
 }
 export function loadDemoCircle(lang: Lang) {
   return readJson<{ posts: CirclePost[]; tips: Tip[] }>("demo", `circle.${lang}.json`);
+}
+export function loadCircleRooms(lang: Lang) {
+  return readJson<{ simulated: true; rooms: RoomContent[] }>("demo", `circle-rooms.${lang}.json`).rooms;
 }
 export function loadDemoTimeline(lang: Lang) {
   return readJson<{ events: TimelineEvent[] }>("demo", `timeline.${lang}.json`);

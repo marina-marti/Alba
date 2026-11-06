@@ -1,0 +1,586 @@
+{
+ "simulated": true,
+ "rooms": [
+  {
+   "id": "sleep",
+   "slug": "no-puedo-dormir",
+   "name": "No puedo dormir",
+   "description": "Para las noches largas y despiertas.",
+   "icon": "moon",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Luna cálida",
+     "text": "Son las 3 de la mañana y no puedo dormir aunque el bebé sí. ¿A alguien más le pasa? Me siento muy sola.",
+     "minutesAgo": 420,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Río suave",
+     "text": "Aquí contigo, mamá. Yo también estoy despierta, con la luz bajita.",
+     "minutesAgo": 405,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hola, mamá. Aquí estoy contigo. A muchas nos pasa. Si puedes, descansa cuando el bebé descanse, y pide a alguien que te acompañe un ratito. Lo estás haciendo bien.",
+     "minutesAgo": 380,
+     "kind": "audio",
+     "duration": "0:30",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Sol de Mayo",
+     "text": "Hoy me senté a tomar un vaso de agua sin prisa. Pequeño, pero me hizo bien.",
+     "minutesAgo": 300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Brisa serena",
+     "text": "¿Cómo le hacen para dormir cuando el bebé duerme? A mí me da culpa dejar los trastes sin lavar.",
+     "minutesAgo": 180,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Los trastes pueden esperar, mamá. Descansar también es cuidar al bebé. Y si puedes, pide a alguien que te acompañe un ratito.",
+     "minutesAgo": 150,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Flor tranquila",
+     "text": "Gracias. Hoy le pedí a mi hermana que se quedara una hora y pude cerrar los ojos.",
+     "minutesAgo": 60,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Qué bien, mamá. Pedir ayuda cuenta. Si el cansancio no se te quita o te preocupa mucho, pregúntalo a tu médico.",
+     "minutesAgo": 45,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "baby",
+   "slug": "cuidar-al-bebe",
+   "name": "Cuidar al bebé",
+   "description": "Cargar, bañar y calmar, paso a paso.",
+   "icon": "baby",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Nube cálida",
+     "text": "Me da miedo bañar al bebé. Es tan pequeñito que siento que se me resbala.",
+     "minutesAgo": 1500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Es normal sentir nervios, mamá. Ve con calma, con el cuarto tibio y todo a la mano. Si quieres, pide a alguien que te acompañe la primera vez, o pregunta a tu promotora o a tu clínica.",
+     "minutesAgo": 1460,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Colibrí del Mar",
+     "text": "¿Cómo cargan al bebé cuando llora mucho? Yo ya no sé qué hacer.",
+     "minutesAgo": 900,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hola, mamá. Cuando llora mucho, respira hondo tú también. Cárgalo pegadito a tu pecho, háblale bajito y camina despacio. Si no se calma o algo te preocupa, llama a su pediatra o a tu clínica.",
+     "minutesAgo": 880,
+     "kind": "audio",
+     "duration": "0:25",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Lluvia suave",
+     "text": "A mí me ayudó cantarle bajito mientras lo mecía. Se me olvidaron las canciones, así que le canto las de mi mamá.",
+     "minutesAgo": 600,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Estrella luminosa",
+     "text": "Hoy cambié el pañal yo sola y no lloró ninguno de los dos.",
+     "minutesAgo": 240,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "¡Qué lindo logro, mamá! Cada día se hace más fácil. Y recuerda: cuidarte a ti también es cuidar al bebé.",
+     "minutesAgo": 200,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "unsure",
+   "slug": "no-estoy-segura",
+   "name": "No estoy segura",
+   "description": "Para cuando no sabes a quién preguntar.",
+   "icon": "question",
+   "banner": {
+    "text": "Si no estás segura de algo, pregunta a una promotora o llama a tu médico. Aquí nadie te juzga."
+   },
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Río del Valle",
+     "text": "No sé si lo que siento es normal. Todo es nuevo y no sé a quién preguntarle.",
+     "minutesAgo": 2000,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Gracias por escribir, mamá. Aquí puedes preguntar lo que sea. Si algo te preocupa de tu cuerpo o del bebé, lo más seguro es preguntar a tu médico o llamar a tu clínica.",
+     "minutesAgo": 1980,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Luna serena",
+     "text": "¿Es normal que me den ganas de llorar sin razón?",
+     "minutesAgo": 900,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Gracias por contarlo, mamá. No puedo decirte si es normal o no. Lo importante es que se lo cuentes hoy a tu médico, para que te escuche y te acompañe. Si piensas en hacerte daño, llama a tu médico hoy mismo.",
+     "minutesAgo": 880,
+     "kind": "audio",
+     "duration": "0:28",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Brisa del Mar",
+     "text": "No sé si el bebé come lo suficiente. ¿Cómo lo sé?",
+     "minutesAgo": 300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Es una buena pregunta para hacer hoy a tu médico o a la clínica del bebé; ellos pueden revisarlo. Mientras, apunta cuántas veces come para llevarlo a la cita.",
+     "minutesAgo": 270,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Sol cálida",
+     "text": "Gracias, mamá. Ya apunté mis dudas en el celular para la cita.",
+     "minutesAgo": 100,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Muy buena idea. Y si algo cambia antes de la cita o te asusta, no esperes: llama a tu médico.",
+     "minutesAgo": 90,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "discharge",
+   "slug": "flujo",
+   "name": "Flujo",
+   "description": "Preguntas sobre el flujo después del parto.",
+   "icon": "drop",
+   "banner": {
+    "text": "Llama hoy a tu médico, no esperes, si empapas una toalla cada hora, tienes coágulos del tamaño de una pelota de golf o más grandes, el flujo huele mal o tienes fiebre de 100.4°F (38°C) o más.",
+    "link": {
+     "href": "/banderas",
+     "label": "Ver todas las banderas rojas"
+    }
+   },
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Flor del Valle",
+     "text": "¿Cuánto tiempo dura el flujo después del parto? Ya van varios días y me preocupa.",
+     "minutesAgo": 1300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Gracias por preguntar, mamá. Cada cuerpo es distinto y yo no puedo decirte qué es normal para ti. Pregúntale a tu médico hoy o llama a tu clínica; ellos saben qué debes vigilar.",
+     "minutesAgo": 1280,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Luna de Abril",
+     "text": "Hoy noté un olor fuerte en el flujo. ¿Qué hago?",
+     "minutesAgo": 800,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hola, mamá. Si el flujo huele mal, llama a tu médico hoy, no esperes a mañana. Aunque no tengas otros síntomas, es mejor que te revisen. Aquí estamos para acompañarte.",
+     "minutesAgo": 770,
+     "kind": "audio",
+     "duration": "0:20",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Estrella suave",
+     "text": "Me asusté: salió un coágulo grande y estoy empapando una toalla cada hora.",
+     "minutesAgo": 500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Mamá, esto no puede esperar. Llama a tu médico ahora mismo. Si no contesta o te sientes muy mal, pide que alguien te lleve a urgencias. Después cuéntanos cómo estás.",
+     "minutesAgo": 495,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Estrella suave",
+     "text": "Ya hablé con mi médico y me están esperando. Gracias.",
+     "minutesAgo": 450,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Qué bien que llamaste, mamá. Estamos pensando en ti.",
+     "minutesAgo": 440,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "feeding",
+   "slug": "alimentacion",
+   "name": "Alimentación",
+   "description": "Dar pecho, biberón y todo lo que viene con comer.",
+   "icon": "bottle",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Colibrí cálida",
+     "text": "Mi bebé quiere comer cada rato y estoy agotada. ¿A ustedes les pasa?",
+     "minutesAgo": 1000,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Nube suave",
+     "text": "A mí también. Me ayuda tener agua y algo de comer a la mano antes de sentarme.",
+     "minutesAgo": 960,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Gracias por compartir, mamá. Ponte cómoda, con un cojín y un vaso de agua cerca. Si tienes dudas sobre cómo come tu bebé, pregunta a tu promotora o a la clínica.",
+     "minutesAgo": 940,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Brisa luminosa",
+     "text": "Me duele mucho el pecho al dar de comer, como si ardiera.",
+     "minutesAgo": 500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hola, mamá. Si te duele mucho, no lo aguantes en silencio. Pregúntale hoy a tu médico o a tu clínica. Y si el dolor viene con fiebre, o el pecho se pone rojo y caliente, llama a tu médico ahora.",
+     "minutesAgo": 480,
+     "kind": "audio",
+     "duration": "0:25",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Lluvia del Mar",
+     "text": "Hoy el bebé comió tranquilo por primera vez. Me quedé mirándolo un buen rato.",
+     "minutesAgo": 200,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Qué momento tan bonito, mamá. Guárdalo, que cuenta mucho.",
+     "minutesAgo": 190,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "low",
+   "slug": "me-siento-decaida",
+   "name": "Me siento decaída",
+   "description": "Un lugar suave para los días tristes.",
+   "icon": "heart",
+   "banner": {
+    "text": "Si te sientes muy mal o tienes pensamientos de hacerte daño a ti o al bebé, llama a la línea 1-833-TLC-MAMA (1-833-852-6262), gratis, confidencial, 24/7, en español e inglés. También puedes llamar a tu médico."
+   },
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Luna valiente",
+     "text": "Estoy muy triste hoy y no sé por qué. Debería estar feliz.",
+     "minutesAgo": 1700,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Gracias por decirlo, mamá. Sentirte así no te hace mala mamá. Cuéntaselo hoy a tu médico, para que te escuche y te acompañe. No tienes que cargar con esto sola.",
+     "minutesAgo": 1680,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Sol del Valle",
+     "text": "A mí me pasó lo mismo. Hablar con mi hermana me ayudó a sentirme menos sola.",
+     "minutesAgo": 1000,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hola, mamá. Aquí estamos. Si la tristeza te dura varios días o sientes que no puedes con todo, pide ayuda a tu médico hoy. Y si piensas en hacerte daño, llama ya a la línea que ves arriba o a tu médico.",
+     "minutesAgo": 960,
+     "kind": "audio",
+     "duration": "0:25",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Flor serena",
+     "text": "Hoy salí a caminar cinco minutos con el bebé. Fue poquito, pero respiré.",
+     "minutesAgo": 400,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Cinco minutos cuentan, mamá. Qué bueno que saliste. Si los días tristes siguen, díselo a tu médico.",
+     "minutesAgo": 390,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Lluvia cálida",
+     "text": "¿Se me va a pasar? Me da miedo seguir así.",
+     "minutesAgo": 90,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Esa pregunta es para tu médico, mamá, y es mejor hacerla hoy. Llámalo o pide a alguien de confianza que te acompañe a la clínica. Aquí te escuchamos.",
+     "minutesAgo": 80,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "recovery",
+   "slug": "recuperacion-y-movimiento",
+   "name": "Recuperación y movimiento",
+   "description": "Volver a moverte, a tu ritmo.",
+   "icon": "walk",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Brisa tranquila",
+     "text": "¿Cuándo puedo volver a hacer ejercicio? Extraño moverme.",
+     "minutesAgo": 1200,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Te entiendo, mamá. Cada cuerpo es distinto, así que pregunta a tu médico cuándo puedes empezar. Mientras, si tienes ganas y no te duele, caminar despacito dentro de casa puede sentirse bien.",
+     "minutesAgo": 1180,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Sol serena",
+     "text": "Me duele la herida cuando me levanto. ¿Es normal?",
+     "minutesAgo": 700,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hola, mamá. No puedo decirte si es normal. Pregúntale a tu médico hoy, y llámalo ahora si la herida se ve roja, caliente o con pus, o si tienes fiebre. Mientras, levántate despacio y pide ayuda.",
+     "minutesAgo": 680,
+     "kind": "audio",
+     "duration": "0:20",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Luna del Mar",
+     "text": "Hoy hice unas respiraciones suaves y me sentí más tranquila.",
+     "minutesAgo": 300,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Colibrí serena",
+     "text": "Yo camino por el pasillo cada tarde. Poquito, pero ya es mi ratito.",
+     "minutesAgo": 120,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Qué bonito ritual, mamá. Ve a tu ritmo y descansa cuando el cuerpo te lo pida.",
+     "minutesAgo": 100,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  },
+  {
+   "id": "help",
+   "slug": "pedir-ayuda",
+   "name": "Pedir ayuda",
+   "description": "Cómo pedir una mano, sin culpa.",
+   "icon": "hand",
+   "simulated": true,
+   "messages": [
+    {
+     "who": "mom",
+     "alias": "Estrella cálida",
+     "text": "Me cuesta pedir ayuda. Siento que debería poder sola.",
+     "minutesAgo": 2500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Pedir ayuda no es una falla, mamá: es cuidar de ti y del bebé. Empieza con algo pequeño, como pedir que laven los trastes o que carguen al bebé un rato.",
+     "minutesAgo": 2480,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Nube del Valle",
+     "text": "¿Cómo le digo a mi pareja que necesito más ayuda sin pelear?",
+     "minutesAgo": 1500,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "Hola, mamá. Prueba decirle algo concreto y tranquilo, como: «Necesito dos horas para descansar, ¿me ayudas esta tarde?». Pedir algo claro suele ser más fácil que explicarlo todo. Y aquí tienes a tu promotora cuando quieras hablarlo.",
+     "minutesAgo": 1480,
+     "kind": "audio",
+     "duration": "0:30",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Flor de Mayo",
+     "text": "Hoy le pedí a mi vecina que cuidara a mis niños para ir a mi cita. Dijo que sí.",
+     "minutesAgo": 700,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "promotora",
+     "alias": "Promotora",
+     "text": "¡Qué bien, mamá! Pedir ayuda sale bien más veces de las que pensamos.",
+     "minutesAgo": 690,
+     "kind": "text",
+     "simulated": true
+    },
+    {
+     "who": "mom",
+     "alias": "Sol suave",
+     "text": "Yo tampoco sabía cómo. Esta semana pedí que me llevaran la comida un día y me ayudó mucho.",
+     "minutesAgo": 200,
+     "kind": "text",
+     "simulated": true
+    }
+   ]
+  }
+ ]
+}

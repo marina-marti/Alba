@@ -46,6 +46,9 @@ export function ensureSchema(db: Database.Database): void {
     CREATE TABLE IF NOT EXISTS sim_circle_posts (
       id INTEGER PRIMARY KEY AUTOINCREMENT, kind TEXT, alias TEXT, text TEXT, created_at TEXT
     );
+    CREATE TABLE IF NOT EXISTS sim_room_messages (
+      id INTEGER PRIMARY KEY AUTOINCREMENT, room TEXT, alias TEXT, text TEXT, created_at TEXT
+    );
     CREATE TABLE IF NOT EXISTS sim_checklist (item_id TEXT PRIMARY KEY, done INTEGER DEFAULT 0, updated_at TEXT);
     CREATE TABLE IF NOT EXISTS sim_confirmations (kind TEXT PRIMARY KEY, confirmed_at TEXT);
   `);
@@ -85,12 +88,12 @@ export function seedStarterIfEmpty(db: Database.Database, seed: SeedUser): boole
   return true;
 }
 
-export const TABLES = ["checkins", "profile", "sim_circle_posts", "sim_checklist", "sim_confirmations"];
+export const TABLES = ["checkins", "profile", "sim_circle_posts", "sim_room_messages", "sim_checklist", "sim_confirmations"];
 
 export function wipeAll(db: Database.Database): void {
   db.transaction(() => {
     for (const t of TABLES) db.prepare(`DELETE FROM ${t}`).run();
-    db.prepare("DELETE FROM sqlite_sequence WHERE name IN ('checkins','sim_circle_posts')").run();
+    db.prepare("DELETE FROM sqlite_sequence WHERE name IN ('checkins','sim_circle_posts','sim_room_messages')").run();
   })();
 }
 
