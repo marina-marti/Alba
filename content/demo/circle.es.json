@@ -1,0 +1,13 @@
+{
+  "simulated": true,
+  "posts": [
+    {"id":"p1","type":"question","time":"03:04","anonymous":true,"alias":"Luna cálida","text":"Son las 3 de la mañana y no puedo dormir aunque el bebé sí. ¿A alguien más le pasa? Me siento muy sola.","simulated":true,"spec":["AC-19","AC-26","AC-28"]},
+    {"id":"p2","type":"promotora_audio_reply","reply_to":"p1","author":"Promotora del Círculo","transcript":"Hola, mamá. Aquí estoy contigo. A muchas nos pasa. Si puedes, descansa cuando el bebé descanse, y pide a alguien que te acompañe un ratito. Lo estás haciendo bien.","duration":"0:30","audio":null,"simulated":true,"spec":["AC-27","REQ-14","AC-23"]},
+    {"id":"p3","type":"quick_win","anonymous":false,"alias":"Sol de Mayo","text":"Hoy me tomé un té caliente sentada, sin prisa. Pequeño, pero me hizo bien.","simulated":true,"spec":["AC-19","AC-26"]}
+  ],
+  "tips": [
+    {"id":"t1","topic":"sanar","title":"Ve despacio","text":"Tu cuerpo hizo algo enorme. Descansa cuando puedas y acepta ayuda sin culpa.","simulated":true,"spec":["REQ-14","AC-23"]},
+    {"id":"t2","topic":"lactancia","title":"Ponte cómoda","text":"Busca un lugar tranquilo, con un cojín y un vaso de agua cerca. Pregunta a tu promotora o a tu clínica si tienes dudas.","simulated":true,"spec":["REQ-14","AC-23"]},
+    {"id":"t3","topic":"cuidado de niños","title":"Pide una mano","text":"Habla con una amiga, familiar o vecina de confianza para que cuide a tus hijos mientras vas a tu cita.","simulated":true,"spec":["REQ-14","AC-23"]}
+  ]
+}

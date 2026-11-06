@@ -1,0 +1,117 @@
+{
+  "whatsapp": "+10000000000",
+  "delivery_date": "2026-10-20",
+  "appointment_date": "2026-11-30",
+  "clinic_phone": "+10000000001",
+  "consent": true,
+  "checkins": [
+    {
+      "day": 3,
+      "bleeding": 4,
+      "pain": 3,
+      "mood": 3,
+      "healing": 2,
+      "pad_soak": 0,
+      "note": "Cansada pero contenta"
+    },
+    {
+      "day": 4,
+      "bleeding": 4,
+      "pain": 3,
+      "mood": 2,
+      "healing": 2,
+      "pad_soak": 0,
+      "note": "Lloré sin saber por qué"
+    },
+    {
+      "day": 5,
+      "bleeding": 3,
+      "pain": 3,
+      "mood": 1,
+      "healing": 2,
+      "pad_soak": 0,
+      "note": "Me siento muy triste"
+    },
+    {
+      "day": 6,
+      "bleeding": 3,
+      "pain": 3,
+      "mood": 2,
+      "healing": 3,
+      "pad_soak": 0,
+      "note": "Un poco mejor"
+    },
+    {
+      "day": 7,
+      "bleeding": 3,
+      "pain": 2,
+      "mood": 2,
+      "healing": 3,
+      "pad_soak": 0,
+      "note": "Desvelada a las 3 a. m."
+    },
+    {
+      "day": 8,
+      "bleeding": 3,
+      "pain": 2,
+      "mood": 3,
+      "healing": 3,
+      "pad_soak": 0,
+      "note": "Descansé un rato"
+    },
+    {
+      "day": 9,
+      "bleeding": 5,
+      "pain": 4,
+      "mood": 3,
+      "healing": 3,
+      "pad_soak": 1,
+      "note": "Empapé una toalla en una hora"
+    },
+    {
+      "day": 10,
+      "bleeding": 3,
+      "pain": 3,
+      "mood": 3,
+      "healing": 3,
+      "pad_soak": 0,
+      "note": "Hablé con mi médico"
+    },
+    {
+      "day": 11,
+      "bleeding": 3,
+      "pain": 2,
+      "mood": 3,
+      "healing": 3,
+      "pad_soak": 0,
+      "note": ""
+    },
+    {
+      "day": 12,
+      "bleeding": 2,
+      "pain": 2,
+      "mood": 4,
+      "healing": 4,
+      "pad_soak": 0,
+      "note": "Me siento más tranquila"
+    },
+    {
+      "day": 13,
+      "bleeding": 2,
+      "pain": 2,
+      "mood": 4,
+      "healing": 4,
+      "pad_soak": 0,
+      "note": ""
+    },
+    {
+      "day": 14,
+      "bleeding": 2,
+      "pain": 1,
+      "mood": 4,
+      "healing": 4,
+      "pad_soak": 0,
+      "note": "Ejercicios suaves, bien"
+    }
+  ]
+}
