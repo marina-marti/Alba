@@ -9,14 +9,14 @@ export default function Page() {
   const file = path.join(process.cwd(), "content", "week1.es.json");
   const data = JSON.parse(fs.readFileSync(file, "utf8")) as { cards: WeekCard[] };
   return (
-    <div className="space-y-5 pb-24">
-      <h1 className="text-2xl font-semibold">Tu primera semana</h1>
+    <div className="space-y-8">
+      <h1 className="page-title">Tu primera semana</h1>
       <WeekCards cards={data.cards} />
-      <div className="grid gap-3">
-        <Link href="/pregunta" className="inline-flex min-h-12 items-center justify-center rounded-full bg-dawn-400 px-6 py-3 font-medium text-white shadow-soft hover:bg-dawn-500">
+      <div className="grid gap-4 pt-2">
+        <Link href="/pregunta" className="btn">
           Pregúntale a Alba
         </Link>
-        <Link href="/banderas" className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 py-3 font-medium text-ink shadow-soft hover:bg-dawn-100">
+        <Link href="/banderas" className="btn btn-quiet">
           Cuándo llamar a tu médico
         </Link>
       </div>

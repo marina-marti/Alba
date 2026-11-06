@@ -39,24 +39,24 @@ export default async function Page() {
   return (
     <div id="resumen">
       <style dangerouslySetInnerHTML={{ __html: printCss }} />
-      <h1 className="text-xl font-semibold">Resumen para tu cita</h1>
-      <p className="mt-1 text-sm">
+      <h1 className="page-title print:font-sans print:font-semibold print:tracking-normal">Resumen para tu cita</h1>
+      <p className="mt-2 text-base text-ink-soft print:text-sm print:text-black">
         Parto: {fmt(profile?.delivery_date ?? null)} · Cita: {fmt(profile?.appointment_date ?? null)}
       </p>
 
       {failed ? (
-        <p role="alert" className="mt-4 rounded-2xl bg-dawn-100 p-4">
+        <p role="alert" className="mt-6 rounded-3xl bg-dawn-100 p-5">
           No pudimos preparar tu resumen. Inténtalo de nuevo en un momento.
         </p>
       ) : summary && summary.rows.length === 0 ? (
-        <p className="mt-4 rounded-2xl bg-dawn-100 p-4">
+        <p className="mt-4 rounded-3xl bg-dawn-100 p-5">
           Todavía no hay registros. Cuando hagas tu primer registro de hoy, aquí verás tu resumen para llevar a tu cita.
         </p>
       ) : summary ? (
         <>
-          {summary.narrative && <p className="mt-3 text-sm">{summary.narrative}</p>}
-          <div className="mt-3 overflow-x-auto">
-            <table className="w-full text-left text-xs">
+          {summary.narrative && <p className="mt-6 text-base print:mt-3 print:text-sm">{summary.narrative}</p>}
+          <div className="mt-6 overflow-x-auto rounded-3xl bg-white/70 p-3 shadow-soft print:rounded-none print:bg-transparent print:p-0 print:shadow-none">
+            <table className="w-full text-left text-sm print:text-xs [&_td]:px-2 [&_td]:py-2 [&_th]:px-2 [&_th]:py-2">
               <thead>
                 <tr className="border-b border-dawn-300">
                   <th>Día</th>
@@ -83,11 +83,11 @@ export default async function Page() {
               </tbody>
             </table>
           </div>
-          <p className="mt-2 text-xs">Escalas de 1 a 5. Este resumen no es un diagnóstico.</p>
+          <p className="mt-4 text-sm text-ink-soft print:mt-2 print:text-xs print:text-black">Escalas de 1 a 5. Este resumen no es un diagnóstico.</p>
         </>
       ) : null}
 
-      <div className="no-print mt-5">
+      <div className="no-print mt-8">
         <PrintButton />
       </div>
     </div>

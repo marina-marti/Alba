@@ -19,37 +19,38 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ m
   const hotline = { href: "tel:18338526262", label: "1-833-TLC-MAMA (1-833-852-6262)" };
 
   return (
-    <main className="fixed inset-0 z-50 flex flex-col justify-center gap-6 overflow-y-auto bg-dawn-50 px-6 py-8 text-center">
+    <main className="fixed inset-0 z-50 flex flex-col items-stretch justify-center gap-7 overflow-y-auto bg-coral-600 px-6 py-10 text-center text-white">
+      <div aria-hidden className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-1/3 rounded-b-[50%] bg-coral-700/40" />
       {support ? (
         <>
-          <h1 className="text-3xl font-semibold text-ink">No estás sola</h1>
-          <p className="text-lg text-ink-soft">
+          <h1 className="font-serif text-4xl font-normal leading-tight text-white">No estás sola</h1>
+          <p className="text-xl text-white">
             {motivo === "selfharm"
               ? "Lo que sientes importa. Habla ahora con alguien que te escucha, en español, a cualquier hora."
               : "Estos días han sido pesados. Hablar con alguien puede ayudar, y no tienes que esperar."}
           </p>
-          <a href={hotline.href} className="mx-auto inline-flex min-h-16 w-full max-w-sm items-center justify-center rounded-full bg-dawn-500 px-6 py-4 text-xl font-semibold text-white shadow-soft active:scale-[0.98]">
+          <a href={hotline.href} className="btn mx-auto min-h-16 w-full max-w-sm !bg-coral-50 px-6 py-4 text-lg font-bold [text-wrap:balance] !text-coral-700 hover:!bg-white">
             Llamar a {hotline.label}
           </a>
-          <p className="text-ink-soft">Gratis, confidencial, 24/7, en español e inglés.</p>
+          <p className="text-white">Gratis, confidencial, 24/7, en español e inglés.</p>
           {motivo === "selfharm" && (
-            <p className="text-ink-soft">Si sientes que puedes hacerte daño ahora mismo, llama al 911.</p>
+            <p className="text-white">Si sientes que puedes hacerte daño ahora mismo, llama al 911.</p>
           )}
         </>
       ) : (
         <>
-          <h1 className="text-4xl font-bold text-ink">Llama hoy, no esperes</h1>
-          <p className="text-lg text-ink">{padText}</p>
-          <p className="text-xl font-medium text-ink">{flags.action.charAt(0).toUpperCase() + flags.action.slice(1)}.</p>
-          <a href={clinic.href} className="mx-auto inline-flex min-h-20 w-full max-w-sm items-center justify-center rounded-full bg-dawn-500 px-6 py-5 text-2xl font-semibold text-white shadow-soft active:scale-[0.98]">
+          <h1 className="font-serif text-5xl font-bold leading-tight text-white">Llama hoy, no esperes</h1>
+          <p className="text-xl text-white">{padText}</p>
+          <p className="text-2xl font-semibold text-white">{flags.action.charAt(0).toUpperCase() + flags.action.slice(1)}.</p>
+          <a href={clinic.href} className="btn mx-auto min-h-20 w-full max-w-sm !bg-coral-50 px-6 py-5 text-2xl font-bold !text-coral-700 hover:!bg-white">
             Llamar ahora: {clinic.label}
           </a>
           {clinic.label !== "911" && (
-            <a href="tel:911" className="text-lg text-ink-soft underline">Si es una emergencia, llama al 911</a>
+            <a href="tel:911" className="text-lg font-medium text-white underline underline-offset-4">Si es una emergencia, llama al 911</a>
           )}
         </>
       )}
-      <a href="/" className="text-sm text-ink-soft underline">Volver al inicio</a>
+      <a href="/" className="mx-auto inline-flex min-h-11 items-center text-base text-white underline underline-offset-4">Volver al inicio</a>
     </main>
   );
 }

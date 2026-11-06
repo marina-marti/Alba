@@ -9,15 +9,15 @@ export const metadata: Metadata = {
   icons: { icon: "/icon.svg" },
 };
 
-export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#fffaf3" };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#fdf8f0" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body>
-        <div className="mx-auto flex min-h-screen max-w-md flex-col">
+        <div className="mx-auto flex min-h-screen max-w-xl flex-col">
           <Header />
-          <main className="flex-1 px-5 pb-28 pt-4">{children}</main>
+          <main className="page-enter flex-1 px-6 pb-36 pt-6">{children}</main>
           <BottomNav />
         </div>
       </body>

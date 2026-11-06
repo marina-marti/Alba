@@ -1,5 +1,6 @@
 import Card from "@/components/Card";
 import { ButtonLink } from "@/components/Button";
+import { Blob, Chevron } from "@/components/Curves";
 
 const links = [
   { href: "/semana-1", label: "Tu primera semana" },
@@ -12,19 +13,21 @@ const links = [
 
 export default function Home() {
   return (
-    <div className="space-y-5">
-      <Card>
-        <h1 className="text-2xl font-semibold">Buenos días</h1>
-        <p className="mt-2 text-ink-soft">Un momento tranquilo, solo para ti.</p>
+    <div className="space-y-10">
+      <Card className="relative overflow-hidden px-7 py-10">
+        <Blob className="pointer-events-none absolute -right-16 -top-20 h-64 w-64 text-dawn-200/70" />
+        <h1 className="page-title relative">Buenos días</h1>
+        <p className="relative mt-3 text-lg text-ink-soft">Un momento tranquilo, solo para ti.</p>
       </Card>
-      <div className="grid gap-3">
+      <div className="grid gap-4">
         {links.map((l) => (
-          <ButtonLink key={l.href} href={l.href} className="bg-white !text-ink hover:!bg-dawn-100">
+          <ButtonLink key={l.href} href={l.href} variant="quiet" className="justify-between !px-7 text-left">
             {l.label}
+            <Chevron className="h-5 w-5 shrink-0 text-dawn-500" />
           </ButtonLink>
         ))}
-        <ButtonLink href="/registro">Empezar</ButtonLink>
-        <ButtonLink href="/login" className="bg-sage-300 !text-ink hover:!bg-sage-100">
+        <ButtonLink href="/registro" className="mt-4">Empezar</ButtonLink>
+        <ButtonLink href="/login" variant="sage">
           Entrar
         </ButtonLink>
       </div>

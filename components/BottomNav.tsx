@@ -11,26 +11,31 @@ const items = [
 
 export default function BottomNav() {
   const path = usePathname();
+  const idx = items.findIndex((i) => i.href === path);
   return (
     <nav
       aria-label="Navegación"
-      className="fixed inset-x-0 bottom-0 z-10 mx-auto flex max-w-md justify-around rounded-t-4xl bg-white/90 px-2 py-3 shadow-soft backdrop-blur"
+      className="fixed inset-x-4 bottom-4 z-10 mx-auto max-w-sm rounded-full bg-white/90 p-1.5 shadow-lift backdrop-blur"
     >
-      {items.map((i) => {
-        const active = path === i.href;
-        return (
+      <div className="relative grid grid-cols-4">
+        <span
+          aria-hidden
+          className="absolute inset-y-0 left-0 w-1/4 rounded-full bg-dawn-200 transition-[transform,opacity] duration-500 ease-out"
+          style={{ transform: `translateX(${Math.max(idx, 0) * 100}%)`, opacity: idx < 0 ? 0 : 1 }}
+        />
+        {items.map((i, n) => (
           <Link
             key={i.href}
             href={i.href}
-            aria-current={active ? "page" : undefined}
-            className={`min-h-11 rounded-full px-4 py-2 text-sm ${
-              active ? "bg-dawn-200 font-medium text-ink" : "text-ink-soft"
+            aria-current={n === idx ? "page" : undefined}
+            className={`relative flex min-h-12 items-center justify-center rounded-full px-1 text-sm transition-colors duration-300 ${
+              n === idx ? "font-semibold text-ink" : "text-ink-soft hover:text-ink"
             }`}
           >
             {i.label}
           </Link>
-        );
-      })}
+        ))}
+      </div>
     </nav>
   );
 }

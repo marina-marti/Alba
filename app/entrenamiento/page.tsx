@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h1 className="text-xl font-semibold">Movimiento suave</h1>;
+  return <h1 className="page-title">Movimiento suave</h1>;
 }
