@@ -28,6 +28,7 @@ const COPY = {
       visit: ["Mi cita", "Prepárala aquí"],
       exercise: ["Ejercicios", "Movimiento suave"],
       reminders: ["Recordatorios", "Te avisamos"],
+      clinics: ["Clínicas cerca", "Encuentra una clínica"],
       flags: ["Banderas rojas", "Cuándo llamar al médico"],
     },
   },
@@ -48,6 +49,7 @@ const COPY = {
       visit: ["My visit", "Get ready here"],
       exercise: ["Exercises", "Gentle movement"],
       reminders: ["Reminders", "We'll nudge you"],
+      clinics: ["Clinics near you", "Find a clinic"],
       flags: ["Red flags", "When to call your doctor"],
     },
   },
@@ -75,6 +77,7 @@ const ICONS = {
   visit: icon(<><rect x="4" y="5" width="16" height="15" rx="3" /><path d="M8 3v4M16 3v4M4 10h16" /></>),
   exercise: icon(<><circle cx="12" cy="5" r="2" /><path d="M12 8v6M6 10l6-2 6 2M9 21l3-7 3 7" /></>),
   reminders: icon(<><path d="M6 17V11a6 6 0 0 1 12 0v6l1.5 2h-15z" /><path d="M10 21h4" /></>),
+  clinics: icon(<><path d="M12 21s-6-5.2-6-10a6 6 0 0 1 12 0c0 4.8-6 10-6 10z" /><circle cx="12" cy="11" r="2.2" /></>),
   flags: icon(<><path d="M6 21V4" /><path d="M6 5h11l-2 4 2 4H6" /></>),
 };
 
@@ -90,6 +93,7 @@ const SECONDARY: { key: Key; href: string }[] = [
   { key: "visit", href: "/visita" },
   { key: "exercise", href: "/entrenamiento" },
   { key: "reminders", href: "/recordatorios" },
+  { key: "clinics", href: "/clinicas" },
   { key: "flags", href: "/banderas" },
 ];
 
