@@ -9,6 +9,7 @@ const items: { href: string; label: Key }[] = [
   { href: "/checkin", label: "nav.today" },
   { href: "/pregunta", label: "nav.ask" },
   { href: "/circulo", label: "nav.circle" },
+  { href: "/clinicas", label: "nav.map" },
 ];
 
 export default function BottomNav() {
@@ -18,12 +19,12 @@ export default function BottomNav() {
   return (
     <nav
       aria-label={t("nav.label")}
-      className="fixed inset-x-4 bottom-4 z-10 mx-auto max-w-sm rounded-full bg-white/90 p-1.5 shadow-lift backdrop-blur"
+      className="fixed inset-x-4 bottom-4 z-10 mx-auto max-w-md rounded-full bg-white/90 p-1.5 shadow-lift backdrop-blur"
     >
-      <div className="relative grid grid-cols-4">
+      <div className="relative grid grid-cols-5">
         <span
           aria-hidden
-          className="absolute inset-y-0 left-0 w-1/4 rounded-full bg-dawn-200 transition-[transform,opacity] duration-500 ease-out"
+          className="absolute inset-y-0 left-0 w-1/5 rounded-full bg-dawn-200 transition-[transform,opacity] duration-500 ease-out"
           style={{ transform: `translateX(${Math.max(idx, 0) * 100}%)`, opacity: idx < 0 ? 0 : 1 }}
         />
         {items.map((i, n) => (

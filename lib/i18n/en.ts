@@ -11,6 +11,7 @@ export const en: Record<Key, string> = {
   "nav.today": "Today",
   "nav.ask": "Ask",
   "nav.circle": "Circle",
+  "nav.map": "Map",
 
   "home.greeting": "Good morning",
   "home.sub": "A quiet moment, just for you.",

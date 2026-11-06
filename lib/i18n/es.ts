@@ -9,6 +9,7 @@ export const es = {
   "nav.today": "Hoy",
   "nav.ask": "Pregunta",
   "nav.circle": "Círculo",
+  "nav.map": "Mapa",
 
   "home.greeting": "Buenos días",
   "home.sub": "Un momento tranquilo, solo para ti.",
