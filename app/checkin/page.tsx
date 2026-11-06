@@ -2,17 +2,19 @@ import Card from "@/components/Card";
 import { Button } from "@/components/Button";
 import { submitCheckin } from "./actions";
 import { getI18n } from "@/lib/i18n/server";
+import { getCheckinForDay } from "@/lib/db";
+import { isoLocal } from "@/lib/calendar";
 
 const NAMES = ["bleeding", "pain", "mood", "healing"] as const;
 
-function Scale({ name, label, low, high }: { name: string; label: string; low: string; high: string }) {
+function Scale({ name, label, low, high, value }: { name: string; label: string; low: string; high: string; value?: number }) {
   return (
     <fieldset className="space-y-3">
       <legend className="text-lg font-medium">{label}</legend>
       <div className="grid grid-cols-5 gap-2">
         {[1, 2, 3, 4, 5].map((n) => (
           <label key={n} className="cursor-pointer">
-            <input type="radio" name={name} value={n} required className="peer sr-only" />
+            <input type="radio" name={name} value={n} required defaultChecked={value === n} className="peer sr-only" />
             <span className="choice">
               {n}
             </span>
@@ -35,13 +37,15 @@ export default async function Page() {
     low: t(`checkin.${name}.low`),
     high: t(`checkin.${name}.high`),
   }));
+  // If she already filled in today's check-in, show her answers so she can update them.
+  const existing = getCheckinForDay(isoLocal(new Date()));
   return (
     <div className="space-y-8">
       <h1 className="page-title">{t("checkin.title")}</h1>
-      <p className="text-lg text-ink-soft">{t("checkin.intro")}</p>
+      <p className="text-lg text-ink-soft">{existing ? t("checkin.editing") : t("checkin.intro")}</p>
       <form action={submitCheckin} className="space-y-6">
         <Card className="space-y-8">
-          <Scale {...QUESTIONS[0]} />
+          <Scale {...QUESTIONS[0]} value={existing?.bleeding} />
           <fieldset className="space-y-3">
             <legend className="text-lg font-medium">{t("checkin.padQ")}</legend>
             <div className="grid grid-cols-2 gap-2">
@@ -50,7 +54,7 @@ export default async function Page() {
                 ["1", t("checkin.yes")],
               ].map(([v, t]) => (
                 <label key={v} className="cursor-pointer">
-                  <input type="radio" name="pad_soak" value={v} defaultChecked={v === "0"} className="peer sr-only" />
+                  <input type="radio" name="pad_soak" value={v} defaultChecked={v === String(existing?.pad_soak ?? 0)} className="peer sr-only" />
                   <span className="choice">
                     {t}
                   </span>
@@ -61,7 +65,7 @@ export default async function Page() {
         </Card>
         {QUESTIONS.slice(1).map((q) => (
           <Card key={q.name}>
-            <Scale {...q} />
+            <Scale {...q} value={existing?.[q.name as "pain" | "mood" | "healing"]} />
           </Card>
         ))}
         <Card className="space-y-3">
@@ -73,12 +77,13 @@ export default async function Page() {
             name="note"
             rows={4}
             maxLength={2000}
+            defaultValue={existing?.note ?? ""}
             placeholder={t("checkin.notePlaceholder")}
             className="field"
           />
         </Card>
         <Button type="submit" className="w-full">
-          {t("checkin.save")}
+          {existing ? t("checkin.update") : t("checkin.save")}
         </Button>
       </form>
     </div>

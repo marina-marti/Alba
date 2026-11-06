@@ -76,6 +76,17 @@ export function addCheckin(c: CheckinInput): number {
   return Number(r.lastInsertRowid);
 }
 
+/** Today's check-in if she already filled it in (the latest one for that day). */
+export function getCheckinForDay(day: string): Checkin | null {
+  return (getDb().prepare("SELECT * FROM checkins WHERE day = ? ORDER BY id DESC LIMIT 1").get(day) as Checkin | undefined) ?? null;
+}
+
+export function updateCheckin(id: number, c: CheckinInput): void {
+  getDb()
+    .prepare("UPDATE checkins SET bleeding=@bleeding, pain=@pain, mood=@mood, healing=@healing, pad_soak=@pad_soak, note=@note WHERE id=@id")
+    .run({ ...c, note: c.note ?? null, id });
+}
+
 export function listCheckins(): Checkin[] {
   return getDb().prepare("SELECT * FROM checkins ORDER BY day ASC, id ASC").all() as Checkin[];
 }

@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { addCheckin, listCheckins, type Checkin } from "@/lib/db";
+import { addCheckin, getCheckinForDay, listCheckins, updateCheckin, type Checkin } from "@/lib/db";
 import { escalationFor } from "@/lib/escalation";
 
 export type SavedCheckin = Omit<Checkin, "created_at"> & { note: string | null };
@@ -29,6 +29,12 @@ export async function saveCheckinAction(formData: FormData): Promise<SavedChecki
     pad_soak: formData.get("pad_soak") === "1" ? 1 : 0,
     note: note || null,
   };
+  // One check-in per day: filling it in again updates today's answers instead of adding a second row.
+  const existing = getCheckinForDay(input.day);
+  if (existing) {
+    updateCheckin(existing.id, input);
+    return { id: existing.id, ...input };
+  }
   const id = addCheckin(input);
   return { id, ...input };
 }
