@@ -77,28 +77,28 @@ export default async function Page() {
             </section>
           )}
           <div className="mt-6 overflow-x-auto rounded-3xl bg-white/70 p-3 shadow-soft print:rounded-none print:bg-transparent print:p-0 print:shadow-none">
-            <table className="w-full text-left text-sm print:text-xs [&_td]:px-2 [&_td]:py-2 [&_th]:px-2 [&_th]:py-2">
+            <table className="w-full text-left text-sm tabular-nums print:text-xs [&_td]:px-2 [&_td]:py-2 [&_th]:px-2 [&_th]:py-2">
               <thead>
                 <tr className="border-b border-dawn-300">
-                  <th>{t("summary.colDay")}</th>
-                  <th>{t("summary.colBleeding")}</th>
-                  <th>{t("summary.colPain")}</th>
-                  <th>{t("summary.colMood")}</th>
-                  <th>{t("summary.colHealing")}</th>
-                  <th>{t("summary.colPad")}</th>
-                  <th>{t("summary.colNote")}</th>
+                  <th className="whitespace-nowrap">{t("summary.colDay")}</th>
+                  <th className="text-center">{t("summary.colBleeding")}</th>
+                  <th className="text-center">{t("summary.colPain")}</th>
+                  <th className="text-center">{t("summary.colMood")}</th>
+                  <th className="text-center">{t("summary.colHealing")}</th>
+                  <th className="text-center">{t("summary.colPad")}</th>
+                  <th className="min-w-[12rem]">{t("summary.colNote")}</th>
                 </tr>
               </thead>
               <tbody>
                 {summary.rows.map((r, i) => (
                   <tr key={i} className="border-b border-dawn-100 align-top">
                     <td className="whitespace-nowrap">{r.day}</td>
-                    <td>{r.bleeding}</td>
-                    <td>{r.pain}</td>
-                    <td>{r.mood}</td>
-                    <td>{r.healing}</td>
-                    <td>{r.padSoak ? t("summary.yes") : t("summary.no")}</td>
-                    <td>{r.note}</td>
+                    <td className="text-center">{r.bleeding}</td>
+                    <td className="text-center">{r.pain}</td>
+                    <td className="text-center">{r.mood}</td>
+                    <td className="text-center">{r.healing}</td>
+                    <td className="text-center">{r.padSoak ? t("summary.yes") : t("summary.no")}</td>
+                    <td className="min-w-[12rem]">{r.note}</td>
                   </tr>
                 ))}
               </tbody>

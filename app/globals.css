@@ -31,8 +31,13 @@ body {
 @layer components {
   .page-title {
     @apply font-serif text-[2rem] font-normal leading-tight tracking-tight text-ink;
+    text-wrap: balance;
   }
   .page-enter { animation: rise 500ms ease-out both; }
+
+  /* short body text: no one-word last lines; numbers in tables line up */
+  .card :is(p, li) { text-wrap: pretty; }
+  table { font-variant-numeric: tabular-nums; }
 
   /* one card: soft paper, 32px curve, long soft shadow, no border */
   .card {
@@ -51,7 +56,7 @@ body {
   .btn:disabled { @apply cursor-not-allowed opacity-50; }
 
   .field {
-    @apply min-h-12 w-full rounded-3xl border border-dawn-200 bg-white/90 px-5 py-3 text-ink shadow-none placeholder:text-ink-soft/70;
+    @apply min-h-12 w-full rounded-3xl border border-dawn-200 bg-white/90 px-5 py-3 text-ink shadow-none placeholder:text-ink-soft;
     transition: border-color 250ms ease-out, box-shadow 250ms ease-out, background-color 250ms ease-out;
   }
   .lang-select {

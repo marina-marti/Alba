@@ -61,7 +61,7 @@ export default function CalendarMonth(props: {
               aria-pressed={isSel}
               aria-current={isToday ? "date" : undefined}
               style={{ backgroundColor: tint }}
-              className={`flex min-h-11 flex-col items-center justify-center gap-0.5 rounded-2xl py-1 text-sm transition-[box-shadow,transform] duration-200 active:scale-95 ${isToday ? "ring-2 ring-dawn-400/70" : ""} ${isSel ? "outline outline-2 outline-offset-1 outline-sage-600/60" : ""}`}
+              className={`flex min-h-11 flex-col items-center justify-center gap-0.5 rounded-2xl py-1 text-sm tabular-nums transition-[box-shadow,transform] duration-200 active:scale-95 ${isToday ? "ring-2 ring-dawn-400/70" : ""} ${isSel ? "outline outline-2 outline-offset-1 outline-sage-600/60" : ""}`}
             >
               <span>{n}</span>
               <span aria-hidden className="flex h-2 items-center gap-1">
